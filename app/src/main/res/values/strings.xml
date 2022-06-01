@@ -13,4 +13,7 @@
     <!--Programadores-->
     <string name="Mireya">Ivette Mireya Peña Zuñiga</string>
     <string name="Cesar">Cesar Alejandro Escalante Delgado</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
