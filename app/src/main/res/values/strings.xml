@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Comelicioso</string>
+
+    <!--Item menu overflow strings-->
+    <string name="menu_over_cerrar">Cerrar Sesion</string>
+
+    <!--TABS strings-->
+    <string name="menu_feed">Feed</string>
+    <string name="menu_restaurantes">Restaurantes disponibles</string>
+    <string name="menu_agenda">Agenda del usuario</string>
+    <string name="menu_listas">Lista de favoritos y proximos</string>
+
+    <!--Programadores-->
+    <string name="Mireya">Ivette Mireya Peña Zuñiga</string>
+    <string name="Cesar">Cesar Alejandro Escalante Delgado</string>
+</resources>
