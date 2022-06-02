@@ -10,6 +10,10 @@
     <string name="menu_agenda">Agenda del usuario</string>
     <string name="menu_listas">Lista de favoritos y proximos</string>
 
+    <!--Textos de publicaciones-->
+    <string name="cardview_descripcion_imagen_publicacion">Publicación de restaurante</string>
+    <string name="cardview_descripcion_texto_publicacion"><b>@usuario</b>\nTexto de publicaciones</string>
+
     <!--Programadores-->
     <string name="Mireya">Ivette Mireya Peña Zuñiga</string>
     <string name="Cesar">Cesar Alejandro Escalante Delgado</string>

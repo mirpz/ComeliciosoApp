@@ -11,40 +11,45 @@
         android:orientation="vertical">
 
         <com.google.android.material.tabs.TabLayout
+            android:id="@+id/AME_tablayMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <com.google.android.material.tabs.TabItem
-                android:id="@+id/tabFeed"
+                android:id="@+id/AME_tabFeed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/menu_feed"
                 android:icon="@drawable/ic_baseline_burst_mode_24" />
 
             <com.google.android.material.tabs.TabItem
-                android:id="@+id/tabRestaurantes"
+                android:id="@+id/AME_tabRestaurantes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/menu_restaurantes"
                 android:icon="@drawable/ic_baseline_dining_24" />
 
             <com.google.android.material.tabs.TabItem
-                android:id="@+id/tabAgenda"
+                android:id="@+id/AME_tabAgenda"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/menu_agenda"
                 android:icon="@drawable/ic_baseline_book_24" />
 
             <com.google.android.material.tabs.TabItem
-                android:id="@+id/tabListas"
+                android:id="@+id/AME_tabListas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/menu_listas"
                 android:icon="@drawable/ic_baseline_notes_24" />
         </com.google.android.material.tabs.TabLayout>
 
-        <androidx.viewpager2.widget.ViewPager2
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/AME_viepagContenedor"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:contentDescription="@string/app_name">
+        </androidx.viewpager.widget.ViewPager>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
