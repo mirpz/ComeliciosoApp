@@ -1,6 +1,7 @@
 package com.example.comelicioso;
 
 import android.annotation.SuppressLint;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,7 +54,7 @@ public class ListAdapterPublicaciones extends RecyclerView.Adapter<ListAdapterPu
 
         @SuppressLint("SetTextI18n")
         public void asignarDatos(Publicaciones datos){
-            txt.setText("<b>"+datos.getUsario()+"</b>\n"+datos.getTexto());
+            txt.setText(Html.fromHtml("<b>"+datos.getUsario()+"</b><br>"+datos.getTexto()));
         }
     }
 }

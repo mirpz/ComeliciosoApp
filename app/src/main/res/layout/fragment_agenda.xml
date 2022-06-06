@@ -5,10 +5,66 @@
     android:layout_height="match_parent"
     tools:context=".Agenda">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
+        android:id="@+id/FAG_scrollPantalla"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_margin="10dp"
+        android:scrollIndicators="right"
+        android:scrollbarStyle="outsideInset"
+        android:scrollbars="vertical"
+        tools:ignore="UselessParent">
+
+        <LinearLayout
+            android:id="@+id/FAG_linearLayoutReservaciones"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/FAG_txtNuevaReservacion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/nuevas_recervaciones_texto"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <CalendarView
+                android:id="@+id/FAG_calendarReservaciones"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:id="@+id/FAG_divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:background="?android:attr/listDivider" />
+
+            <TextView
+                android:id="@+id/FAG_txtMisReservaciones"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/mis_recervaciones_texto"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <ListView
+                android:id="@+id/FAG_listViewReservaciones"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollIndicators="none"
+                android:scrollbars="none"
+                android:scrollingCache="true"
+                tools:ignore="NestedScrolling">
+
+            </ListView>
+
+        </LinearLayout>
+    </ScrollView>
 
 </FrameLayout>
