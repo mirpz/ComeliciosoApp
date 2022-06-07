@@ -3,10 +3,18 @@ package com.example.comelicioso;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import com.example.comelicioso.adaptadores.ListAdapterOldReservaciones;
+import com.example.comelicioso.modelos.Reservaciones;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -15,6 +23,8 @@ import android.view.ViewGroup;
  */
 public class Agenda extends Fragment {
 
+    ArrayList<Reservaciones> elements;
+    RecyclerView recyclerView;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -58,7 +68,27 @@ public class Agenda extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View vista = inflater.inflate(R.layout.fragment_agenda, container, false);
+        recyclerView = vista.findViewById(R.id.FAG_recyclerViewReservaciones);
+        TextView txtSinReservaciones = vista.findViewById(R.id.FAG_txtVacio);
+        elements = new ArrayList<>();
+
+        //en este apatado es donde se tiene que realizar la busqueda y absorción de la información
+
+        elements.add(new Reservaciones("@uno","12-08-2022", "13:40:00","3"));
+        elements.add(new Reservaciones("@dos","12-08-2022", "13:40:00","2"));
+        elements.add(new Reservaciones("@tres","12-08-2022", "13:40:00","1"));
+        elements.add(new Reservaciones("@cuatro","12-08-2022", "13:40:00","5"));
+        elements.add(new Reservaciones("@cinco","12-08-2022", "13:40:00","2"));
+        elements.add(new Reservaciones("@seis","12-08-2022", "13:40:00","3"));
+        elements.add(new Reservaciones("@siete","12-08-2022", "13:40:00","10"));
+
+        txtSinReservaciones.setVisibility((elements.size()==0)?View.VISIBLE:View.GONE);
+        ListAdapterOldReservaciones listAdapter= new ListAdapterOldReservaciones(elements);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(vista.getContext(),LinearLayoutManager.VERTICAL,false));
+        recyclerView.setAdapter(listAdapter);
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_agenda, container, false);
+        return vista;
     }
 }

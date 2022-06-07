@@ -5,6 +5,14 @@
     android:layout_height="match_parent"
     tools:context=".Feed">
 
+    <TextView
+        android:id="@+id/FFE_txtVacio"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="@string/sin_publicaciones"
+        android:textAlignment="center" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/FFE_recviewPublicaciones"
         android:layout_width="match_parent"

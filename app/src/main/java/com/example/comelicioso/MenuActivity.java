@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.comelicioso.controladores.ControlMenu;
 import com.google.android.material.tabs.TabLayout;
 
 public class MenuActivity extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package com.example.comelicioso;
+package com.example.comelicioso.modelos;
 
 public class Publicaciones {
 

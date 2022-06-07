@@ -13,10 +13,18 @@
     <!--Textos de publicaciones-->
     <string name="cardview_descripcion_imagen_publicacion">Publicación de restaurante</string>
     <string name="cardview_descripcion_texto_publicacion"><b>@usuario</b>\nTexto de publicaciones</string>
+    <string name="sin_publicaciones">No hay publicaciones hechas hasta el momento.</string>
+
+    <!--Textos de mis recervaciones-->
+    <string name="cardview_descripcion_restaurante">Nombre del restaurante</string>
+    <string name="cardview_descripcion_fecha">DD-MM-YYYY</string>
+    <string name="cardview_descripcion_hora">00:00:00</string>
+    <string name="cardview_descripcion_asistentes">Numero de asistentes:</string>
 
     <!--Reservaciones strings-->
     <string name="mis_recervaciones_texto">Mis reservaciones</string>
     <string name="nuevas_recervaciones_texto">Hacer nueva reservación</string>
+    <string name="sin_reservaciones">No hay reservaciones hechas hasta el momento.</string>
 
     <!--Programadores-->
     <string name="Mireya">Ivette Mireya Peña Zuñiga</string>

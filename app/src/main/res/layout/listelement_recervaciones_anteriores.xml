@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LER_cardViewContenedor"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="10dp"
+    app:cardUseCompatPadding="true"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <LinearLayout
+        android:id="@+id/LER_linearLayoutPrincipal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/LER_txtRestaurante"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:text="@string/cardview_descripcion_restaurante"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <View
+            android:id="@+id/LER_divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider" />
+
+        <LinearLayout
+            android:id="@+id/LER_linearLayoutSecundarioParte1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/LER_textoAsistentes"
+                android:layout_width="wrap_content"
+                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:text="@string/cardview_descripcion_asistentes"
+                android:textAlignment="viewEnd"
+                tools:ignore="NestedWeights" />
+
+            <TextView
+                android:id="@+id/LER_txtAsistentes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingStart="5dp"
+                android:text="@string/cardview_descripcion_asistentes"
+                android:textAlignment="viewStart"
+                android:textStyle="italic"
+                tools:ignore="RtlSymmetry" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/LER_linearLayoutSecundarioParte2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/LER_txtFecha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:layout_weight="1"
+                android:text="@string/cardview_descripcion_fecha"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/LER_txtHora"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_weight="1"
+                android:text="@string/cardview_descripcion_hora"
+                android:textAlignment="center" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

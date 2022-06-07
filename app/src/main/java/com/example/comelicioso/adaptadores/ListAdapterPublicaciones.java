@@ -1,4 +1,4 @@
-package com.example.comelicioso;
+package com.example.comelicioso.adaptadores;
 
 import android.annotation.SuppressLint;
 import android.text.Html;
@@ -10,6 +10,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.comelicioso.R;
+import com.example.comelicioso.modelos.Publicaciones;
 
 import java.util.ArrayList;
 

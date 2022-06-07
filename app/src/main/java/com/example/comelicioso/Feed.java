@@ -9,6 +9,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import com.example.comelicioso.adaptadores.ListAdapterPublicaciones;
+import com.example.comelicioso.modelos.Publicaciones;
 
 import java.util.ArrayList;
 
@@ -60,6 +64,7 @@ public class Feed extends Fragment {
                              Bundle savedInstanceState) {
         View vista = inflater.inflate(R.layout.fragment_feed, container, false);
         recyclerView = vista.findViewById(R.id.FFE_recviewPublicaciones);
+        TextView txtSinReservaciones  = vista.findViewById(R.id.FFE_txtVacio);
         elements = new ArrayList<>();
 
     //en este apatado es donde se tiene que realizar la busqueda y absorción de la información
@@ -69,6 +74,7 @@ public class Feed extends Fragment {
         elements.add(new Publicaciones("@cuatro","","Aqui estamos"));
         elements.add(new Publicaciones("@cinco","","Aqui estamos"));
 
+        txtSinReservaciones.setVisibility((elements.size()==0)?View.VISIBLE:View.GONE);
         ListAdapterPublicaciones listAdapter= new ListAdapterPublicaciones(elements);
         recyclerView.setLayoutManager(new LinearLayoutManager(vista.getContext(),LinearLayoutManager.VERTICAL,false));
         recyclerView.setAdapter(listAdapter);
