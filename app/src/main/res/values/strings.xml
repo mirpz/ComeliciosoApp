@@ -29,8 +29,8 @@
     <!--Lista de restaurantes strings-->
     <string name="texto_restaurante">Un restaurante</string>
     <string name="texto_imagen_restaurante">Logo del restaurante</string>
-    <string name="texto_imagen_restaurante">Logo del restaurante</string>
-    <string name="texto_imagen_restaurante">Logo del restaurante</string>
+    <string name="texto_imagen_fav">Agregar a restaurantes favoritos</string>
+    <string name="texto_imagen_save">Agregar a restaurantes por visitar</string>
 
     <!--Programadores-->
     <string name="Mireya">Ivette Mireya Peña Zuñiga</string>

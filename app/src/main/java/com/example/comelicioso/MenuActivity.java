@@ -1,5 +1,6 @@
 package com.example.comelicioso;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -58,13 +59,14 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     // Método para los casos del menú
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
-        /*int id=item.getItemId();
+        int id=item.getItemId();
         switch(id){
             case R.id.MOV_itemCerrarSesion:
                 break;
-        }// switch*/
+        }// switch
         return super.onOptionsItemSelected(item);
     }// onOptionsItemSelected
 
