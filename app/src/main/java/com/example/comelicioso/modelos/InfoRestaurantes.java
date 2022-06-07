@@ -1,11 +1,37 @@
 package com.example.comelicioso.modelos;
 
-import java.util.ArrayList;
 
 public class InfoRestaurantes {
 
     String nombre, tipoComida, ubicacion, telefono, costoAproximado;
+    boolean enFavoritos, enProximos;
     float calificacion;
+    int icon;
+
+    public int getIcon() {
+        return icon;
+    }
+
+    public void setIcon(int icon) {
+        this.icon = icon;
+    }
+
+    public boolean isEnFavoritos() {
+        return enFavoritos;
+    }
+
+    public void setEnFavoritos(boolean enFavoritos) {
+        this.enFavoritos = enFavoritos;
+    }
+
+    public boolean isEnProximos() {
+        return enProximos;
+    }
+
+    public void setEnProximos(boolean enProximos) {
+        this.enProximos = enProximos;
+    }
+
     String horarios [];
 
     public InfoRestaurantes(String nombre, String tipoComida, String ubicacion, String telefono, String costoAproximado, float calificacion, String[] horarios) {
@@ -16,6 +42,8 @@ public class InfoRestaurantes {
         this.costoAproximado = costoAproximado;
         this.calificacion = calificacion;
         this.horarios = horarios;
+        this.enFavoritos=false;
+        this.enProximos=false;
     }
 
     public String getNombre() {

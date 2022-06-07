@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Feed">
+    tools:context=".ListaFavoritos">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,15 +12,15 @@
         tools:ignore="UselessParent">
 
         <TextView
-            android:id="@+id/FFE_txtVacio"
+            android:id="@+id/FLF_txtVacio"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="@string/sin_publicaciones"
+            android:text="@string/sin_restaurantes"
             android:textAlignment="center" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/FFE_recviewPublicaciones"
+            android:id="@+id/FLF_recviewRestaurantes"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="10dp" />

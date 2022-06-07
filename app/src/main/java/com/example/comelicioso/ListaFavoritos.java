@@ -11,19 +11,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.comelicioso.adaptadores.ListAdapterPublicaciones;
 import com.example.comelicioso.adaptadores.ListAdapterRestaurantes;
 import com.example.comelicioso.modelos.Global;
-import com.example.comelicioso.modelos.Publicaciones;
+import com.example.comelicioso.modelos.InfoRestaurantes;
 
 import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link Restaurantes#newInstance} factory method to
+ * Use the {@link ListaFavoritos#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Restaurantes extends Fragment {
+public class ListaFavoritos extends Fragment {
 
     RecyclerView recyclerView;
     Global gb;
@@ -36,7 +35,7 @@ public class Restaurantes extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public Restaurantes() {
+    public ListaFavoritos() {
         // Required empty public constructor
     }
 
@@ -46,11 +45,11 @@ public class Restaurantes extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment Restaurantes.
+     * @return A new instance of fragment ListaFavoritos.
      */
     // TODO: Rename and change types and number of parameters
-    public static Restaurantes newInstance(String param1, String param2) {
-        Restaurantes fragment = new Restaurantes();
+    public static ListaFavoritos newInstance(String param1, String param2) {
+        ListaFavoritos fragment = new ListaFavoritos();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -70,13 +69,20 @@ public class Restaurantes extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View vista = inflater.inflate(R.layout.fragment_restaurantes, container, false);
+        View vista = inflater.inflate(R.layout.fragment_lista_favoritos, container, false);
         gb = (Global)vista.getContext().getApplicationContext();
-        recyclerView = vista.findViewById(R.id.FRE_recviewRestaurantes);
-        TextView txtSinRestaurantes  = vista.findViewById(R.id.FRE_txtVacio);
+        recyclerView = vista.findViewById(R.id.FLF_recviewRestaurantes);
+        TextView txtSinRestaurantes  = vista.findViewById(R.id.FLF_txtVacio);
 
-        txtSinRestaurantes.setVisibility((gb.getDatosRestaurantes().size()==0)?View.VISIBLE:View.GONE);
-        ListAdapterRestaurantes listAdapter= new ListAdapterRestaurantes(gb.getDatosRestaurantes());
+        ArrayList<InfoRestaurantes> list=new ArrayList<>();
+        for(int i=0; i<gb.getDatosRestaurantes().size(); i++){
+            if(gb.getDatosRestaurantes().get(i).isEnFavoritos()){
+                list.add(gb.getDatosRestaurantes().get(i));
+            }
+        }
+
+        txtSinRestaurantes.setVisibility((list.size()==0)?View.VISIBLE:View.GONE);
+        ListAdapterRestaurantes listAdapter= new ListAdapterRestaurantes(list);
         recyclerView.setLayoutManager(new LinearLayoutManager(vista.getContext(),LinearLayoutManager.VERTICAL,false));
         recyclerView.setAdapter(listAdapter);
         // Inflate the layout for this fragment

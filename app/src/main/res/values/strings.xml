@@ -9,6 +9,8 @@
     <string name="menu_restaurantes">Restaurantes disponibles</string>
     <string name="menu_agenda">Agenda del usuario</string>
     <string name="menu_listas">Lista de favoritos y proximos</string>
+    <string name="menu_listas_favorito">Favoritos</string>
+    <string name="menu_listas_proximos">Proximos a visitar</string>
 
     <!--Textos de publicaciones-->
     <string name="cardview_descripcion_imagen_publicacion">Publicación de restaurante</string>
@@ -25,6 +27,8 @@
     <string name="mis_recervaciones_texto">Mis reservaciones</string>
     <string name="nuevas_recervaciones_texto">Hacer nueva reservación</string>
     <string name="sin_reservaciones">No hay reservaciones hechas hasta el momento.</string>
+
+    <string name="sin_restaurantes">No hay restaurantes hechas hasta el momento.</string>
 
     <!--Lista de restaurantes strings-->
     <string name="texto_restaurante">Un restaurante</string>
