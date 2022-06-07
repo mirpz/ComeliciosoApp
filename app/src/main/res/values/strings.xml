@@ -26,6 +26,12 @@
     <string name="nuevas_recervaciones_texto">Hacer nueva reservación</string>
     <string name="sin_reservaciones">No hay reservaciones hechas hasta el momento.</string>
 
+    <!--Lista de restaurantes strings-->
+    <string name="texto_restaurante">Un restaurante</string>
+    <string name="texto_imagen_restaurante">Logo del restaurante</string>
+    <string name="texto_imagen_restaurante">Logo del restaurante</string>
+    <string name="texto_imagen_restaurante">Logo del restaurante</string>
+
     <!--Programadores-->
     <string name="Mireya">Ivette Mireya Peña Zuñiga</string>
     <string name="Cesar">Cesar Alejandro Escalante Delgado</string>
