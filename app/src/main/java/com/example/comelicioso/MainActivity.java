@@ -20,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ArrayList<InfoRestaurantes> elements = new ArrayList<>();
+        ArrayList<InfoRestaurantes> elementsFav = new ArrayList<>();
+        ArrayList<InfoRestaurantes> elementsProx = new ArrayList<>();
 
         //en este apatado es donde se tiene que realizar la busqueda y absorción de la información
         elements.add(new InfoRestaurantes("@uno","italiana", "Aqui estamos",
@@ -41,9 +43,15 @@ public class MainActivity extends AppCompatActivity {
         elements.get(3).setEnFavoritos(true);
         elements.get(1).setEnProximos(true);
 
-        Global gb = (Global)getApplicationContext();
+        elementsFav.add(elements.get(4));
+        elementsFav.add(elements.get(3));
 
+        elementsProx.add(elements.get(1));
+
+        Global gb = (Global)getApplicationContext();
         gb.setDatosRestaurantes(elements);
+        gb.setRestaurantesFav(elementsFav);
+        gb.setRestaurantesProx(elementsProx);
 
         //Lineas de codigo provicionales
         Intent intent = new Intent(MainActivity.this, MenuActivity.class);

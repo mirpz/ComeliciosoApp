@@ -7,6 +7,7 @@ public class InfoRestaurantes {
     boolean enFavoritos, enProximos;
     float calificacion;
     int icon;
+    String horarios [];
 
     public int getIcon() {
         return icon;
@@ -32,7 +33,6 @@ public class InfoRestaurantes {
         this.enProximos = enProximos;
     }
 
-    String horarios [];
 
     public InfoRestaurantes(String nombre, String tipoComida, String ubicacion, String telefono, String costoAproximado, float calificacion, String[] horarios) {
         this.nombre = nombre;

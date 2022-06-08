@@ -70,6 +70,7 @@ public class ListaProximos extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+
         View vista = inflater.inflate(R.layout.fragment_lista_proximos, container, false);
         gb = (Global)vista.getContext().getApplicationContext();
         recyclerView = vista.findViewById(R.id.FLP_recviewRestaurantes);
