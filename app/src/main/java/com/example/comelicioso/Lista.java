@@ -19,9 +19,9 @@ import com.google.android.material.tabs.TabLayout;
  */
 public class Lista extends Fragment {
 
-    TabLayout menu;
-    ViewPager escenario;
-    ControlMenuListas menuCtrl;
+    TabLayout menuInter;
+    ViewPager escenarioInter;
+    ControlMenuListas menuCtrlInter;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -67,23 +67,23 @@ public class Lista extends Fragment {
                              Bundle savedInstanceState) {
         View vista = inflater.inflate(R.layout.fragment_lista, container, false);
         //Asociar instancias con componentes
-        menu = vista.findViewById(R.id.FLI_menuListas);
-        escenario = vista.findViewById(R.id.FLI_viepagContenedor);
+        menuInter = vista.findViewById(R.id.FLI_menuListas);
+        escenarioInter = vista.findViewById(R.id.FLI_viepagContenedor);
         //Se crea una instancia del controlador de menu
-        menuCtrl = new ControlMenuListas(getActivity().getSupportFragmentManager(),menu.getTabCount());
+        menuCtrlInter = new ControlMenuListas(getActivity().getSupportFragmentManager(),menuInter.getTabCount());
         //Se establece quien controla el cambio de opciones
-        escenario.setAdapter(menuCtrl);
+        escenarioInter.setAdapter(menuCtrlInter);
         //Se crea un escucha para el menú, que permita definir acción por pestaña
-        menu.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        menuInter.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 //Se identifica la opción elegida
-                escenario.setCurrentItem(tab.getPosition());
+                escenarioInter.setCurrentItem(tab.getPosition());
                 //Para opción elegida, notifica el cambio
                 switch (tab.getPosition()) {
                     case 0:
                     case 1:
-                        menuCtrl.notifyDataSetChanged();
+                        menuCtrlInter.notifyDataSetChanged();
                         break;
                 }
             }//onTabSelected
@@ -97,7 +97,7 @@ public class Lista extends Fragment {
             }//onTabReselected
         });
         //Asocia el menu con el Viewpager
-        escenario.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(menu));
+        escenarioInter.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(menuInter));
         // Inflate the layout for this fragment
         return vista;
     }
