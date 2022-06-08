@@ -24,7 +24,7 @@ import java.util.ArrayList;
  */
 public class ListaFavoritos extends Fragment {
 
-    RecyclerView recyclerView;
+    RecyclerView recyclerViewFV;
     Global gb;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -71,13 +71,13 @@ public class ListaFavoritos extends Fragment {
                              Bundle savedInstanceState) {
         View vista = inflater.inflate(R.layout.fragment_lista_favoritos, container, false);
         gb = (Global)vista.getContext().getApplicationContext();
-        recyclerView = vista.findViewById(R.id.FLF_recviewRestaurantes);
+        recyclerViewFV = vista.findViewById(R.id.FLF_recviewRestaurantes);
         TextView txtSinRestaurantes  = vista.findViewById(R.id.FLF_txtVacio);
 
         txtSinRestaurantes.setVisibility((gb.getRestaurantesFav().size()==0)?View.VISIBLE:View.GONE);
         ListAdapterRestaurantes listAdapter= new ListAdapterRestaurantes(gb.getRestaurantesFav());
-        recyclerView.setLayoutManager(new LinearLayoutManager(vista.getContext(),LinearLayoutManager.VERTICAL,false));
-        recyclerView.setAdapter(listAdapter);
+        recyclerViewFV.setLayoutManager(new LinearLayoutManager(vista.getContext(),LinearLayoutManager.VERTICAL,false));
+        recyclerViewFV.setAdapter(listAdapter);
         // Inflate the layout for this fragment
         return vista;
     }
