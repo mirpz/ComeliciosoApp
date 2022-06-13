@@ -70,7 +70,7 @@ public class Lista extends Fragment {
         menuInter = vista.findViewById(R.id.FLI_menuListas);
         escenarioInter = vista.findViewById(R.id.FLI_viepagContenedor);
         //Se crea una instancia del controlador de menu
-        menuCtrlInter = new ControlMenuListas(getActivity().getSupportFragmentManager(),menuInter.getTabCount());
+        menuCtrlInter = new ControlMenuListas(getChildFragmentManager(),menuInter.getTabCount());
         //Se establece quien controla el cambio de opciones
         escenarioInter.setAdapter(menuCtrlInter);
         //Se crea un escucha para el menú, que permita definir acción por pestaña
