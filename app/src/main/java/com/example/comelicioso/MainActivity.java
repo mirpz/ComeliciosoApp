@@ -41,12 +41,13 @@ public class MainActivity extends AppCompatActivity {
                 new String[]{"L:9:00-5:00", "MA:9:00-5:00", "MI:9:00-5:00", "J:9:00-5:00", "V:9:00-5:00", "S:9:00-5:00","D:Cerrado"}));
         elements.get(4).setEnFavoritos(true);
         elements.get(3).setEnFavoritos(true);
+
         elements.get(1).setEnProximos(true);
 
-        elementsFav.add(elements.get(4));
+        /*elementsFav.add(elements.get(4));
         elementsFav.add(elements.get(3));
 
-        elementsProx.add(elements.get(1));
+        elementsProx.add(elements.get(1));*/
 
         Global gb = (Global)getApplicationContext();
         gb.setDatosRestaurantes(elements);

@@ -1,6 +1,198 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/DDR_contenedor"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:elevation="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="9dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/DDR_iconRestaurant"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:contentDescription="@string/ddr_icon_restaurante"
+                app:srcCompat="@drawable/ic_baseline_restaurant_24" />
+
+            <TextView
+                android:id="@+id/DDR_txtNombre"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_toEndOf="@id/DDR_iconRestaurant"
+                android:paddingStart="3dp"
+                android:text="@string/ddr_nombre_restaurante"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:ignore="RtlSymmetry" />
+
+            <TextView
+                android:id="@+id/DDR_txtTipoComida"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_below="@id/DDR_txtNombre"
+                android:layout_marginTop="5dp"
+                android:layout_toEndOf="@id/DDR_iconRestaurant"
+                android:paddingStart="3dp"
+                android:text="@string/ddr_tipo_comida"
+                tools:ignore="RtlSymmetry" />
+
+
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/DDR_divider"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="?android:attr/listDivider" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/DDR_txtCalificacion"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:text="@string/ddr_calificacion"
+                android:textAlignment="viewEnd"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/DDR_txtCalificacionNumero"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="5dp"
+                android:text="@string/ddr_calificacion"
+                android:textAlignment="viewStart"
+                android:textSize="16sp"
+                tools:ignore="RtlSymmetry" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <ImageView
+                android:id="@+id/DDR_iconUbicacion"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:contentDescription="@string/ddr_icon_horarios"
+                app:srcCompat="@drawable/ic_baseline_fmd_good_24" />
+
+            <TextView
+                android:id="@+id/DDR_txtUbicacion"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_toEndOf="@id/DDR_iconUbicacion"
+                android:lineSpacingMultiplier="@integer/material_motion_duration_medium_1"
+                android:padding="2dp"
+                android:text="@string/ddr_ubicacion"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/DDR_iconTelefono"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_below="@id/DDR_txtUbicacion"
+                android:layout_marginTop="10dp"
+                android:contentDescription="@string/ddr_icon_telefono"
+                app:srcCompat="@drawable/ic_baseline_phone_24" />
+
+            <TextView
+                android:id="@+id/DDR_txtTelefono"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_below="@id/DDR_txtUbicacion"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_toEndOf="@id/DDR_iconTelefono"
+                android:padding="2dp"
+                android:text="@string/ddr_telefono"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/DDR_iconHorario"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_below="@id/DDR_txtTelefono"
+
+                android:layout_marginTop="10dp"
+                android:contentDescription="@string/ddr_icon_horarios"
+                app:srcCompat="@drawable/ic_baseline_access_time_filled_24" />
+
+            <TextView
+                android:id="@+id/DDR_txtHorario"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_below="@id/DDR_txtTelefono"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_toEndOf="@id/DDR_iconHorario"
+                android:autoSizeTextType="uniform"
+                android:padding="2dp"
+                android:text="@string/ddr_horarios"
+                android:textSize="16sp"
+                tools:targetApi="o" />
+
+            <ImageView
+                android:id="@+id/DDR_iconGasto"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_below="@id/DDR_txtHorario"
+                android:layout_marginTop="10dp"
+                android:contentDescription="@string/ddr_icon_gasto_aproximado"
+                app:srcCompat="@drawable/ic_baseline_monetization_on_24" />
+
+            <TextView
+                android:id="@+id/DDR_txtGastoAproximado"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_below="@id/DDR_txtHorario"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_toEndOf="@id/DDR_iconGasto"
+                android:padding="2dp"
+                android:text="@string/ddr_costo_aproximado"
+                android:textSize="16sp" />
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/DDR_btnAceptar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/btn_aceptar" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

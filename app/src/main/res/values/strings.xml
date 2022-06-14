@@ -3,6 +3,7 @@
 
     <!--Item menu overflow strings-->
     <string name="menu_over_cerrar">Cerrar Sesion</string>
+    <string name="menu_over_acerca">Acerca de</string>
 
     <!--TABS strings-->
     <string name="menu_feed">Feed</string>
@@ -27,7 +28,6 @@
     <string name="mis_recervaciones_texto">Mis reservaciones</string>
     <string name="nuevas_recervaciones_texto">Hacer nueva reservación</string>
     <string name="sin_reservaciones">No hay reservaciones hechas hasta el momento.</string>
-
     <string name="sin_restaurantes">No hay restaurantes hechas hasta el momento.</string>
 
     <!--Lista de restaurantes strings-->
@@ -36,10 +36,23 @@
     <string name="texto_imagen_fav">Agregar a restaurantes favoritos</string>
     <string name="texto_imagen_save">Agregar a restaurantes por visitar</string>
 
+    <!--Textos para dialog_detalles_restaurantes-->
+    <string name="ddr_calificacion">Calificacion:</string>
+    <string name="ddr_icon_restaurante">Icono del restaurante</string>
+    <string name="ddr_icon_telefono">Icono del telefono</string>
+    <string name="ddr_icon_horarios">Icono de horaios</string>
+    <string name="ddr_icon_ubicacion">Icono de ubicacion</string>
+    <string name="ddr_icon_gasto_aproximado">Icono de gastos aproximados</string>
+    <string name="ddr_nombre_restaurante">Restaurante</string>
+    <string name="ddr_tipo_comida">Tipo de comida</string>
+    <string name="ddr_horarios">Horarios</string>
+    <string name="ddr_telefono">33333333</string>
+    <string name="ddr_costo_aproximado">Cantidad aproximada</string>
+    <string name="ddr_ubicacion">Ubicacion</string>
+
+    <string name="btn_aceptar">Aceptar</string>
+
     <!--Programadores-->
     <string name="Mireya">Ivette Mireya Peña Zuñiga</string>
     <string name="Cesar">Cesar Alejandro Escalante Delgado</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

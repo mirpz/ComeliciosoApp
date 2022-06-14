@@ -108,7 +108,10 @@ public class InfoRestaurantes {
             texto = "Sin horarios presentes";
         }else{
             for(int i=0; i<this.horarios.length; i++) {
-                texto = texto + horarios[i] + "\n";
+                texto = texto + horarios[i];
+                if(i<this.horarios.length-1){
+                    texto = texto + " / ";
+                }
             }
         }
         return texto;
