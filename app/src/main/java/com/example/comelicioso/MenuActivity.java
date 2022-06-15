@@ -1,5 +1,6 @@
 package com.example.comelicioso;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -7,6 +8,7 @@ import android.view.MenuItem;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.comelicioso.controladores.ControlMenu;
 import com.google.android.material.tabs.TabLayout;
 
 public class MenuActivity extends AppCompatActivity {
@@ -57,13 +59,14 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     // Método para los casos del menú
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
-        /*int id=item.getItemId();
+        int id=item.getItemId();
         switch(id){
             case R.id.MOV_itemCerrarSesion:
                 break;
-        }// switch*/
+        }// switch
         return super.onOptionsItemSelected(item);
     }// onOptionsItemSelected
 

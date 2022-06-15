@@ -5,10 +5,41 @@
     android:layout_height="match_parent"
     tools:context=".Lista">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/FLI_menuListas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/FLI_tabListaFavoritos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/menu_listas_favorito"
+                android:text="@string/menu_listas_favorito" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/FLI_tabListaGuardados"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/menu_listas_proximos"
+                android:text="@string/menu_listas_proximos" />
+
+        </com.google.android.material.tabs.TabLayout>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/FLI_viepagContenedor"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/app_name">
+
+        </androidx.viewpager.widget.ViewPager>
+
+    </LinearLayout>
 
 </FrameLayout>

@@ -11,20 +11,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.comelicioso.adaptadores.ListAdapterOldReservaciones;
-import com.example.comelicioso.modelos.Reservaciones;
+import com.example.comelicioso.adaptadores.ListAdapterRestaurantes;
+import com.example.comelicioso.modelos.Global;
+import com.example.comelicioso.modelos.InfoRestaurantes;
 
 import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link Agenda#newInstance} factory method to
+ * Use the {@link ListaProximos#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Agenda extends Fragment {
+public class ListaProximos extends Fragment {
 
-    ArrayList<Reservaciones> elements;
-    RecyclerView recyclerView;
+    RecyclerView recyclerViewPX;
+    Global gb;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -34,7 +35,7 @@ public class Agenda extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public Agenda() {
+    public ListaProximos() {
         // Required empty public constructor
     }
 
@@ -44,11 +45,11 @@ public class Agenda extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment Agenda.
+     * @return A new instance of fragment ListaProximos.
      */
     // TODO: Rename and change types and number of parameters
-    public static Agenda newInstance(String param1, String param2) {
-        Agenda fragment = new Agenda();
+    public static ListaProximos newInstance(String param1, String param2) {
+        ListaProximos fragment = new ListaProximos();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -68,26 +69,17 @@ public class Agenda extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View vista = inflater.inflate(R.layout.fragment_agenda, container, false);
-        recyclerView = vista.findViewById(R.id.FAG_recyclerViewReservaciones);
-        TextView txtSinReservaciones = vista.findViewById(R.id.FAG_txtVacio);
-        elements = new ArrayList<>();
 
-        //en este apatado es donde se tiene que realizar la busqueda y absorción de la información
 
-        elements.add(new Reservaciones("@uno","12-08-2022", "13:40:00","3"));
-        elements.add(new Reservaciones("@dos","12-08-2022", "13:40:00","2"));
-        elements.add(new Reservaciones("@tres","12-08-2022", "13:40:00","1"));
-        elements.add(new Reservaciones("@cuatro","12-08-2022", "13:40:00","5"));
-        elements.add(new Reservaciones("@cinco","12-08-2022", "13:40:00","2"));
-        elements.add(new Reservaciones("@seis","12-08-2022", "13:40:00","3"));
-        elements.add(new Reservaciones("@siete","12-08-2022", "13:40:00","10"));
+        View vista = inflater.inflate(R.layout.fragment_lista_proximos, container, false);
+        gb = (Global)vista.getContext().getApplicationContext();
+        recyclerViewPX = vista.findViewById(R.id.FLP_recviewRestaurantes);
+        TextView txtSinRestaurantes  = vista.findViewById(R.id.FLP_txtVacio);
 
-        txtSinReservaciones.setVisibility((elements.size()==0)?View.VISIBLE:View.GONE);
-        ListAdapterOldReservaciones listAdapter= new ListAdapterOldReservaciones(elements);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(vista.getContext(),LinearLayoutManager.VERTICAL,false));
-        recyclerView.setAdapter(listAdapter);
+        txtSinRestaurantes.setVisibility((gb.getRestaurantesProx().size()==0)?View.VISIBLE:View.GONE);
+        ListAdapterRestaurantes listAdapter= new ListAdapterRestaurantes(gb.getRestaurantesProx());
+        recyclerViewPX.setLayoutManager(new LinearLayoutManager(vista.getContext(),LinearLayoutManager.VERTICAL,false));
+        recyclerViewPX.setAdapter(listAdapter);
         // Inflate the layout for this fragment
         return vista;
     }

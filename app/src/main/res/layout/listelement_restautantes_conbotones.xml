@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="10dp"
+    app:cardMaxElevation="5dp"
+    android:layout_margin="10dp"
+    app:cardUseCompatPadding="true" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
+
+        <ImageView
+            android:id="@+id/LERCB_imageViewLogo"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentStart="true"
+            android:contentDescription="@string/texto_imagen_restaurante"
+            app:srcCompat="@drawable/ic_baseline_fireplace_24" />
+
+        <TextView
+            android:id="@+id/LERCB_txtNombreRestaurante"
+            android:layout_width="205dp"
+            android:layout_height="100dp"
+            android:layout_toEndOf="@+id/LERCB_imageViewLogo"
+            android:gravity="center_vertical"
+            android:padding="10dp"
+            android:text="@string/texto_restaurante"
+            android:textAlignment="viewStart"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:ignore="RtlCompat" />
+
+        <ImageButton
+            android:id="@+id/LERCB_imageBtnFav"
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:layout_toEndOf="@+id/LERCB_txtNombreRestaurante"
+            android:background="#31FFFFFF"
+            android:contentDescription="@string/texto_imagen_fav"
+            app:srcCompat="@drawable/ic_baseline_star_border_24" />
+
+        <ImageButton
+            android:id="@+id/LERCB_imageBtnSave"
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:layout_below="@id/LERCB_imageBtnFav"
+            android:layout_toEndOf="@+id/LERCB_txtNombreRestaurante"
+            android:background="#31FFFFFF"
+            android:contentDescription="@string/texto_imagen_save"
+            app:srcCompat="@drawable/ic_baseline_bookmark_border_24" />
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

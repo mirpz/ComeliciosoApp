@@ -3,21 +3,56 @@
 
     <!--Item menu overflow strings-->
     <string name="menu_over_cerrar">Cerrar Sesion</string>
+    <string name="menu_over_acerca">Acerca de</string>
 
     <!--TABS strings-->
     <string name="menu_feed">Feed</string>
     <string name="menu_restaurantes">Restaurantes disponibles</string>
     <string name="menu_agenda">Agenda del usuario</string>
     <string name="menu_listas">Lista de favoritos y proximos</string>
+    <string name="menu_listas_favorito">Favoritos</string>
+    <string name="menu_listas_proximos">Proximos a visitar</string>
 
     <!--Textos de publicaciones-->
     <string name="cardview_descripcion_imagen_publicacion">Publicación de restaurante</string>
     <string name="cardview_descripcion_texto_publicacion"><b>@usuario</b>\nTexto de publicaciones</string>
+    <string name="sin_publicaciones">No hay publicaciones hechas hasta el momento.</string>
+
+    <!--Textos de mis recervaciones-->
+    <string name="cardview_descripcion_restaurante">Nombre del restaurante</string>
+    <string name="cardview_descripcion_fecha">DD-MM-YYYY</string>
+    <string name="cardview_descripcion_hora">00:00:00</string>
+    <string name="cardview_descripcion_asistentes">Numero de asistentes:</string>
+
+    <!--Reservaciones strings-->
+    <string name="mis_recervaciones_texto">Mis reservaciones</string>
+    <string name="nuevas_recervaciones_texto">Hacer nueva reservación</string>
+    <string name="sin_reservaciones">No hay reservaciones hechas hasta el momento.</string>
+    <string name="sin_restaurantes">No hay restaurantes hechas hasta el momento.</string>
+
+    <!--Lista de restaurantes strings-->
+    <string name="texto_restaurante">Un restaurante</string>
+    <string name="texto_imagen_restaurante">Logo del restaurante</string>
+    <string name="texto_imagen_fav">Agregar a restaurantes favoritos</string>
+    <string name="texto_imagen_save">Agregar a restaurantes por visitar</string>
+
+    <!--Textos para dialog_detalles_restaurantes-->
+    <string name="ddr_calificacion">Calificacion:</string>
+    <string name="ddr_icon_restaurante">Icono del restaurante</string>
+    <string name="ddr_icon_telefono">Icono del telefono</string>
+    <string name="ddr_icon_horarios">Icono de horaios</string>
+    <string name="ddr_icon_ubicacion">Icono de ubicacion</string>
+    <string name="ddr_icon_gasto_aproximado">Icono de gastos aproximados</string>
+    <string name="ddr_nombre_restaurante">Restaurante</string>
+    <string name="ddr_tipo_comida">Tipo de comida</string>
+    <string name="ddr_horarios">Horarios</string>
+    <string name="ddr_telefono">33333333</string>
+    <string name="ddr_costo_aproximado">Cantidad aproximada</string>
+    <string name="ddr_ubicacion">Ubicacion</string>
+
+    <string name="btn_aceptar">Aceptar</string>
 
     <!--Programadores-->
     <string name="Mireya">Ivette Mireya Peña Zuñiga</string>
     <string name="Cesar">Cesar Alejandro Escalante Delgado</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

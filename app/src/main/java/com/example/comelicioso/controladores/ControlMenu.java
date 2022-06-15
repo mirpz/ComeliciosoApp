@@ -1,9 +1,14 @@
-package com.example.comelicioso;
+package com.example.comelicioso.controladores;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+
+import com.example.comelicioso.Agenda;
+import com.example.comelicioso.Feed;
+import com.example.comelicioso.Lista;
+import com.example.comelicioso.Restaurantes;
 
 public class ControlMenu extends FragmentPagerAdapter {
     int numOpciones;
