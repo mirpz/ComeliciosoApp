@@ -106,7 +106,7 @@ public class Agenda extends Fragment {
         listAdapter.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                mostrarDialogoConInfoReservacion(view, elements.get(recyclerView.getChildAdapterPosition(view)));
+                mostrarDialogoConInfoReservacion(view, elements.get(recyclerView.getChildAdapterPosition(view)),recyclerView.getChildAdapterPosition(view));
             }
         });
 
@@ -139,8 +139,10 @@ public class Agenda extends Fragment {
                 .inflate(R.layout.dialog_formulario_reservacion, (ConstraintLayout) view.findViewById(R.id.DFR_contenedor));
 
         final String[] restaurante = {null};
-        Calendar calendario = Calendar.getInstance(TimeZone.getTimeZone("CDT"));
-        int dia = calendario.get(Calendar.DAY_OF_MONTH), mes = calendario.get(Calendar.MONTH), anio = calendario.get(Calendar.YEAR), hora = calendario.get(Calendar.HOUR_OF_DAY),
+        Calendar calendario = Calendar.getInstance();
+        int dia = calendario.get(Calendar.DAY_OF_MONTH),
+                mes = calendario.get(Calendar.MONTH), anio = calendario.get(Calendar.YEAR),
+                hora = calendario.get(Calendar.HOUR_OF_DAY),
                 minutos = calendario.get(Calendar.MINUTE);
 
         cuadroP.setView(vistaCuadroP);
@@ -151,7 +153,7 @@ public class Agenda extends Fragment {
         fecha = (EditText) vistaCuadroP.findViewById(R.id.DFR_edtFechaReservacion);
         tiempo = (EditText) vistaCuadroP.findViewById(R.id.DFR_edtHoraReservacion);
         tiempo.setText(hora + ":" + minutos);
-        fecha.setText(dia + "-" + mes + "-" + anio);
+        fecha.setText(dia + "-" + (mes+1) + "-" + anio);
 
         String[] valores = listaDeRestaurantes();
         ((Spinner) vistaCuadroP.findViewById(R.id.DFR_spinRestaurantes)).setAdapter(new ArrayAdapter<String>(vistaCuadroP.getContext(), android.R.layout.simple_spinner_item, valores));
@@ -181,6 +183,7 @@ public class Agenda extends Fragment {
 
         Button aceptar = vistaCuadroP.findViewById(R.id.DFR_btnAceptar);
         aceptar.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onClick(View view) {
                 if(reservado.getText().equals("")||
@@ -195,8 +198,7 @@ public class Agenda extends Fragment {
                             tiempo.getText().toString(),
                             asistentes.getText().toString(),
                             reservado.getText().toString()));
-                    listAdapter.updateData(elements);
-                    recyclerView.setAdapter(listAdapter);
+                    listAdapter.notifyDataSetChanged();
                     alertDialog.dismiss();
                 }
             }
@@ -205,7 +207,7 @@ public class Agenda extends Fragment {
         alertDialog.show();
     }
 
-    private void mostrarDialogoConInfoReservacion(View view, Reservaciones reservaciones) {
+    private void mostrarDialogoConInfoReservacion(View view, Reservaciones reservaciones, int index) {
         //Crear la instancia del AlertDialog
         AlertDialog.Builder cuadroP= new AlertDialog.Builder(view.getContext(), R.style.AlertDialog);
         //Nueva vista para asociar con el cuadro personalizado
@@ -227,10 +229,20 @@ public class Agenda extends Fragment {
         String[] valores= {reservaciones.getRestaurante()};
         ((Spinner)vistaCuadroP.findViewById(R.id.DFR_spinRestaurantes)).setAdapter(new ArrayAdapter<String>(vistaCuadroP.getContext(), android.R.layout.simple_spinner_item, valores));
 
-        ((Button)vistaCuadroP.findViewById(R.id.DFR_btnCancelar)).setVisibility(View.INVISIBLE);
-
         //Construye el objeto AlertDialog
         final AlertDialog alertDialog = cuadroP.create();
+
+        Button eliminar  = vistaCuadroP.findViewById(R.id.DFR_btnCancelar);
+        eliminar.setText("Eliminar");
+        eliminar.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                elements.remove(index);
+                listAdapter.notifyItemRemoved(index);
+                alertDialog.dismiss();
+            }
+        });
 
         //Asociar con los botones del cuadro de dialogo
         Button si = vistaCuadroP.findViewById(R.id.DFR_btnAceptar);

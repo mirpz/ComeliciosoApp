@@ -54,30 +54,14 @@ public class ListAdapterOldReservaciones extends RecyclerView.Adapter<ListAdapte
         }
     }
 
-    public void updateData(ArrayList<Reservaciones> viewModels) {
-        data.clear();
-        data.addAll(viewModels);
-        notifyDataSetChanged();
-    }
-    public void addItem(int position, Reservaciones viewModel) {
-        data.add(position, viewModel);
-        notifyItemInserted(position);
-    }
-
-    public void removeItem(int position) {
-        data.remove(position);
-        notifyItemRemoved(position);
-    }
-
 
     public static class ViewHolderDatos extends RecyclerView.ViewHolder {
 
-        TextView txtRestaurante, txtFecha, txtHora, txtAsistentes;
+        TextView txtRestaurante, txtFecha, txtHora;
 
         public ViewHolderDatos(@NonNull View itemView) {
             super(itemView);
             txtRestaurante = itemView.findViewById(R.id.LER_txtRestaurante);
-            txtAsistentes = itemView.findViewById(R.id.LER_txtAsistentes);
             txtFecha = itemView.findViewById(R.id.LER_txtFecha);
             txtHora = itemView.findViewById(R.id.LER_txtHora);
         }
@@ -85,7 +69,6 @@ public class ListAdapterOldReservaciones extends RecyclerView.Adapter<ListAdapte
         @SuppressLint("SetTextI18n")
         public void asignarDatos(Reservaciones datos){
             txtRestaurante.setText(datos.getRestaurante());
-            txtAsistentes.setText("Número de asistentes: " +datos.getAsistentes());
             txtFecha.setText(datos.getFecha());
             txtHora.setText(datos.getHora());
         }
