@@ -31,8 +31,9 @@
     <!--Textos de mis reservaciones-->
     <string name="cardview_descripcion_restaurante">Nombre del restaurante</string>
     <string name="cardview_descripcion_fecha">DD-MM-YYYY</string>
-    <string name="cardview_descripcion_hora">00:00:00</string>
+    <string name="cardview_descripcion_hora">00:00</string>
     <string name="cardview_descripcion_asistentes">Numero de asistentes:</string>
+    <string name="cardview_descripcion_imagen">Realizar evaluación</string>
 
     <!--Reservaciones strings-->
     <string name="mis_recervaciones_texto">Mis reservaciones</string>
@@ -60,7 +61,17 @@
     <string name="ddr_costo_aproximado">Cantidad aproximada</string>
     <string name="ddr_ubicacion">Ubicacion</string>
 
+    <!--Textos para dialog_formulario_reservacion-->
+    <string name="dfr_titulo">Reservación</string>
+    <string name="dfr_nombre_reservado_por">Nombre de quien reserva</string>
+    <string name="dfr_reservado_por">Reservación hecha por:</string>
+    <string name="dfr_numero_asistentes">Numero de lugares a reservar</string>
+    <string name="dfr_fecha_reservacion">Fecha:</string>
+    <string name="dfr_hora_reservacion">Hora:</string>
+    <string name="dfr_restaurantes_para_reservar">Restaurantes a reservar:</string>
+
     <string name="btn_aceptar">Aceptar</string>
+    <string name="btn_cancelar">Cancelar</string>
 
     <!--Programadores-->
     <string name="Mireya">Ivette Mireya Peña Zuñiga</string>
