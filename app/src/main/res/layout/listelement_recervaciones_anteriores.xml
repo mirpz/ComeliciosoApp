@@ -56,17 +56,6 @@
             android:layout_marginBottom="5dp"
             android:background="?android:attr/listDivider" />
 
-        <TextView
-            android:id="@+id/LER_txtAsistentes"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:paddingStart="5dp"
-            android:text="@string/cardview_descripcion_asistentes"
-            android:textAlignment="center"
-            android:textStyle="italic"
-            tools:ignore="RtlSymmetry" />
-
         <LinearLayout
             android:id="@+id/LER_linearLayoutSecundarioParte2"
             android:layout_width="match_parent"
