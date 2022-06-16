@@ -14,7 +14,13 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
     }
 
-    protected void Registrarse(View view){
+    public void Registrarse(View view){
+        Intent intent = new Intent(Login.this, Registro.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public void RecuperacionContrasena(View view){
         Intent intent = new Intent(Login.this, Registro.class);
         startActivity(intent);
         finish();

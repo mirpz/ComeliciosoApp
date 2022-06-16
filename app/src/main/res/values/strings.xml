@@ -19,6 +19,10 @@
     <string name="login_button_Inicia">Iniciar sesión</string>
     <string name="login_texto_Olvide">Olvidé mi contraseña</string>
 
+    <!--Textos de recuperar contraseña-->
+    <string name="recupera_texto_Recupera">Recupera tu contraseña</string>
+    <string name="recupera_texto_Iniciar">Iniciar sesión</string>
+    <string name="recupera_button_Enviar">Enviar</string>
 
     <!--Item menu overflow strings-->
     <string name="menu_over_cerrar">Cerrar Sesion</string>
