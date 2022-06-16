@@ -1,13 +1,24 @@
 package com.example.comelicioso.modelos;
 
-public class Reservaciones {
-    private String restaurante, fecha, hora, asistentes;
+import android.text.Editable;
 
-    public Reservaciones(String restaurante, String fecha, String hora, String asistentes) {
+public class Reservaciones {
+    private String restaurante, fecha, hora, asistentes, reservadoPor;
+
+    public Reservaciones(String restaurante, String fecha, String hora, String asistentes, String reservadoPor) {
         this.restaurante = restaurante;
         this.fecha = fecha;
         this.hora = hora;
         this.asistentes = asistentes;
+        this.reservadoPor=reservadoPor;
+    }
+
+    public String getReservadoPor() {
+        return reservadoPor;
+    }
+
+    public void setReservadoPor(String reservadoPor) {
+        this.reservadoPor = reservadoPor;
     }
 
     public String getRestaurante() {

@@ -1,6 +1,175 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/DFR_contenedor"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/DFR_txtTitulo"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:text="@string/dfr_titulo"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <View
+            android:id="@+id/DFR_divider"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="?android:attr/listDivider" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/DFR_txtReservadoPor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/dfr_reservado_por" />
+
+            <EditText
+                android:id="@+id/DFR_edtReservadoPor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/dfr_nombre_reservado_por"
+                android:inputType="textPersonName"
+                android:minHeight="48dp"
+                android:textColorHint="#757575" />
+
+            <TextView
+                android:id="@+id/DFR_txtCantidadAsistentes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/cardview_descripcion_asistentes" />
+
+            <EditText
+                android:id="@+id/DFR_edtNumeroAsistentes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:ems="10"
+                android:hint="@string/dfr_numero_asistentes"
+                android:inputType="number"
+                android:minHeight="48dp"
+                android:textColorHint="#757575"
+                tools:ignore="LabelFor" />
+
+            <TextView
+                android:id="@+id/DFR_txtRestaurant"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/dfr_restaurantes_para_reservar" />
+
+            <Spinner
+                android:id="@+id/DFR_spinRestaurantes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/dfr_restaurantes_para_reservar"
+                android:minHeight="48dp"
+                tools:ignore="DuplicateSpeakableTextCheck" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal"
+                android:baselineAligned="false">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/DFR_txtFechaReservar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/dfr_fecha_reservacion"
+                        tools:ignore="NestedWeights" />
+
+                    <EditText
+                        android:id="@+id/DFR_edtFechaReservacion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:autofillHints=""
+                        android:ems="10"
+                        android:hint="@string/cardview_descripcion_fecha"
+                        android:inputType="date"
+                        android:textColorHint="#757575"
+                        tools:ignore="TouchTargetSizeCheck" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/DFR_txtHoraReservar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/dfr_hora_reservacion"
+                        tools:ignore="NestedWeights" />
+
+                    <EditText
+                        android:id="@+id/DFR_edtHoraReservacion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:autofillHints=""
+                        android:ems="10"
+                        android:hint="@string/cardview_descripcion_hora"
+                        android:inputType="time"
+                        android:textColorHint="#757575"
+                        tools:ignore="LabelFor,TouchTargetSizeCheck" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <Button
+                    android:id="@+id/DFR_btnCancelar"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:text="@string/btn_cancelar" />
+
+                <Button
+                    android:id="@+id/DFR_btnAceptar"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/btn_aceptar" />
+            </RelativeLayout>
+        </LinearLayout>
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

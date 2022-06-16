@@ -14,9 +14,11 @@ import com.example.comelicioso.modelos.Reservaciones;
 
 import java.util.ArrayList;
 
-public class ListAdapterOldReservaciones extends RecyclerView.Adapter<ListAdapterOldReservaciones.ViewHolderDatos>{
+public class ListAdapterOldReservaciones extends RecyclerView.Adapter<ListAdapterOldReservaciones.ViewHolderDatos>
+        implements View.OnClickListener{
 
     private final ArrayList<Reservaciones> data;
+    private View.OnClickListener listener;
 
     public ListAdapterOldReservaciones(ArrayList<Reservaciones> data) {
         this.data = data;
@@ -26,6 +28,7 @@ public class ListAdapterOldReservaciones extends RecyclerView.Adapter<ListAdapte
     @Override
     public ViewHolderDatos onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.listelement_recervaciones_anteriores,null,false);
+        view.setOnClickListener(this);
         return new ViewHolderDatos(view);
     }
 
@@ -37,6 +40,33 @@ public class ListAdapterOldReservaciones extends RecyclerView.Adapter<ListAdapte
     @Override
     public int getItemCount() {
         return data.size();
+    }
+
+    public void setOnClickListener(View.OnClickListener listener) {
+        this.listener = listener;
+    }
+
+    @Override
+    public void onClick(View view) {
+        //Validar si el escucha no esta vacio
+        if(listener != null){
+            listener.onClick(view);//Escucha para los componentes de la visto
+        }
+    }
+
+    public void updateData(ArrayList<Reservaciones> viewModels) {
+        data.clear();
+        data.addAll(viewModels);
+        notifyDataSetChanged();
+    }
+    public void addItem(int position, Reservaciones viewModel) {
+        data.add(position, viewModel);
+        notifyItemInserted(position);
+    }
+
+    public void removeItem(int position) {
+        data.remove(position);
+        notifyItemRemoved(position);
     }
 
 
@@ -55,7 +85,7 @@ public class ListAdapterOldReservaciones extends RecyclerView.Adapter<ListAdapte
         @SuppressLint("SetTextI18n")
         public void asignarDatos(Reservaciones datos){
             txtRestaurante.setText(datos.getRestaurante());
-            txtAsistentes.setText(datos.getAsistentes());
+            txtAsistentes.setText("Número de asistentes: " +datos.getAsistentes());
             txtFecha.setText(datos.getFecha());
             txtHora.setText(datos.getHora());
         }
