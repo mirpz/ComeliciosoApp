@@ -1,5 +1,15 @@
 <resources>
     <string name="app_name">Comelicioso</string>
+    <!--Textos de registro-->
+    <string name="registro_texto_nombre">Nombre</string>
+    <string name="registro_texto_email">Email</string>
+    <string name="registro_texto_password">Contraseña</string>
+    <string name="registro_hint_nombre">Escribe tu nombre completo</string>
+    <string name="registro_hint_email">Escribe tu correo electrónico</string>
+    <string name="registro_hint_password">Escribe una contraseña</string>
+    <string name="registro_button_registrar">Registrar</string>
+    <string name="registro_texto_Cuenta">¿Ya tienes cuenta?</string>
+    <string name="registro_texto_Inicia">Inicia sesión</string>
 
     <!--Item menu overflow strings-->
     <string name="menu_over_cerrar">Cerrar Sesion</string>
@@ -18,7 +28,7 @@
     <string name="cardview_descripcion_texto_publicacion"><b>@usuario</b>\nTexto de publicaciones</string>
     <string name="sin_publicaciones">No hay publicaciones hechas hasta el momento.</string>
 
-    <!--Textos de mis recervaciones-->
+    <!--Textos de mis reservaciones-->
     <string name="cardview_descripcion_restaurante">Nombre del restaurante</string>
     <string name="cardview_descripcion_fecha">DD-MM-YYYY</string>
     <string name="cardview_descripcion_hora">00:00:00</string>
