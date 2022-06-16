@@ -21,7 +21,7 @@ public class Login extends AppCompatActivity {
     }
 
     public void RecuperacionContrasena(View view){
-        Intent intent = new Intent(Login.this, Registro.class);
+        Intent intent = new Intent(Login.this, RecuperarContrasenia.class);
         startActivity(intent);
     }
 }
