@@ -11,6 +11,15 @@
     <string name="registro_texto_Cuenta">¿Ya tienes cuenta?</string>
     <string name="registro_texto_Inicia">Inicia sesión</string>
 
+    <!--Textos de login-->
+    <string name="login_hint_email">Correo electrónico</string>
+    <string name="login_hint_password">Contraseña</string>
+    <string name="login_texto_registrar">Registrarme</string>
+    <string name="login_texto_Cuenta">¿No tienes cuenta?</string>
+    <string name="login_button_Inicia">Iniciar sesión</string>
+    <string name="login_texto_Olvide">Olvidé mi contraseña</string>
+
+
     <!--Item menu overflow strings-->
     <string name="menu_over_cerrar">Cerrar Sesion</string>
     <string name="menu_over_acerca">Acerca de</string>

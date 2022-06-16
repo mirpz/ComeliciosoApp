@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         gb.setRestaurantesProx(elementsProx);
 
         //Lineas de codigo provicionales
-        Intent intent = new Intent(MainActivity.this, MenuActivity.class);
+        Intent intent = new Intent(MainActivity.this, Registro.class);
         startActivity(intent);
         finish();
     }
