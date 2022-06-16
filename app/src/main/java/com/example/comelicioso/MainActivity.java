@@ -55,5 +55,6 @@ public class MainActivity extends AppCompatActivity {
         //Lineas de codigo provicionales
         Intent intent = new Intent(MainActivity.this, MenuActivity.class);
         startActivity(intent);
+        finish();
     }
 }

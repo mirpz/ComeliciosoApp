@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <ImageView
-        android:id="@+id/imgVAMA_titulo"
+        android:id="@+id/AMA_imgVTitulo"
         android:layout_width="411dp"
         android:layout_height="735dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -20,13 +20,13 @@
         app:srcCompat="@drawable/logo_letras" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/AMA_imgVImagen"
         android:layout_width="412dp"
         android:layout_height="441dp"
         android:layout_marginTop="308dp"
-        app:layout_constraintEnd_toEndOf="@+id/imgVAMA_titulo"
+        app:layout_constraintEnd_toEndOf="@+id/AMA_imgVTitulo"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imgVAMA_titulo"
+        app:layout_constraintTop_toTopOf="@+id/AMA_imgVTitulo"
         app:srcCompat="@drawable/logo_comida" />
 </androidx.constraintlayout.widget.ConstraintLayout>
