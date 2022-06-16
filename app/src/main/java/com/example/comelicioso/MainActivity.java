@@ -3,6 +3,7 @@ package com.example.comelicioso;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.example.comelicioso.modelos.Global;
@@ -10,6 +11,8 @@ import com.example.comelicioso.modelos.InfoRestaurantes;
 import com.example.comelicioso.modelos.Publicaciones;
 
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -52,9 +55,26 @@ public class MainActivity extends AppCompatActivity {
         gb.setRestaurantesFav(elementsFav);
         gb.setRestaurantesProx(elementsProx);
 
-        //Lineas de codigo provicionales
-        Intent intent = new Intent(MainActivity.this, Registro.class);
-        startActivity(intent);
-        finish();
+        TimerTask tarea=new TimerTask(){
+
+            @Override
+            public void run() {
+                Intent intent;
+                if(nuevoUsuario()){
+                    intent=new Intent(MainActivity.this, MenuActivity.class);
+                }else{
+                    intent=new Intent(MainActivity.this, Login.class);
+                }
+                startActivity(intent);
+                finish();
+            }
+        };
+        Timer tiempo= new Timer();
+        tiempo.schedule(tarea, 2000);
+    }
+
+    private boolean nuevoUsuario(){
+        SharedPreferences preferences = getSharedPreferences("user.dat", MODE_PRIVATE);
+        return preferences.getBoolean("registrado",false);
     }
 }
