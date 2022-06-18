@@ -1,11 +1,14 @@
 package com.example.comelicioso.modelos;
 
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class InfoRestaurantes {
 
-    String nombre, tipoComida, ubicacion, telefono, costoAproximado;
+    String id, nombre, tipoComida, ubicacion, telefono, costoAproximado;
     boolean enFavoritos, enProximos;
-    float calificacion;
+    double calificacion;
     int icon;
     String horarios [];
 
@@ -15,6 +18,14 @@ public class InfoRestaurantes {
 
     public void setIcon(int icon) {
         this.icon = icon;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public boolean isEnFavoritos() {
@@ -34,7 +45,8 @@ public class InfoRestaurantes {
     }
 
 
-    public InfoRestaurantes(String nombre, String tipoComida, String ubicacion, String telefono, String costoAproximado, float calificacion, String[] horarios) {
+    public InfoRestaurantes(String id, String nombre, String tipoComida, String ubicacion, String telefono, String costoAproximado, double calificacion, String[] horarios) {
+        this.id=id;
         this.nombre = nombre;
         this.tipoComida = tipoComida;
         this.ubicacion = ubicacion;
@@ -86,11 +98,11 @@ public class InfoRestaurantes {
         this.costoAproximado = costoAproximado;
     }
 
-    public float getCalificacion() {
+    public double getCalificacion() {
         return calificacion;
     }
 
-    public void setCalificacion(float calificacion) {
+    public void setCalificacion(double calificacion) {
         this.calificacion = calificacion;
     }
 
@@ -110,10 +122,30 @@ public class InfoRestaurantes {
             for(int i=0; i<this.horarios.length; i++) {
                 texto = texto + horarios[i];
                 if(i<this.horarios.length-1){
-                    texto = texto + " / ";
+                    texto = texto + "/";
                 }
             }
         }
         return texto;
+    }
+
+    public JSONObject infoEnJson(){
+        JSONObject obj = new JSONObject();
+        try {
+            obj.put("id", this.id);
+            obj.put("nombre", this.nombre);
+            obj.put("tipoComida", this.tipoComida);
+            obj.put("ubicacion", this.ubicacion);
+            obj.put("telefono", this.telefono);
+            obj.put("costoAproximado", this.costoAproximado);
+            obj.put("enFavoritos", this.enFavoritos);
+            obj.put("enProximos", this.enProximos);
+            obj.put("calificacion", this.calificacion);
+            obj.put("icon", this.icon);
+            obj.put("horarios", this.textoHorarios());
+        } catch (JSONException e) {
+            // TODO Auto-generated catch block e.printStackTrace();
+        }
+        return obj;
     }
 }

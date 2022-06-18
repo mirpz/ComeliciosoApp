@@ -1,9 +1,11 @@
 package com.example.comelicioso;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
@@ -65,6 +67,7 @@ public class MenuActivity extends AppCompatActivity {
         int id=item.getItemId();
         switch(id){
             case R.id.MOV_itemCerrarSesion:
+                CerrarSesion();
                 break;
         }// switch
         return super.onOptionsItemSelected(item);
@@ -76,4 +79,9 @@ public class MenuActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+    public void CerrarSesion(){
+        Intent intent = new Intent(MenuActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
 }

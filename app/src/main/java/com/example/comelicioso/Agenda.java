@@ -217,14 +217,11 @@ public class Agenda extends Fragment {
 
         cuadroP.setView(vistaCuadroP);
 
-        ((EditText)vistaCuadroP.findViewById(R.id.DFR_edtReservadoPor)).setText(reservaciones.getReservadoPor());
-        ((EditText)vistaCuadroP.findViewById(R.id.DFR_edtReservadoPor)).setEnabled(false);
-        ((EditText)vistaCuadroP.findViewById(R.id.DFR_edtNumeroAsistentes)).setText(reservaciones.getAsistentes());
-        ((EditText)vistaCuadroP.findViewById(R.id.DFR_edtNumeroAsistentes)).setEnabled(false);
-        ((EditText)vistaCuadroP.findViewById(R.id.DFR_edtHoraReservacion)).setText(reservaciones.getHora());
-        ((EditText)vistaCuadroP.findViewById(R.id.DFR_edtHoraReservacion)).setEnabled(false);
-        ((EditText)vistaCuadroP.findViewById(R.id.DFR_edtFechaReservacion)).setText(reservaciones.getFecha());
-        ((EditText)vistaCuadroP.findViewById(R.id.DFR_edtFechaReservacion)).setEnabled(false);
+        EditText reservado, fecha, tiempo, asistentes;
+        reservado = (EditText)vistaCuadroP.findViewById(R.id.DFR_edtReservadoPor);
+        asistentes = (EditText)vistaCuadroP.findViewById(R.id.DFR_edtNumeroAsistentes);
+        fecha = (EditText) vistaCuadroP.findViewById(R.id.DFR_edtFechaReservacion);
+        tiempo = (EditText) vistaCuadroP.findViewById(R.id.DFR_edtHoraReservacion);
 
         String[] valores= {reservaciones.getRestaurante()};
         ((Spinner)vistaCuadroP.findViewById(R.id.DFR_spinRestaurantes)).setAdapter(new ArrayAdapter<String>(vistaCuadroP.getContext(), android.R.layout.simple_spinner_item, valores));
@@ -248,8 +245,30 @@ public class Agenda extends Fragment {
         Button si = vistaCuadroP.findViewById(R.id.DFR_btnAceptar);
         //Al boton aceptar se le genera un metodo de escucha
         si.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onClick(View view) {
+                if(reservado.getText().equals("")||
+                        asistentes.getText().toString().isEmpty()||
+                        tiempo.getText().equals("")||
+                        fecha.getText().equals("")){
+                    Toast.makeText(view.getContext(),"No se ha completado el formulario", Toast.LENGTH_SHORT).show();
+
+                }else{
+                    if(reservado.getText().equals(elements.get(index).getReservadoPor())||
+                            asistentes.getText().toString().equals(elements.get(index).getAsistentes())||
+                            tiempo.getText().equals(elements.get(index).getHora())||
+                            fecha.getText().equals(elements.get(index).getFecha())){
+                        alertDialog.dismiss();
+                    }else{
+                        elements.get(index).setFecha(fecha.getText().toString());
+                        elements.get(index).setHora(tiempo.getText().toString());
+                        elements.get(index).setAsistentes(asistentes.getText().toString());
+                        elements.get(index).setReservadoPor(reservado.getText().toString());
+                        listAdapter.notifyDataSetChanged();
+                        alertDialog.dismiss();
+                    }
+                }
                 alertDialog.dismiss();//Remover el cuadro
             }
         });

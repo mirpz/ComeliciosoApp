@@ -22,6 +22,7 @@ import com.example.comelicioso.modelos.Global;
 import com.example.comelicioso.modelos.InfoRestaurantes;
 import com.example.comelicioso.modelos.Publicaciones;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -78,6 +79,13 @@ public class Restaurantes extends Fragment {
                              Bundle savedInstanceState) {
         View vista = inflater.inflate(R.layout.fragment_restaurantes, container, false);
         gb = (Global)vista.getContext().getApplicationContext();
+        ArrayList<InfoRestaurantes> elements = gb.getDatosRestaurantes();
+        try {
+            gb.setDatosRestaurantes(gb.obtenerRestaurantes(gb.abrirArchivo("restaurantes.txt")));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         recyclerView = vista.findViewById(R.id.FRE_recviewRestaurantes);
         TextView txtSinRestaurantes  = vista.findViewById(R.id.FRE_txtVacio);
 
