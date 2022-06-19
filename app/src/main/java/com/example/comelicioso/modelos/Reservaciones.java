@@ -1,16 +1,32 @@
 package com.example.comelicioso.modelos;
 
-import android.text.Editable;
-
 public class Reservaciones {
-    private String restaurante, fecha, hora, asistentes, reservadoPor;
+    private String id, IdRestaurante, restaurante, fecha, hora, asistentes, reservadoPor;
 
-    public Reservaciones(String restaurante, String fecha, String hora, String asistentes, String reservadoPor) {
+    public Reservaciones(String id, String IdRestaurante, String restaurante, String fecha, String hora, String asistentes, String reservadoPor) {
+        this.id = id;
+        this.IdRestaurante=IdRestaurante;
         this.restaurante = restaurante;
         this.fecha = fecha;
         this.hora = hora;
         this.asistentes = asistentes;
         this.reservadoPor=reservadoPor;
+    }
+
+    public String getIdRestaurante() {
+        return IdRestaurante;
+    }
+
+    public void setIdRestaurante(String idRestaurante) {
+        IdRestaurante = idRestaurante;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getReservadoPor() {

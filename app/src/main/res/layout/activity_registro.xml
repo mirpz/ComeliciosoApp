@@ -12,122 +12,125 @@
         android:layout_width="225dp"
         android:layout_height="230dp"
         android:layout_marginStart="93dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="93dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo" />
+        app:srcCompat="@drawable/logo"
+        tools:ignore="ImageContrastCheck" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="300dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="40dp"
-        android:layout_marginBottom="190dp"
         android:baselineAligned="false"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/ARE_imgVLogo">
 
         <TextView
             android:id="@+id/ARE_txtNombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/registro_texto_nombre" />
+            android:text="@string/registro_texto_nombre"
+            android:textColor="#795548" />
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/ARE_imgVNombre"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
                 android:layout_weight="1"
                 android:paddingTop="10dp"
-                android:paddingRight="10dp"
-                app:srcCompat="@drawable/ic_baseline_person_24" />
+                app:srcCompat="@drawable/ic_baseline_person_24"
+                tools:ignore="ImageContrastCheck" />
 
             <EditText
                 android:id="@+id/ARE_editTNombre"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/ARE_imgVNombre"
+                android:layout_width="301dp"
+                android:layout_height="48dp"
                 android:ems="10"
                 android:hint="@string/registro_hint_nombre"
+                android:importantForAutofill="no"
                 android:inputType="textPersonName"
-                android:minHeight="48dp" />
-        </RelativeLayout>
+                android:textColorHint="#795548" />
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/ARE_txtEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="15dp"
-            android:text="@string/registro_texto_email" />
+            android:paddingTop="10dp"
+            android:text="@string/registro_texto_email"
+            android:textColor="#795548" />
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/ALO_imgVEmail"
-                android:layout_width="wrap_content"
+                android:layout_width="30dp"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
                 android:layout_weight="1"
                 android:paddingTop="10dp"
-                android:paddingRight="10dp"
-                app:srcCompat="@drawable/ic_baseline_email_24" />
+                app:srcCompat="@drawable/ic_baseline_email_24"
+                tools:ignore="ImageContrastCheck" />
 
             <EditText
                 android:id="@+id/ALO_editEmail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/ALO_imgVEmail"
+                android:layout_width="301dp"
+                android:layout_height="48dp"
                 android:ems="10"
                 android:hint="@string/registro_hint_email"
                 android:inputType="textEmailAddress"
-                android:minHeight="48dp" />
-        </RelativeLayout>
+                android:textColorHint="#795548" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/ARE_textContrasena"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="15dp"
-            android:text="@string/registro_texto_password" />
+            android:paddingTop="10dp"
+            android:text="@string/registro_texto_password"
+            android:textColor="#795548" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/ALO_imgVContrasena"
-                android:layout_width="wrap_content"
+                android:layout_width="30dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:paddingTop="10dp"
-                android:paddingRight="10dp"
-                app:srcCompat="@drawable/ic_baseline_lock_24" />
+                app:srcCompat="@drawable/ic_baseline_lock_24"
+                tools:ignore="ImageContrastCheck" />
 
             <EditText
                 android:id="@+id/ALO_editContrasena"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/ALO_imgVContrasena"
+                android:layout_width="301dp"
+                android:layout_height="48dp"
                 android:ems="10"
                 android:hint="@string/registro_hint_password"
                 android:inputType="textPassword"
-                android:minHeight="48dp"
+                android:textColorHint="#795548"
                 tools:layout_editor_absoluteY="166dp" />
-        </RelativeLayout>
+
+        </LinearLayout>
 
     </LinearLayout>
 
@@ -136,27 +139,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="146dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="147dp"
         android:layout_weight="1"
         android:backgroundTint="#FF5722"
         android:text="@string/registro_button_registrar"
+        android:textColor="#212121"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="40dp"
-        android:layout_marginBottom="40dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ARE_btnRegistrar">
 
@@ -167,18 +167,19 @@
             android:layout_weight="1"
             android:paddingRight="5dp"
             android:text="@string/registro_texto_Cuenta"
-            android:textAlignment="textEnd" />
+            android:textAlignment="textEnd"
+            android:textColor="#795548" />
 
         <TextView
             android:id="@+id/ALO_textIniciaSesion"
             android:layout_width="wrap_content"
-            android:layout_height="48dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:minHeight="48dp"
             android:onClick="IniciarSesion"
             android:paddingLeft="5dp"
             android:text="@string/registro_texto_Inicia"
-            android:textStyle="bold" />
+            android:textColor="#795548"
+            tools:ignore="TouchTargetSizeCheck" />
 
     </LinearLayout>
 

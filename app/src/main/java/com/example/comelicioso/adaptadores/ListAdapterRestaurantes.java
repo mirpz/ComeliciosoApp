@@ -105,6 +105,7 @@ public class ListAdapterRestaurantes extends RecyclerView.Adapter<ListAdapterRes
         public void asignarDatos(InfoRestaurantes datos){
             name.setText(datos.getNombre());
             favBool = datos.isEnFavoritos();
+            icon.setImageResource(datos.getIcon());
             if(favBool){
                 fav.setImageResource(R.drawable.ic_baseline_star_24);
             }else{

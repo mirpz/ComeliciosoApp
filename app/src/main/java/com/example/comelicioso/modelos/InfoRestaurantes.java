@@ -1,11 +1,10 @@
 package com.example.comelicioso.modelos;
 
-
 public class InfoRestaurantes {
 
-    String nombre, tipoComida, ubicacion, telefono, costoAproximado;
+    String id, nombre, tipoComida, ubicacion, telefono, costoAproximado;
     boolean enFavoritos, enProximos;
-    float calificacion;
+    double calificacion;
     int icon;
     String horarios [];
 
@@ -15,6 +14,14 @@ public class InfoRestaurantes {
 
     public void setIcon(int icon) {
         this.icon = icon;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public boolean isEnFavoritos() {
@@ -34,7 +41,8 @@ public class InfoRestaurantes {
     }
 
 
-    public InfoRestaurantes(String nombre, String tipoComida, String ubicacion, String telefono, String costoAproximado, float calificacion, String[] horarios) {
+    public InfoRestaurantes(String id, String nombre, String tipoComida, String ubicacion, String telefono, String costoAproximado, double calificacion, String[] horarios) {
+        this.id=id;
         this.nombre = nombre;
         this.tipoComida = tipoComida;
         this.ubicacion = ubicacion;
@@ -86,11 +94,11 @@ public class InfoRestaurantes {
         this.costoAproximado = costoAproximado;
     }
 
-    public float getCalificacion() {
+    public double getCalificacion() {
         return calificacion;
     }
 
-    public void setCalificacion(float calificacion) {
+    public void setCalificacion(double calificacion) {
         this.calificacion = calificacion;
     }
 
@@ -100,20 +108,5 @@ public class InfoRestaurantes {
 
     public void setHorarios(String[] horarios) {
         this.horarios = horarios;
-    }
-
-    public String textoHorarios(){
-        String texto = "";
-        if(this.horarios.length==0){
-            texto = "Sin horarios presentes";
-        }else{
-            for(int i=0; i<this.horarios.length; i++) {
-                texto = texto + horarios[i];
-                if(i<this.horarios.length-1){
-                    texto = texto + " / ";
-                }
-            }
-        }
-        return texto;
     }
 }

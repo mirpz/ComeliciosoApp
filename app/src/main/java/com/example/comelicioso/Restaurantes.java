@@ -22,6 +22,7 @@ import com.example.comelicioso.modelos.Global;
 import com.example.comelicioso.modelos.InfoRestaurantes;
 import com.example.comelicioso.modelos.Publicaciones;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -78,8 +79,65 @@ public class Restaurantes extends Fragment {
                              Bundle savedInstanceState) {
         View vista = inflater.inflate(R.layout.fragment_restaurantes, container, false);
         gb = (Global)vista.getContext().getApplicationContext();
+        try {
+            if(gb.abrirArchivo(Global.nameFileRestaurantes).equals("")){
+                ArrayList<InfoRestaurantes> elements = new ArrayList<>();
+                elements.add(new InfoRestaurantes("1",
+                        "Sagrantino",
+                        "Alta Cocina",
+                        "Diag. Golfo de Cortés 4152, Monraz, 44670 Guadalajara, Jal.",
+                        "33 3813 1379",
+                        "300 - 400",
+                        4.6,
+                        new String[]{"L:13:00-00:00", "MA:13:00-00:00", "MI:13:00-00:00", "J:13:00-00:00", "V:13:00-01:00", "S:13:00-01:00","D:13:00-22:00"}));
+                elements.get(0).setIcon(R.mipmap.sangrantino);
+                elements.add(new InfoRestaurantes("2",
+                        "Magno Brasserie",
+                        "Francesa",
+                        "C. José Guadalupe Zuno Hernández 2061, Col Americana, Americana, 44160 Guadalajara, Jal.",
+                        "33 2001 0724",
+                        "500 - 800",
+                        4.6,
+                        new String[]{"L:Cerrado", "MA:14:00-23:00", "MI:14:00-23:00", "J:14:00-23:00", "V:14:00-23:00", "S:14:00-23:00","D:14:00-18:00"}));
+                elements.get(1).setIcon(R.mipmap.magno);
+                elements.add(new InfoRestaurantes("3",
+                        "Porfirio's Guadalajara",
+                        "Mexicana",
+                        "Punto, São Paulo 2334 A, Providencia, 44630 Guadalajara, Jal.",
+                        "33 1001 7729",
+                        "200 - 500",
+                        4.4,
+                        new String[]{"L:14:00-23:00", "MA:14:00-23:00", "MI:14:00-23:00", "J:14:00-01:00", "V:14:00-01:00", "S:14:00-01:00","D:14:00-23:00"}));
+                elements.get(2).setIcon(R.mipmap.porfirios);
+                elements.add(new InfoRestaurantes("4",
+                        "Brick SteakHouse",
+                        "Carnes",
+                        "Av. de las Américas 1254, Country Club, 44610 Guadalajara, Jal.",
+                        "33 2471 7066",
+                        "300 - 500",
+                        4.6,
+                        new String[]{"L:13:00-00:00", "MA:13:00-00:00", "MI:13:00-00:00", "J:13:00-00:00", "V:13:00-00:00", "S:13:00-00:00","D:13:00-19:00"}));
+                elements.get(3).setIcon(R.mipmap.brick);
+                elements.add(new InfoRestaurantes("5",
+                        "Suehiro",
+                        "Japonecesa",
+                        "Av. de la Paz 1701, Col Americana, Americana, 44160 Guadalajara, Jal.",
+                        "33 3826 0094",
+                        "300 - 700",
+                        4.7,
+                        new String[]{"L:13:30-23:00", "MA:13:30-23:00", "MI:13:30-23:00", "J:13:30-23:00", "V:13:30-23:00", "S:13:30-23:00","D:13:30-18:00"}));
+                elements.get(4).setIcon(R.mipmap.suehiro);
+                gb.guardarArchivo(Global.nameFileRestaurantes,gb.crearJsonRestaurantes(elements).toString());
+            }
+            gb.setDatosRestaurantes(gb.obtenerRestaurantes(gb.abrirArchivo(Global.nameFileRestaurantes)));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         recyclerView = vista.findViewById(R.id.FRE_recviewRestaurantes);
         TextView txtSinRestaurantes  = vista.findViewById(R.id.FRE_txtVacio);
+
+
 
         txtSinRestaurantes.setVisibility((gb.getDatosRestaurantes().size()==0)?View.VISIBLE:View.GONE);
         ListAdapterRestaurantes listAdapter= new ListAdapterRestaurantes(gb.getDatosRestaurantes());
@@ -113,16 +171,14 @@ public class Restaurantes extends Fragment {
         ((TextView)vistaCuadroP.findViewById(R.id.DDR_txtCalificacionNumero)).setText(String.valueOf(info.getCalificacion()));
         ((TextView)vistaCuadroP.findViewById(R.id.DDR_txtUbicacion)).setText(info.getUbicacion());
         ((TextView)vistaCuadroP.findViewById(R.id.DDR_txtTelefono)).setText(info.getTelefono());
-        ((TextView)vistaCuadroP.findViewById(R.id.DDR_txtHorario)).setText(info.textoHorarios());
+        ((TextView)vistaCuadroP.findViewById(R.id.DDR_txtHorario)).setText(gb.arryToString(info.getHorarios(),"/","Sin horarios presentes"));
         ((TextView)vistaCuadroP.findViewById(R.id.DDR_txtGastoAproximado)).setText(info.getCostoAproximado());
 
         //Construye el objeto AlertDialog
         final AlertDialog alertDialog = cuadroP.create();
 
         //Asociar con los botones del cuadro de dialogo
-        Button si = vistaCuadroP.findViewById(R.id.DDR_btnAceptar);
-        //Al boton aceptar se le genera un metodo de escucha
-        si.setOnClickListener(new View.OnClickListener() {
+        ((Button) vistaCuadroP.findViewById(R.id.DDR_btnAceptar)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 alertDialog.dismiss();//Remover el cuadro
