@@ -14,11 +14,10 @@
         android:layout_marginStart="146dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="147dp"
-        android:layout_marginBottom="70dp"
         android:layout_weight="1"
         android:backgroundTint="#FF5722"
+        android:onClick="IniciarSesion"
         android:text="@string/login_button_Inicia"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
@@ -30,7 +29,7 @@
         android:layout_marginStart="93dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="93dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="40dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -103,6 +102,7 @@
                 android:hint="@string/login_hint_password"
                 android:inputType="textPassword"
                 android:minHeight="48dp"
+                tools:ignore="TouchTargetSizeCheck"
                 tools:layout_editor_absoluteY="166dp" />
         </RelativeLayout>
 
@@ -113,15 +113,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:layout_marginBottom="1dp"
+        android:layout_marginBottom="40dp"
         android:layout_weight="1"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ALO_btnRegistrar"
-        app:layout_constraintVertical_bias="0.537">
+        app:layout_constraintTop_toBottomOf="@+id/ALO_btnRegistrar">
 
         <LinearLayout
             android:layout_width="match_parent"
