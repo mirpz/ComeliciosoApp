@@ -105,7 +105,7 @@ public class ListAdapterRestaurantes extends RecyclerView.Adapter<ListAdapterRes
         @SuppressLint("SetTextI18n")
         public void asignarDatos(InfoRestaurantes datos){
             name.setText(datos.getNombre());
-            favBool = datos.isEnFavoritos();
+            favBool = false;
             icon.setImageResource(datos.getIcon());
             foodType.setText(datos.getTipoComida());
             if(favBool){
@@ -114,7 +114,7 @@ public class ListAdapterRestaurantes extends RecyclerView.Adapter<ListAdapterRes
                 fav.setImageResource(R.drawable.ic_baseline_star_border_24);
             }
 
-            prxBool = datos.isEnProximos();
+            prxBool = false;
             if(prxBool){
                 prox.setImageResource(R.drawable.ic_baseline_bookmark_24);
             }else{
