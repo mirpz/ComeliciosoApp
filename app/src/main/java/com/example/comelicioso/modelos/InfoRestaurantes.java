@@ -3,7 +3,6 @@ package com.example.comelicioso.modelos;
 public class InfoRestaurantes {
 
     String id, nombre, tipoComida, ubicacion, telefono, costoAproximado;
-    boolean enFavoritos, enProximos;
     double calificacion;
     int icon;
     String horarios [];
@@ -24,23 +23,6 @@ public class InfoRestaurantes {
         this.id = id;
     }
 
-    public boolean isEnFavoritos() {
-        return enFavoritos;
-    }
-
-    public void setEnFavoritos(boolean enFavoritos) {
-        this.enFavoritos = enFavoritos;
-    }
-
-    public boolean isEnProximos() {
-        return enProximos;
-    }
-
-    public void setEnProximos(boolean enProximos) {
-        this.enProximos = enProximos;
-    }
-
-
     public InfoRestaurantes(String id, String nombre, String tipoComida, String ubicacion, String telefono, String costoAproximado, double calificacion, String[] horarios) {
         this.id=id;
         this.nombre = nombre;
@@ -50,8 +32,6 @@ public class InfoRestaurantes {
         this.costoAproximado = costoAproximado;
         this.calificacion = calificacion;
         this.horarios = horarios;
-        this.enFavoritos=false;
-        this.enProximos=false;
     }
 
     public String getNombre() {

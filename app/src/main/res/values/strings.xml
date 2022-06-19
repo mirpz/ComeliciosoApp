@@ -56,6 +56,7 @@
 
     <!--Lista de restaurantes strings-->
     <string name="texto_restaurante">Un restaurante</string>
+    <string name="texto_tipo_comida">Tipo de comida</string>
     <string name="texto_imagen_restaurante">Logo del restaurante</string>
     <string name="texto_imagen_fav">Agregar a restaurantes favoritos</string>
     <string name="texto_imagen_save">Agregar a restaurantes por visitar</string>

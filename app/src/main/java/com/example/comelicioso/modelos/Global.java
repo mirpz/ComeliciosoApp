@@ -21,8 +21,6 @@ public class Global extends Application {
     public static final String nameFileRestaurantes = "restaurantes";
     public static final String nameFilePublicaciones= "publicaciones";
     public static final String nameFileReservaciones = "reservaciones";
-    public static final String nameFileFavoritos = "favoritos";
-    public static final String nameFileProximos= "proximas_visitas";
     public static final String nameFileEvaluaciones = "evaluaciones";
     public static final String nameFileUsuarios = "usuarios";
     public static final String typeExtention = ".txt";
@@ -171,7 +169,7 @@ public class Global extends Application {
 
     //RESERVACIONES
 
-    public JSONArray crearJsonReservaciones(ArrayList<Reservaciones> elements){
+    /*public JSONArray crearJsonReservaciones(ArrayList<Reservaciones> elements){
         JSONArray json = new JSONArray();
         for(int i = 0; i<elements.size();i++){
             JSONObject obj = new JSONObject();
@@ -211,7 +209,7 @@ public class Global extends Application {
             e.printStackTrace();
         }
         return list;
-    }
+    }*/
 
     //RESTAURANTES
 
@@ -226,8 +224,6 @@ public class Global extends Application {
                 obj.put("ubicacion", elements.get(i).getUbicacion());
                 obj.put("telefono", elements.get(i).getTelefono());
                 obj.put("costoAproximado", elements.get(i).getCostoAproximado());
-                obj.put("enFavoritos", elements.get(i).isEnFavoritos());
-                obj.put("enProximos", elements.get(i).isEnProximos());
                 obj.put("calificacion", elements.get(i).getCalificacion());
                 obj.put("icon", elements.get(i).getIcon());
                 obj.put("horarios", arryToString(elements.get(i).getHorarios(),"/","Sin horarios presentes"));
@@ -254,8 +250,6 @@ public class Global extends Application {
                         myJsonArray.getJSONObject(i).getDouble("calificacion"),
                         stringToArray(myJsonArray.getJSONObject(i).getString("horarios"),"/")
                 ));
-                list.get(i).setEnFavoritos(myJsonArray.getJSONObject(i).getBoolean("enFavoritos"));
-                list.get(i).setEnFavoritos(myJsonArray.getJSONObject(i).getBoolean("enProximos"));
                 if(myJsonArray.getJSONObject(i).has("icon")){
                     list.get(i).setIcon(myJsonArray.getJSONObject(i).getInt("icon"));
                 }
