@@ -7,22 +7,48 @@
     android:background="#43FF9800"
     tools:context=".RecuperarContrasenia">
 
+    <TextView
+        android:id="@+id/ARC_txtTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="37dp"
+        android:layout_marginBottom="36dp"
+        android:text="@string/recupera_texto_Recupera"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toTopOf="@+id/ALO_imgVLogo2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ALO_imgVLogo2"
+        android:layout_width="225dp"
+        android:layout_height="230dp"
+        android:layout_marginStart="93dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="93dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ARC_txtTitulo"
+        app:srcCompat="@drawable/logo_comida" />
+
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="390dp"
         android:layout_marginEnd="40dp"
-        android:layout_marginBottom="400dp"
+        android:layout_marginBottom="82dp"
         android:baselineAligned="false"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/ARC_btnRegistrar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/ARC_txtEmail"
@@ -58,6 +84,21 @@
 
     </LinearLayout>
 
+    <Button
+        android:id="@+id/ARC_btnRegistrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="146dp"
+        android:layout_marginTop="81dp"
+        android:layout_marginEnd="147dp"
+        android:layout_weight="1"
+        android:backgroundTint="#FF5722"
+        android:text="@string/recupera_button_Enviar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.448"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
     <TextView
         android:id="@+id/ARC_textIniciar"
         android:layout_width="wrap_content"
@@ -76,32 +117,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ARC_btnRegistrar" />
-
-    <Button
-        android:id="@+id/ARC_btnRegistrar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="146dp"
-        android:layout_marginTop="180dp"
-        android:layout_marginEnd="147dp"
-        android:layout_weight="1"
-        android:backgroundTint="#FF5722"
-        android:text="@string/recupera_button_Enviar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
-    <TextView
-        android:id="@+id/ARC_txtTitulo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="37dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="37dp"
-        android:text="@string/recupera_texto_Recupera"
-        android:textSize="32sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
