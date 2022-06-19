@@ -1,5 +1,6 @@
 package com.example.comelicioso;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -16,11 +17,16 @@ import java.util.ArrayList;
 
 public class Login extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        //Obtenemos la ActionBar instalada por AppCompatActivity
+        ActionBar actionBar = getSupportActionBar();
+        //Establecemos el icono en la ActionBar
+        actionBar.setIcon(R.drawable.nombre);
+        actionBar.setDisplayShowHomeEnabled(true);
     }
 
     public void Registrarse(View view){

@@ -8,28 +8,26 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_comelicioso_logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_comelicioso_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.Comelicioso"
         tools:targetApi="31">
         <activity
-            android:theme="@style/Theme.AppCompat.NoActionBar"
             android:name=".RecuperarContrasenia"
             android:exported="false" />
         <activity
-            android:theme="@style/Theme.AppCompat.NoActionBar"
             android:name=".Registro"
             android:exported="false" />
         <activity
-            android:theme="@style/Theme.AppCompat.NoActionBar"
             android:name=".Login"
             android:exported="false" />
         <activity
             android:name=".MenuActivity"
             android:exported="false" />
         <activity
+
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

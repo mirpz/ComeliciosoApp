@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Comelicioso</string>
+    <string name="app_name">COMElicioso</string>
     <!--Textos de registro-->
     <string name="registro_texto_nombre">Nombre</string>
     <string name="registro_texto_email">Email</string>
