@@ -7,23 +7,6 @@
     android:background="#43FF9800"
     tools:context=".Login">
 
-    <TextView
-        android:id="@+id/ALO_textOlvide"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="144dp"
-        android:layout_marginEnd="144dp"
-        android:layout_marginBottom="75dp"
-        android:layout_weight="1"
-        android:minHeight="48dp"
-        android:onClick="RecuperacionContrasena"
-        android:paddingRight="5dp"
-        android:text="@string/login_texto_Olvide"
-        android:textAlignment="textEnd"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <Button
         android:id="@+id/ALO_btnRegistrar"
         android:layout_width="wrap_content"
@@ -65,86 +48,117 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:paddingBottom="30sp">
 
             <ImageView
                 android:id="@+id/ALO_imgVEmail"
-                android:layout_width="30dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
                 android:layout_weight="1"
                 android:paddingTop="10dp"
+                android:paddingRight="10dp"
                 app:srcCompat="@drawable/ic_baseline_email_24" />
 
             <EditText
                 android:id="@+id/ALO_editEmail"
-                android:layout_width="301dp"
-                android:layout_height="48dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/ALO_imgVEmail"
                 android:ems="10"
                 android:hint="@string/login_hint_email"
-                android:inputType="textEmailAddress" />
-        </LinearLayout>
+                android:inputType="textEmailAddress"
+                android:minHeight="48dp" />
+        </RelativeLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_weight="1"
+            android:paddingBottom="20sp">
 
             <ImageView
                 android:id="@+id/ALO_imgVContrasena"
-                android:layout_width="30dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
                 android:layout_weight="1"
                 android:paddingTop="10dp"
+                android:paddingRight="10dp"
                 app:srcCompat="@drawable/ic_baseline_lock_24" />
 
             <EditText
                 android:id="@+id/ALO_editContrasena"
-                android:layout_width="301dp"
-                android:layout_height="48dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/ALO_imgVContrasena"
                 android:ems="10"
                 android:hint="@string/login_hint_password"
                 android:inputType="textPassword"
+                android:minHeight="48dp"
                 tools:layout_editor_absoluteY="166dp" />
-
-        </LinearLayout>
+        </RelativeLayout>
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="580dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="110dp"
-        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="1dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/ALO_btnRegistrar"
+        app:layout_constraintVertical_bias="0.537">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/ALO_textYatienesCuenta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingRight="5dp"
+                android:text="@string/login_texto_Cuenta"
+                android:textAlignment="textEnd" />
+
+            <TextView
+                android:id="@+id/ALO_textIniciaSesion"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:minHeight="48dp"
+                android:onClick="Registrarse"
+                android:paddingLeft="5dp"
+                android:text="@string/login_texto_registrar"
+                android:textStyle="bold" />
+
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/ALO_textYatienesCuenta"
-            android:layout_width="wrap_content"
+            android:id="@+id/ALO_textOlvide"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:paddingRight="5dp"
-            android:text="@string/login_texto_Cuenta"
-            android:textAlignment="textEnd" />
-
-        <TextView
-            android:id="@+id/ALO_textIniciaSesion"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
             android:layout_weight="1"
             android:minHeight="48dp"
-            android:onClick="Registrarse"
-            android:paddingLeft="5dp"
-            android:text="@string/login_texto_registrar" />
-
+            android:onClick="RecuperacionContrasena"
+            android:text="@string/login_texto_Olvide"
+            android:textAlignment="center"
+            android:textStyle="bold" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
