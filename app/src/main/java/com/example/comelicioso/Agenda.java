@@ -98,14 +98,11 @@ public class Agenda extends Fragment {
         TextView txtSinReservaciones = vista.findViewById(R.id.FAG_txtVacio);
         ImageButton imgAddReservacion = vista.findViewById(R.id.FAG_imgBtnNuevaReservacion);
         gb = (Global)vista.getContext().getApplicationContext();
-        try {
+        /*try {
             elements = gb.obtenerReservaciones(gb.abrirArchivo(Global.nameFileReservaciones));
         } catch (IOException e) {
             e.printStackTrace();
-        }
-        //en este apatado es donde se tiene que realizar la busqueda y absorción de la información
-
-        //elements.add(new Reservaciones("@uno","12-08-2022", "13:40","3", "Cesar"));
+        }*/
 
         txtSinReservaciones.setVisibility((elements.size()==0)?View.VISIBLE:View.GONE);
         listAdapter= new ListAdapterOldReservaciones(elements);
@@ -230,7 +227,7 @@ public class Agenda extends Fragment {
         ((Button) vistaCuadroP.findViewById(R.id.DFR_btnCancelar)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                alertDialog.dismiss();//Remover el cuadro
+                alertDialog.dismiss();
             }
         });
 
@@ -252,8 +249,7 @@ public class Agenda extends Fragment {
                             tiempo.getText().toString(),
                             asistentes.getText().toString(),
                             reservado.getText().toString()));
-                    //gb.guardarArchivo(Global.nameFileReservaciones,"");
-                    //gb.guardarArchivo(Global.nameFileReservaciones,gb.crearJsonReservaciones(elements).toString());
+                    //saveData();
                     listAdapter.notifyDataSetChanged();
                     alertDialog.dismiss();
                 }
@@ -292,8 +288,7 @@ public class Agenda extends Fragment {
             @Override
             public void onClick(View view) {
                 elements.remove(index);
-                //gb.guardarArchivo(Global.nameFileReservaciones,"");
-                //gb.guardarArchivo(Global.nameFileReservaciones,gb.crearJsonReservaciones(elements).toString());
+                //saveData();
                 listAdapter.notifyItemRemoved(index);
                 alertDialog.dismiss();
             }
@@ -321,8 +316,7 @@ public class Agenda extends Fragment {
                         elements.get(index).setHora(tiempo.getText().toString());
                         elements.get(index).setAsistentes(asistentes.getText().toString());
                         elements.get(index).setReservadoPor(reservado.getText().toString());
-                        //gb.guardarArchivo(Global.nameFileReservaciones,"");
-                        //gb.guardarArchivo(Global.nameFileReservaciones,gb.crearJsonReservaciones(elements).toString());
+                        //saveData();
                         listAdapter.notifyDataSetChanged();
                         alertDialog.dismiss();
                     }
@@ -332,5 +326,10 @@ public class Agenda extends Fragment {
         });
         //Mostrar el cuadro de dialogo personalizado
         alertDialog.show();
+    }
+
+    public void saveData(){
+        gb.guardarArchivo(Global.nameFileReservaciones+Global.typeExtention,"");
+        gb.guardarArchivo(Global.nameFileReservaciones+Global.typeExtention,gb.crearJsonReservaciones(elements).toString());
     }
 }

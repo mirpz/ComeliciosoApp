@@ -18,20 +18,20 @@ public class Global extends Application {
     ArrayList<InfoRestaurantes> restaurantesFav;
     ArrayList<InfoRestaurantes> restaurantesProx;
 
-    public static final String nameFileRestaurantes = "restaurantes.txt";
-    public static final String nameFilePublicaciones= "publicaciones.txt";
-    public static final String nameFileReservaciones = "reservaciones.txt";
-    public static final String nameFileFavoritos = "favoritos.txt";
-    public static final String nameFileProximos= "proximas_visitas.txt";
-    public static final String nameFileEvaluaciones = "evaluaciones.txt";
+    public static final String nameFileRestaurantes = "restaurantes";
+    public static final String nameFilePublicaciones= "publicaciones";
+    public static final String nameFileReservaciones = "reservaciones";
+    public static final String nameFileFavoritos = "favoritos";
+    public static final String nameFileProximos= "proximas_visitas";
+    public static final String nameFileEvaluaciones = "evaluaciones";
+    public static final String nameFileUsuarios = "usuarios";
+    public static final String typeExtention = ".txt";
+
 
     public void inicializacionArchivos(){
-        crearArchivo(nameFileRestaurantes);
-        crearArchivo(nameFilePublicaciones);
-        crearArchivo(nameFileReservaciones);
-        crearArchivo(nameFileFavoritos);
-        crearArchivo(nameFileProximos);
-        crearArchivo(nameFileEvaluaciones);
+        crearArchivo(nameFileRestaurantes+typeExtention);
+        crearArchivo(nameFilePublicaciones+typeExtention);
+        crearArchivo(nameFileUsuarios+typeExtention);
         this.datosRestaurantes = new ArrayList<>();
         this.restaurantesFav = new ArrayList<>();
         this.restaurantesProx = new ArrayList<>();
