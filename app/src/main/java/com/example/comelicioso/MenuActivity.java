@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
@@ -24,6 +25,12 @@ public class MenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+
+        //Obtenemos la ActionBar instalada por AppCompatActivity
+        //ActionBar actionBar = getSupportActionBar();
+        //Establecemos el icono en la ActionBar
+        //actionBar.setIcon(R.drawable.logo);
+        //actionBar.setDisplayShowHomeEnabled(true);
 
         //Asociar instancias con componentes
         menu = findViewById(R.id.AME_tablayMenu);
