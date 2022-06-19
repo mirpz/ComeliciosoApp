@@ -328,8 +328,8 @@ public class Agenda extends Fragment {
         alertDialog.show();
     }
 
-    public void saveData(){
+    /*public void saveData(){
         gb.guardarArchivo(Global.nameFileReservaciones+Global.typeExtention,"");
         gb.guardarArchivo(Global.nameFileReservaciones+Global.typeExtention,gb.crearJsonReservaciones(elements).toString());
-    }
+    }*/
 }

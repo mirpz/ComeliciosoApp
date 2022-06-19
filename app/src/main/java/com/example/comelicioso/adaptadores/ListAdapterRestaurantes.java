@@ -63,13 +63,14 @@ public class ListAdapterRestaurantes extends RecyclerView.Adapter<ListAdapterRes
     public static class ViewHolderDatos extends RecyclerView.ViewHolder {
 
         ImageButton fav, prox;
-        TextView name;
+        TextView name, foodType;
         ImageView icon;
         boolean favBool, prxBool;
 
         public ViewHolderDatos(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.LERCB_txtNombreRestaurante);
+            foodType = itemView.findViewById(R.id.LERCB_txtTipoComida);
             icon = itemView.findViewById(R.id.LERCB_imageViewLogo);
             fav = itemView.findViewById(R.id.LERCB_imageBtnFav);
             prox = itemView.findViewById(R.id.LERCB_imageBtnSave);
@@ -106,6 +107,7 @@ public class ListAdapterRestaurantes extends RecyclerView.Adapter<ListAdapterRes
             name.setText(datos.getNombre());
             favBool = datos.isEnFavoritos();
             icon.setImageResource(datos.getIcon());
+            foodType.setText(datos.getTipoComida());
             if(favBool){
                 fav.setImageResource(R.drawable.ic_baseline_star_24);
             }else{
