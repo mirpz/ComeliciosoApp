@@ -79,7 +79,7 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/ALO_imgVEmail"
+                android:id="@+id/ARE_imgVEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
@@ -89,10 +89,10 @@
                 app:srcCompat="@drawable/ic_baseline_email_24" />
 
             <EditText
-                android:id="@+id/ALO_editEmail"
+                android:id="@+id/ARE_editEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/ALO_imgVEmail"
+                android:layout_toEndOf="@id/ARE_imgVEmail"
                 android:ems="10"
                 android:hint="@string/registro_hint_email"
                 android:inputType="textEmailAddress"
@@ -111,7 +111,7 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/ALO_imgVContrasena"
+                android:id="@+id/ARE_imgVContrasena"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -120,10 +120,10 @@
                 app:srcCompat="@drawable/ic_baseline_lock_24" />
 
             <EditText
-                android:id="@+id/ALO_editContrasena"
+                android:id="@+id/ARE_editContrasena"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/ALO_imgVContrasena"
+                android:layout_toEndOf="@id/ARE_imgVContrasena"
                 android:ems="10"
                 android:hint="@string/registro_hint_password"
                 android:inputType="textPassword"
@@ -163,7 +163,7 @@
         app:layout_constraintTop_toBottomOf="@+id/ARE_btnRegistrar">
 
         <TextView
-            android:id="@+id/ALO_textYatienesCuenta"
+            android:id="@+id/ARE_textYatienesCuenta"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -172,7 +172,7 @@
             android:textAlignment="textEnd" />
 
         <TextView
-            android:id="@+id/ALO_textIniciaSesion"
+            android:id="@+id/ARE_textIniciaSesion"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:layout_weight="1"
