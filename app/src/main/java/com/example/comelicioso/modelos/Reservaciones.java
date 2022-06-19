@@ -1,19 +1,24 @@
 package com.example.comelicioso.modelos;
 
-import android.text.Editable;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public class Reservaciones {
-    private String id, restaurante, fecha, hora, asistentes, reservadoPor;
+    private String id, IdRestaurante, restaurante, fecha, hora, asistentes, reservadoPor;
 
-    public Reservaciones(String restaurante, String fecha, String hora, String asistentes, String reservadoPor) {
+    public Reservaciones(String id, String IdRestaurante, String restaurante, String fecha, String hora, String asistentes, String reservadoPor) {
+        this.id = id;
+        this.IdRestaurante=IdRestaurante;
         this.restaurante = restaurante;
         this.fecha = fecha;
         this.hora = hora;
         this.asistentes = asistentes;
         this.reservadoPor=reservadoPor;
+    }
+
+    public String getIdRestaurante() {
+        return IdRestaurante;
+    }
+
+    public void setIdRestaurante(String idRestaurante) {
+        IdRestaurante = idRestaurante;
     }
 
     public String getId() {
@@ -62,20 +67,5 @@ public class Reservaciones {
 
     public void setAsistentes(String asistentes) {
         this.asistentes = asistentes;
-    }
-
-    public JSONObject infoEnJson(){
-        JSONObject obj = new JSONObject();
-        try {
-            obj.put("id", this.id);
-            obj.put("restaurante", this.restaurante);
-            obj.put("fecha", this.fecha);
-            obj.put("hora", this.hora);
-            obj.put("asistentes", this.asistentes);
-            obj.put("reservadoPor", this.reservadoPor);
-        } catch (JSONException e) {
-            // TODO Auto-generated catch block e.printStackTrace();
-        }
-        return obj;
     }
 }

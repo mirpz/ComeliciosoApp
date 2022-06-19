@@ -118,7 +118,11 @@
                         android:hint="@string/cardview_descripcion_fecha"
                         android:inputType="date"
                         android:textColorHint="#757575"
-                        tools:ignore="TouchTargetSizeCheck" />
+                        tools:ignore="TouchTargetSizeCheck"
+                        android:clickable="false"
+                        android:cursorVisible="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -145,7 +149,11 @@
                         android:hint="@string/cardview_descripcion_hora"
                         android:inputType="time"
                         android:textColorHint="#757575"
-                        tools:ignore="LabelFor,TouchTargetSizeCheck" />
+                        tools:ignore="LabelFor,TouchTargetSizeCheck"
+                        android:clickable="false"
+                        android:cursorVisible="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"/>
                 </LinearLayout>
 
             </LinearLayout>

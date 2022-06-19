@@ -31,8 +31,11 @@ import com.example.comelicioso.adaptadores.ListAdapterOldReservaciones;
 import com.example.comelicioso.modelos.Global;
 import com.example.comelicioso.modelos.Reservaciones;
 
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Locale;
 import java.util.TimeZone;
 
 /**
@@ -95,11 +98,14 @@ public class Agenda extends Fragment {
         TextView txtSinReservaciones = vista.findViewById(R.id.FAG_txtVacio);
         ImageButton imgAddReservacion = vista.findViewById(R.id.FAG_imgBtnNuevaReservacion);
         gb = (Global)vista.getContext().getApplicationContext();
-        elements = new ArrayList<>();
-
+        try {
+            elements = gb.obtenerReservaciones(gb.abrirArchivo(Global.nameFileReservaciones));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         //en este apatado es donde se tiene que realizar la busqueda y absorción de la información
 
-        elements.add(new Reservaciones("@uno","12-08-2022", "13:40","3", "Cesar"));
+        //elements.add(new Reservaciones("@uno","12-08-2022", "13:40","3", "Cesar"));
 
         txtSinReservaciones.setVisibility((elements.size()==0)?View.VISIBLE:View.GONE);
         listAdapter= new ListAdapterOldReservaciones(elements);
@@ -132,18 +138,22 @@ public class Agenda extends Fragment {
         return restau;
     }
 
+    private String [] listaDeIdsRestaurantes(){
+        String restau [] = new String[gb.getDatosRestaurantes().size()];
+        for(int i=0; i<gb.getDatosRestaurantes().size(); i++){
+            restau[i]=gb.getDatosRestaurantes().get(i).getId();
+        }
+        return restau;
+    }
+
     @SuppressLint("SetTextI18n")
     private void mostrarDialogNuevaReservacion(View view) {
         AlertDialog.Builder cuadroP = new AlertDialog.Builder(view.getContext(), R.style.AlertDialog);
         View vistaCuadroP = LayoutInflater.from(view.getContext())
                 .inflate(R.layout.dialog_formulario_reservacion, (ConstraintLayout) view.findViewById(R.id.DFR_contenedor));
 
-        final String[] restaurante = {null};
+        final int[] restaurante = {0};
         Calendar calendario = Calendar.getInstance();
-        int dia = calendario.get(Calendar.DAY_OF_MONTH),
-                mes = calendario.get(Calendar.MONTH), anio = calendario.get(Calendar.YEAR),
-                hora = calendario.get(Calendar.HOUR_OF_DAY),
-                minutos = calendario.get(Calendar.MINUTE);
 
         cuadroP.setView(vistaCuadroP);
 
@@ -152,16 +162,60 @@ public class Agenda extends Fragment {
         asistentes = (EditText)vistaCuadroP.findViewById(R.id.DFR_edtNumeroAsistentes);
         fecha = (EditText) vistaCuadroP.findViewById(R.id.DFR_edtFechaReservacion);
         tiempo = (EditText) vistaCuadroP.findViewById(R.id.DFR_edtHoraReservacion);
-        tiempo.setText(hora + ":" + minutos);
-        fecha.setText(dia + "-" + (mes+1) + "-" + anio);
+
+        DatePickerDialog.OnDateSetListener date= new DatePickerDialog.OnDateSetListener(){
+
+            @Override
+            public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+                calendario.set(Calendar. YEAR, i);
+                calendario.set(Calendar.MONTH, i1);
+                calendario.set(Calendar.DAY_OF_MONTH, i2);
+                updateCalendar();
+            }
+            private void updateCalendar (){
+                String Format="dd-MM-yyyy";
+                SimpleDateFormat sdf =new SimpleDateFormat(Format, Locale.US);
+                fecha.setText(sdf.format(calendario.getTime()));
+            }
+        };
+        fecha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new DatePickerDialog(view.getContext(),
+                        date,
+                        calendario.get(Calendar.YEAR),
+                        calendario.get(Calendar.MONTH),
+                        calendario.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
+
+        tiempo.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                new TimePickerDialog(
+                        view.getContext(),
+                        new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int i, int i1) {
+                        calendario.set(Calendar.HOUR_OF_DAY,i);
+                        calendario.set(Calendar.MINUTE,i);
+                        String Format="HH:mm";
+                        @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf =new SimpleDateFormat(Format);
+                        tiempo.setText(sdf.format(calendario.getTime()));
+                    }
+                },calendario.get(Calendar.HOUR_OF_DAY),calendario.get(Calendar.MINUTE),true).show();
+            }
+        });
 
         String[] valores = listaDeRestaurantes();
+        String[] ids = listaDeIdsRestaurantes();
+
         ((Spinner) vistaCuadroP.findViewById(R.id.DFR_spinRestaurantes)).setAdapter(new ArrayAdapter<String>(vistaCuadroP.getContext(), android.R.layout.simple_spinner_item, valores));
         ((Spinner) vistaCuadroP.findViewById(R.id.DFR_spinRestaurantes)).setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
-                restaurante[0] = (String) adapterView.getItemAtPosition(position);
+                restaurante[0]=position;
             }
 
             @Override
@@ -173,16 +227,14 @@ public class Agenda extends Fragment {
 
         final AlertDialog alertDialog = cuadroP.create();
 
-        Button cancel = vistaCuadroP.findViewById(R.id.DFR_btnCancelar);
-        cancel.setOnClickListener(new View.OnClickListener() {
+        ((Button) vistaCuadroP.findViewById(R.id.DFR_btnCancelar)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 alertDialog.dismiss();//Remover el cuadro
             }
         });
 
-        Button aceptar = vistaCuadroP.findViewById(R.id.DFR_btnAceptar);
-        aceptar.setOnClickListener(new View.OnClickListener() {
+        ((Button) vistaCuadroP.findViewById(R.id.DFR_btnAceptar)).setOnClickListener(new View.OnClickListener() {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onClick(View view) {
@@ -193,11 +245,15 @@ public class Agenda extends Fragment {
                     Toast.makeText(view.getContext(),"No se ha completado el formulario", Toast.LENGTH_SHORT).show();
 
                 }else{
-                    elements.add(0,new Reservaciones(restaurante[0],
+                    elements.add(0,new Reservaciones(""+(elements.size()+1),
+                            ids[restaurante[0]],
+                            valores[restaurante[0]],
                             fecha.getText().toString(),
                             tiempo.getText().toString(),
                             asistentes.getText().toString(),
                             reservado.getText().toString()));
+                    //gb.guardarArchivo(Global.nameFileReservaciones,"");
+                    //gb.guardarArchivo(Global.nameFileReservaciones,gb.crearJsonReservaciones(elements).toString());
                     listAdapter.notifyDataSetChanged();
                     alertDialog.dismiss();
                 }
@@ -229,22 +285,22 @@ public class Agenda extends Fragment {
         //Construye el objeto AlertDialog
         final AlertDialog alertDialog = cuadroP.create();
 
-        Button eliminar  = vistaCuadroP.findViewById(R.id.DFR_btnCancelar);
+        Button eliminar = vistaCuadroP.findViewById(R.id.DFR_btnCancelar);
         eliminar.setText("Eliminar");
         eliminar.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View view) {
                 elements.remove(index);
+                //gb.guardarArchivo(Global.nameFileReservaciones,"");
+                //gb.guardarArchivo(Global.nameFileReservaciones,gb.crearJsonReservaciones(elements).toString());
                 listAdapter.notifyItemRemoved(index);
                 alertDialog.dismiss();
             }
         });
 
         //Asociar con los botones del cuadro de dialogo
-        Button si = vistaCuadroP.findViewById(R.id.DFR_btnAceptar);
-        //Al boton aceptar se le genera un metodo de escucha
-        si.setOnClickListener(new View.OnClickListener() {
+        ((Button) vistaCuadroP.findViewById(R.id.DFR_btnAceptar)).setOnClickListener(new View.OnClickListener() {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onClick(View view) {
@@ -265,6 +321,8 @@ public class Agenda extends Fragment {
                         elements.get(index).setHora(tiempo.getText().toString());
                         elements.get(index).setAsistentes(asistentes.getText().toString());
                         elements.get(index).setReservadoPor(reservado.getText().toString());
+                        //gb.guardarArchivo(Global.nameFileReservaciones,"");
+                        //gb.guardarArchivo(Global.nameFileReservaciones,gb.crearJsonReservaciones(elements).toString());
                         listAdapter.notifyDataSetChanged();
                         alertDialog.dismiss();
                     }

@@ -45,17 +45,4 @@ public class Publicaciones {
     public void setTexto(String texto) {
         this.texto = texto;
     }
-
-    public JSONObject infoEnJson(){
-        JSONObject obj = new JSONObject();
-        try {
-            obj.put("id", this.id);
-            obj.put("usario", this.usario);
-            obj.put("linkImagen", this.linkImagen);
-            obj.put("texto", this.texto);
-        } catch (JSONException e) {
-            // TODO Auto-generated catch block e.printStackTrace();
-        }
-        return obj;
-    }
 }

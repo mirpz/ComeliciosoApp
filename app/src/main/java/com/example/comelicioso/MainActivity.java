@@ -26,27 +26,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //en este apatado es donde se tiene que realizar la busqueda y absorción de la información
-        /*elements.add(new InfoRestaurantes("1","@uno","italiana", "Aqui estamos",
-                "3333333333","300 - 400", 4.5f,
-                new String[]{"L:9:00-5:00", "MA:9:00-5:00", "MI:9:00-5:00", "J:9:00-5:00", "V:9:00-5:00", "S:9:00-5:00","D:Cerrado"}));
-        elements.add(new InfoRestaurantes("2","@dos","mexicana","Aqui estamos",
-                "3333333333","300 - 400",5.0f,
-                new String[]{"L:9:00-5:00", "MA:9:00-5:00", "MI:9:00-5:00", "J:9:00-5:00", "V:9:00-5:00", "S:9:00-5:00","D:Cerrado"}));
-        elements.add(new InfoRestaurantes("3","@tres","rapida","Aqui estamos",
-                "3333333333","300 - 400",3.0f,
-                new String[]{"L:9:00-5:00", "MA:9:00-5:00", "MI:9:00-5:00", "J:9:00-5:00", "V:9:00-5:00", "S:9:00-5:00","D:Cerrado"}));
-
-        JSONArray json = new JSONArray();
-
-        for(int i = 0; i<elements.size();i++){
-            json.put(elements.get(i).infoEnJson());
-        }
-        elements.add(new InfoRestaurantes("@cuatro","francesa","Aqui estamos",
-                "3333333333","300 - 400",4.0f,
-                new String[]{"L:9:00-5:00", "MA:9:00-5:00", "MI:9:00-5:00", "J:9:00-5:00", "V:9:00-5:00", "S:9:00-5:00","D:Cerrado"}));
-        elements.add(new InfoRestaurantes("@cinco","indu","Aqui estamos",
-                "3333333333","300 - 400",1.8f,
-                new String[]{"L:9:00-5:00", "MA:9:00-5:00", "MI:9:00-5:00", "J:9:00-5:00", "V:9:00-5:00", "S:9:00-5:00","D:Cerrado"}));
+        /*
         elements.get(4).setEnFavoritos(true);
         elements.get(3).setEnFavoritos(true);
 
@@ -56,13 +36,8 @@ public class MainActivity extends AppCompatActivity {
         elementsFav.add(elements.get(3));
 
         elementsProx.add(elements.get(1));*/
-
         Global gb = (Global)getApplicationContext();
-        gb.setDatosRestaurantes(new ArrayList<>());
-        gb.setRestaurantesFav(new ArrayList<>());
-        gb.setRestaurantesProx(new ArrayList<>());
-
-        //gb.guardarArchivo("restaurantes.txt", json.toString());
+        gb.inicializacionArchivos();
 
         TimerTask tarea=new TimerTask(){
 

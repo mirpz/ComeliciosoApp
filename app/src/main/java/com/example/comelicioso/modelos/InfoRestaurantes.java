@@ -1,9 +1,5 @@
 package com.example.comelicioso.modelos;
 
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public class InfoRestaurantes {
 
     String id, nombre, tipoComida, ubicacion, telefono, costoAproximado;
@@ -112,40 +108,5 @@ public class InfoRestaurantes {
 
     public void setHorarios(String[] horarios) {
         this.horarios = horarios;
-    }
-
-    public String textoHorarios(){
-        String texto = "";
-        if(this.horarios.length==0){
-            texto = "Sin horarios presentes";
-        }else{
-            for(int i=0; i<this.horarios.length; i++) {
-                texto = texto + horarios[i];
-                if(i<this.horarios.length-1){
-                    texto = texto + "/";
-                }
-            }
-        }
-        return texto;
-    }
-
-    public JSONObject infoEnJson(){
-        JSONObject obj = new JSONObject();
-        try {
-            obj.put("id", this.id);
-            obj.put("nombre", this.nombre);
-            obj.put("tipoComida", this.tipoComida);
-            obj.put("ubicacion", this.ubicacion);
-            obj.put("telefono", this.telefono);
-            obj.put("costoAproximado", this.costoAproximado);
-            obj.put("enFavoritos", this.enFavoritos);
-            obj.put("enProximos", this.enProximos);
-            obj.put("calificacion", this.calificacion);
-            obj.put("icon", this.icon);
-            obj.put("horarios", this.textoHorarios());
-        } catch (JSONException e) {
-            // TODO Auto-generated catch block e.printStackTrace();
-        }
-        return obj;
     }
 }
