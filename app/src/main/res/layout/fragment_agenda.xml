@@ -21,12 +21,13 @@
             android:layout_marginBottom="10dp">
 
             <TextView
-                android:id="@+id/FAG_txtMisReservaciones"
+                android:id="@+id/FFE_txtFeed"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_alignParentStart="true"
                 android:layout_toStartOf="@id/FAG_imgBtnNuevaReservacion"
                 android:gravity="center_vertical"
+                android:paddingLeft="20dp"
                 android:text="@string/mis_recervaciones_texto"
                 android:textAlignment="viewStart"
                 android:textSize="20sp"
@@ -34,9 +35,10 @@
 
             <ImageButton
                 android:id="@+id/FAG_imgBtnNuevaReservacion"
-                android:layout_width="50dp"
+                android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_alignParentEnd="true"
+                android:backgroundTint="@color/principal"
                 android:contentDescription="@string/nuevas_recervaciones_texto"
                 android:src="@drawable/ic_baseline_add_24"
                 tools:ignore="ImageContrastCheck" />
