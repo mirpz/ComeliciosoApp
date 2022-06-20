@@ -8,8 +8,20 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_margin="10dp"
         android:orientation="vertical"
         tools:ignore="UselessParent">
+
+        <TextView
+            android:id="@+id/FFE_txtFeed"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:text="@string/ffe_feed"
+            android:textAlignment="viewStart"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/FFE_txtVacio"

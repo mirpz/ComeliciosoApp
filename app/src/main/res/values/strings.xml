@@ -51,7 +51,8 @@
     </array>
     <string name="der_tiempo_espera">¿Cuál fue tu tiempo de espera aproximado (minutos)?</string>
 
-
+    <!--Textos para Feed-->
+    <string name="ffe_feed">Recomendaciones</string>
 
     <!--Item menu overflow strings-->
     <string name="menu_over_cerrar">Cerrar Sesion</string>
