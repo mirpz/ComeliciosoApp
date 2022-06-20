@@ -98,6 +98,7 @@ public class Agenda extends Fragment {
         TextView txtSinReservaciones = vista.findViewById(R.id.FAG_txtVacio);
         ImageButton imgAddReservacion = vista.findViewById(R.id.FAG_imgBtnNuevaReservacion);
         gb = (Global)vista.getContext().getApplicationContext();
+        elements = new ArrayList<>();
         /*try {
             elements = gb.obtenerReservaciones(gb.abrirArchivo(Global.nameFileReservaciones));
         } catch (IOException e) {

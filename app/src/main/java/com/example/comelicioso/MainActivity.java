@@ -14,6 +14,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONStringer;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -25,19 +26,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //en este apatado es donde se tiene que realizar la busqueda y absorción de la información
-        /*
-        elements.get(4).setEnFavoritos(true);
-        elements.get(3).setEnFavoritos(true);
-
-        elements.get(1).setEnProximos(true);*/
-
-        /*elementsFav.add(elements.get(4));
-        elementsFav.add(elements.get(3));
-
-        elementsProx.add(elements.get(1));*/
         Global gb = (Global)getApplicationContext();
         gb.inicializacionArchivos();
+
+        if(!gb.abrirArchivo(Global.nameFileUsuarios+Global.typeExtention).equals("")){
+            try {
+                gb.setListaUsuarios(gb.obtenerUsuarios(gb.abrirArchivo(Global.nameFileUsuarios+Global.typeExtention)));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
 
         TimerTask tarea=new TimerTask(){
 
@@ -59,6 +57,6 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean nuevoUsuario(){
         SharedPreferences preferences = getSharedPreferences("user.dat", MODE_PRIVATE);
-        return preferences.getBoolean("registrado",false);
+        return (preferences.getString("id","").equals(""))?false:true;
     }
 }

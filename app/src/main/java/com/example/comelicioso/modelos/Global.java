@@ -12,15 +12,14 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Global extends Application {
     ArrayList<InfoRestaurantes> datosRestaurantes;
-    ArrayList<InfoRestaurantes> restaurantesFav;
-    ArrayList<InfoRestaurantes> restaurantesProx;
+    ArrayList<Usuario> listaUsuarios;
 
     public static final String nameFileRestaurantes = "restaurantes";
     public static final String nameFilePublicaciones= "publicaciones";
-    public static final String nameFileReservaciones = "reservaciones";
     public static final String nameFileEvaluaciones = "evaluaciones";
     public static final String nameFileUsuarios = "usuarios";
     public static final String typeExtention = ".txt";
@@ -31,25 +30,15 @@ public class Global extends Application {
         crearArchivo(nameFilePublicaciones+typeExtention);
         crearArchivo(nameFileUsuarios+typeExtention);
         this.datosRestaurantes = new ArrayList<>();
-        this.restaurantesFav = new ArrayList<>();
-        this.restaurantesProx = new ArrayList<>();
+        this.listaUsuarios = new ArrayList<>();
     }
 
-
-    public ArrayList<InfoRestaurantes> getRestaurantesFav() {
-        return restaurantesFav;
+    public ArrayList<Usuario> getListaUsuarios() {
+        return listaUsuarios;
     }
 
-    public void setRestaurantesFav(ArrayList<InfoRestaurantes> restaurantesFav) {
-        this.restaurantesFav = restaurantesFav;
-    }
-
-    public ArrayList<InfoRestaurantes> getRestaurantesProx() {
-        return restaurantesProx;
-    }
-
-    public void setRestaurantesProx(ArrayList<InfoRestaurantes> restaurantesProx) {
-        this.restaurantesProx = restaurantesProx;
+    public void setListaUsuarios(ArrayList<Usuario> listaUsuarios) {
+        this.listaUsuarios = listaUsuarios;
     }
 
     public ArrayList<InfoRestaurantes> getDatosRestaurantes() {
@@ -163,13 +152,70 @@ public class Global extends Application {
         return texto;
     }
 
+    public String arryListToString(ArrayList<String> cadena,String caracter){
+        String texto = "";
+        for(int i=0; i<cadena.size(); i++) {
+            texto = texto + cadena.get(i);
+            if(i<cadena.size()-1){
+                texto = texto + caracter;
+            }
+        }
+        return texto;
+    }
+
+    public ArrayList<String> stringToArrayList(String cadena,String caracter){
+        return new ArrayList<String>(Arrays.asList(cadena.split(caracter)));
+    }
+
     public String[] stringToArray(String cadena,String caracter){
         return cadena.split(caracter);
     }
 
+    //USUARIOS
+    public JSONArray crearJsonUsuarios(ArrayList<Usuario> elements){
+        JSONArray json = new JSONArray();
+        for(int i = 0; i<elements.size();i++){
+            JSONObject obj = new JSONObject();
+            try {
+                obj.put("id", elements.get(i).getId());
+                obj.put("nombre", elements.get(i).getNombre());
+                obj.put("correo", elements.get(i).getCorreo());
+                obj.put("contrasenia", elements.get(i).getContresenia());
+                obj.put("favoritos", arryListToString(elements.get(i).getFavoritos(),"/"));
+                obj.put("proximos", arryListToString(elements.get(i).getProximos(),"/"));
+                obj.put("reservaciones", crearJsonReservaciones(elements.get(i).getReservaciones()));
+            } catch (JSONException e) {
+                // TODO Auto-generated catch block e.printStackTrace();
+            }
+            json.put(obj);
+        }
+        return json;
+    }
+
+    public ArrayList<Usuario> obtenerUsuarios(String in) throws IOException {
+        ArrayList<Usuario>list = new ArrayList<>();
+        try {
+            JSONArray myJsonArray = new JSONArray(in);
+            for(int i = 0; i<myJsonArray.length();i++){
+                list.add(new Usuario(
+                        myJsonArray.getJSONObject(i).getString("id"),
+                        myJsonArray.getJSONObject(i).getString("nombre"),
+                        myJsonArray.getJSONObject(i).getString("correo"),
+                        myJsonArray.getJSONObject(i).getString("contrasenia")
+                ));
+                list.get(i).setFavoritos(stringToArrayList(myJsonArray.getJSONObject(i).getString("favoritos"),"/"));
+                list.get(i).setProximos(stringToArrayList(myJsonArray.getJSONObject(i).getString("proximos"),"/"));
+                list.get(i).setReservaciones(obtenerReservaciones(myJsonArray.getJSONObject(i).getString("reservaciones")));
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
     //RESERVACIONES
 
-    /*public JSONArray crearJsonReservaciones(ArrayList<Reservaciones> elements){
+    public JSONArray crearJsonReservaciones(ArrayList<Reservaciones> elements){
         JSONArray json = new JSONArray();
         for(int i = 0; i<elements.size();i++){
             JSONObject obj = new JSONObject();
@@ -209,7 +255,7 @@ public class Global extends Application {
             e.printStackTrace();
         }
         return list;
-    }*/
+    }
 
     //RESTAURANTES
 

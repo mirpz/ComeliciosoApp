@@ -106,6 +106,9 @@
                 app:srcCompat="@drawable/ic_baseline_fmd_good_24" />
 
             <TextView
+                android:autoSizeTextType="uniform"
+                android:autoSizeMaxTextSize="16sp"
+                tools:targetApi="o"
                 android:id="@+id/DDR_txtUbicacion"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
