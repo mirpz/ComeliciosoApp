@@ -142,6 +142,7 @@
         android:layout_marginEnd="147dp"
         android:layout_weight="1"
         android:backgroundTint="#FF5722"
+        android:onClick="Registrar"
         android:text="@string/registro_button_registrar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

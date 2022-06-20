@@ -16,12 +16,10 @@ import java.util.Arrays;
 
 public class Global extends Application {
     ArrayList<InfoRestaurantes> datosRestaurantes;
-    ArrayList<InfoRestaurantes> restaurantesFav;
-    ArrayList<InfoRestaurantes> restaurantesProx;
+    ArrayList<Usuario> listaUsuarios;
 
     public static final String nameFileRestaurantes = "restaurantes";
     public static final String nameFilePublicaciones= "publicaciones";
-    public static final String nameFileReservaciones = "reservaciones";
     public static final String nameFileEvaluaciones = "evaluaciones";
     public static final String nameFileUsuarios = "usuarios";
     public static final String typeExtention = ".txt";
@@ -32,25 +30,15 @@ public class Global extends Application {
         crearArchivo(nameFilePublicaciones+typeExtention);
         crearArchivo(nameFileUsuarios+typeExtention);
         this.datosRestaurantes = new ArrayList<>();
-        this.restaurantesFav = new ArrayList<>();
-        this.restaurantesProx = new ArrayList<>();
+        this.listaUsuarios = new ArrayList<>();
     }
 
-
-    public ArrayList<InfoRestaurantes> getRestaurantesFav() {
-        return restaurantesFav;
+    public ArrayList<Usuario> getListaUsuarios() {
+        return listaUsuarios;
     }
 
-    public void setRestaurantesFav(ArrayList<InfoRestaurantes> restaurantesFav) {
-        this.restaurantesFav = restaurantesFav;
-    }
-
-    public ArrayList<InfoRestaurantes> getRestaurantesProx() {
-        return restaurantesProx;
-    }
-
-    public void setRestaurantesProx(ArrayList<InfoRestaurantes> restaurantesProx) {
-        this.restaurantesProx = restaurantesProx;
+    public void setListaUsuarios(ArrayList<Usuario> listaUsuarios) {
+        this.listaUsuarios = listaUsuarios;
     }
 
     public ArrayList<InfoRestaurantes> getDatosRestaurantes() {

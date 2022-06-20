@@ -51,8 +51,10 @@
     <!--Reservaciones strings-->
     <string name="mis_recervaciones_texto">Mis reservaciones</string>
     <string name="nuevas_recervaciones_texto">Hacer nueva reservación</string>
-    <string name="sin_reservaciones">No hay reservaciones hechas hasta el momento.</string>
-    <string name="sin_restaurantes">No hay restaurantes hechas hasta el momento.</string>
+    <string name="sin_reservaciones">No has hecho reservaciones.</string>
+    <string name="sin_restaurantes">No hay restaurantes registrados hasta el momento.</string>
+    <string name="sin_favoritos">No has agregado ningun restaurante a favoritos.</string>
+    <string name="sin_proximos">No has agregado ningun restaurante a proximos por visitar.</string>
 
     <!--Lista de restaurantes strings-->
     <string name="texto_restaurante">Un restaurante</string>

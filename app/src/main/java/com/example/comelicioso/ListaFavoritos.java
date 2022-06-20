@@ -70,12 +70,13 @@ public class ListaFavoritos extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View vista = inflater.inflate(R.layout.fragment_lista_favoritos, container, false);
+        ArrayList<InfoRestaurantes> elem = new ArrayList<>();
         gb = (Global)vista.getContext().getApplicationContext();
         recyclerViewFV = vista.findViewById(R.id.FLF_recviewRestaurantes);
         TextView txtSinRestaurantes  = vista.findViewById(R.id.FLF_txtVacio);
 
-        txtSinRestaurantes.setVisibility((gb.getRestaurantesFav().size()==0)?View.VISIBLE:View.GONE);
-        ListAdapterRestaurantes listAdapter= new ListAdapterRestaurantes(gb.getRestaurantesFav());
+        txtSinRestaurantes.setVisibility((elem.size()==0)?View.VISIBLE:View.GONE);
+        ListAdapterRestaurantes listAdapter= new ListAdapterRestaurantes(elem);
         recyclerViewFV.setLayoutManager(new LinearLayoutManager(vista.getContext(),LinearLayoutManager.VERTICAL,false));
         recyclerViewFV.setAdapter(listAdapter);
         // Inflate the layout for this fragment

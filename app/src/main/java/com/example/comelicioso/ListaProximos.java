@@ -73,11 +73,12 @@ public class ListaProximos extends Fragment {
 
         View vista = inflater.inflate(R.layout.fragment_lista_proximos, container, false);
         gb = (Global)vista.getContext().getApplicationContext();
+        ArrayList<InfoRestaurantes> elem = new ArrayList<>();
         recyclerViewPX = vista.findViewById(R.id.FLP_recviewRestaurantes);
         TextView txtSinRestaurantes  = vista.findViewById(R.id.FLP_txtVacio);
 
-        txtSinRestaurantes.setVisibility((gb.getRestaurantesProx().size()==0)?View.VISIBLE:View.GONE);
-        ListAdapterRestaurantes listAdapter= new ListAdapterRestaurantes(gb.getRestaurantesProx());
+        txtSinRestaurantes.setVisibility((elem.size()==0)?View.VISIBLE:View.GONE);
+        ListAdapterRestaurantes listAdapter= new ListAdapterRestaurantes(elem);
         recyclerViewPX.setLayoutManager(new LinearLayoutManager(vista.getContext(),LinearLayoutManager.VERTICAL,false));
         recyclerViewPX.setAdapter(listAdapter);
         // Inflate the layout for this fragment

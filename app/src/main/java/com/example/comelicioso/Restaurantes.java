@@ -80,7 +80,7 @@ public class Restaurantes extends Fragment {
         View vista = inflater.inflate(R.layout.fragment_restaurantes, container, false);
         gb = (Global)vista.getContext().getApplicationContext();
         try {
-            if(gb.abrirArchivo(Global.nameFileRestaurantes).equals("")){
+            if(gb.abrirArchivo(Global.nameFileRestaurantes+Global.typeExtention).equals("")){
                 ArrayList<InfoRestaurantes> elements = new ArrayList<>();
                 elements.add(new InfoRestaurantes("1",
                         "Sagrantino",
@@ -127,9 +127,9 @@ public class Restaurantes extends Fragment {
                         4.7,
                         new String[]{"L:13:30-23:00", "MA:13:30-23:00", "MI:13:30-23:00", "J:13:30-23:00", "V:13:30-23:00", "S:13:30-23:00","D:13:30-18:00"}));
                 elements.get(4).setIcon(R.mipmap.suehiro);
-                gb.guardarArchivo(Global.nameFileRestaurantes,gb.crearJsonRestaurantes(elements).toString());
+                gb.guardarArchivo(Global.nameFileRestaurantes+Global.typeExtention,gb.crearJsonRestaurantes(elements).toString());
             }
-            gb.setDatosRestaurantes(gb.obtenerRestaurantes(gb.abrirArchivo(Global.nameFileRestaurantes)));
+            gb.setDatosRestaurantes(gb.obtenerRestaurantes(gb.abrirArchivo(Global.nameFileRestaurantes+Global.typeExtention)));
         } catch (IOException e) {
             e.printStackTrace();
         }
