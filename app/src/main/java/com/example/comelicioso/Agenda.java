@@ -45,7 +45,7 @@ import java.util.TimeZone;
  */
 public class Agenda extends Fragment {
 
-    ArrayList<Reservaciones> elements;
+    ArrayList<Reservaciones> elements = new ArrayList<>();
     RecyclerView recyclerView;
     ListAdapterOldReservaciones listAdapter;
     Global gb;
@@ -98,12 +98,13 @@ public class Agenda extends Fragment {
         TextView txtSinReservaciones = vista.findViewById(R.id.FAG_txtVacio);
         ImageButton imgAddReservacion = vista.findViewById(R.id.FAG_imgBtnNuevaReservacion);
         gb = (Global)vista.getContext().getApplicationContext();
-        elements = new ArrayList<>();
         /*try {
             elements = gb.obtenerReservaciones(gb.abrirArchivo(Global.nameFileReservaciones));
         } catch (IOException e) {
             e.printStackTrace();
         }*/
+
+        //elements.add(new Reservaciones("0","0", "Sagrantino","00-00-0000","00:00","3","CEsar"));
 
         txtSinReservaciones.setVisibility((elements.size()==0)?View.VISIBLE:View.GONE);
         listAdapter= new ListAdapterOldReservaciones(elements);
@@ -243,7 +244,7 @@ public class Agenda extends Fragment {
                     Toast.makeText(view.getContext(),"No se ha completado el formulario", Toast.LENGTH_SHORT).show();
 
                 }else{
-                    elements.add(0,new Reservaciones(""+(elements.size()+1),
+                    elements.add(0,new Reservaciones(""+(elements.size()),
                             ids[restaurante[0]],
                             valores[restaurante[0]],
                             fecha.getText().toString(),
@@ -251,7 +252,7 @@ public class Agenda extends Fragment {
                             asistentes.getText().toString(),
                             reservado.getText().toString()));
                     //saveData();
-                    listAdapter.notifyDataSetChanged();
+                    listAdapter.notifyItemInserted(0);
                     alertDialog.dismiss();
                 }
             }

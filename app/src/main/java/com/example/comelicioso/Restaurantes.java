@@ -169,7 +169,7 @@ public class Restaurantes extends Fragment {
         cuadroP.setView(vistaCuadroP);
 
         ((TextView)vistaCuadroP.findViewById(R.id.DDR_txtNombre)).setText(info.getNombre());
-        ((TextView)vistaCuadroP.findViewById(R.id.DDR_txtTipoComida)).setText("Comida"+ info.getTipoComida());
+        ((TextView)vistaCuadroP.findViewById(R.id.DDR_txtTipoComida)).setText("Comida "+ info.getTipoComida());
         ((TextView)vistaCuadroP.findViewById(R.id.DDR_txtCalificacionNumero)).setText(String.valueOf(info.getCalificacion()));
         ((TextView)vistaCuadroP.findViewById(R.id.DDR_txtUbicacion)).setText(info.getUbicacion());
         ((TextView)vistaCuadroP.findViewById(R.id.DDR_txtTelefono)).setText(info.getTelefono());
