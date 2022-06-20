@@ -94,6 +94,7 @@
         android:layout_marginBottom="56dp"
         android:layout_weight="1"
         android:backgroundTint="#FF5722"
+        android:onClick="mostrarAlertDialog"
         android:text="@string/recupera_button_Enviar"
         app:layout_constraintBottom_toTopOf="@+id/ARC_textIniciar"
         app:layout_constraintEnd_toEndOf="parent"
