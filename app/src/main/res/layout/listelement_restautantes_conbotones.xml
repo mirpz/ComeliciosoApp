@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="10dp"
-    app:cardMaxElevation="5dp"
     android:layout_margin="10dp"
-    app:cardUseCompatPadding="true" >
+    app:cardCornerRadius="10dp"
+    app:cardElevation="6dp"
+    app:cardMaxElevation="6dp"
+    app:cardUseCompatPadding="true">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -27,28 +27,28 @@
             android:id="@+id/LERCB_txtNombreRestaurante"
             android:layout_width="wrap_content"
             android:layout_height="70dp"
+            android:layout_toStartOf="@id/LERCB_imageBtnSave"
             android:layout_toEndOf="@+id/LERCB_imageViewLogo"
+            android:autoSizeMaxTextSize="16sp"
+            android:autoSizeTextType="uniform"
             android:gravity="center_vertical"
             android:padding="10dp"
             android:text="@string/texto_restaurante"
             android:textAlignment="viewStart"
-            android:autoSizeTextType="uniform"
-            android:autoSizeMaxTextSize="16sp"
             android:textSize="16sp"
             android:textStyle="bold"
             tools:ignore="RtlCompat"
-            android:layout_toStartOf="@id/LERCB_imageBtnSave"
             tools:targetApi="o" />
 
         <TextView
             android:id="@+id/LERCB_txtTipoComida"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
+            android:layout_below="@+id/LERCB_txtNombreRestaurante"
+            android:layout_toStartOf="@id/LERCB_imageBtnSave"
+            android:layout_toEndOf="@+id/LERCB_imageViewLogo"
             android:paddingStart="10dp"
             android:text="@string/texto_tipo_comida"
-            android:layout_below="@+id/LERCB_txtNombreRestaurante"
-            android:layout_toEndOf="@+id/LERCB_imageViewLogo"
-            android:layout_toStartOf="@id/LERCB_imageBtnSave"
             tools:ignore="RtlSymmetry" />
 
         <ImageButton
@@ -65,8 +65,8 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_below="@id/LERCB_imageBtnFav"
-            android:background="#31FFFFFF"
             android:layout_alignParentEnd="true"
+            android:background="#31FFFFFF"
             android:contentDescription="@string/texto_imagen_save"
             app:srcCompat="@drawable/ic_baseline_bookmark_border_24" />
 

@@ -6,6 +6,8 @@
     android:id="@+id/LER_cardViewContenedor"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:textAlignment="textStart"
     app:cardCornerRadius="10dp"
     app:cardElevation="6dp"
     app:cardUseCompatPadding="true"
@@ -32,8 +34,9 @@
                 android:layout_height="50dp"
                 android:layout_toStartOf="@id/LER_imgBtnCheckEvaluacion"
                 android:gravity="center"
+                android:paddingStart="10dp"
                 android:text="@string/cardview_descripcion_restaurante"
-                android:textAlignment="center"
+                android:textAlignment="textStart"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -43,6 +46,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_alignParentEnd="true"
+                android:backgroundTint="@color/principal"
                 android:contentDescription="@string/cardview_descripcion_imagen"
                 app:srcCompat="@drawable/ic_baseline_check_24"
                 tools:ignore="ImageContrastCheck" />
@@ -54,7 +58,7 @@
             android:layout_height="1dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:background="?android:attr/listDivider" />
+            android:background="@color/bajito" />
 
         <LinearLayout
             android:id="@+id/LER_linearLayoutSecundarioParte2"
