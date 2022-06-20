@@ -58,7 +58,7 @@ public class ListAdapterOldReservaciones extends RecyclerView.Adapter<ListAdapte
     public void onClick(View view) {
         //Validar si el escucha no esta vacio
         if(listener != null){
-            listener.onClick(view);//Escucha para los componentes de la visto
+            listener.onClick(view);//Escucha para los componentes de la vista
         }
     }
 

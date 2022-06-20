@@ -3,6 +3,7 @@ package com.example.comelicioso;
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -46,6 +47,7 @@ import java.util.TimeZone;
 public class Agenda extends Fragment {
 
     ArrayList<Reservaciones> elements = new ArrayList<>();
+    TextView txtSinReservaciones;
     RecyclerView recyclerView;
     ListAdapterOldReservaciones listAdapter;
     Global gb;
@@ -95,25 +97,10 @@ public class Agenda extends Fragment {
                              Bundle savedInstanceState) {
         View vista = inflater.inflate(R.layout.fragment_agenda, container, false);
         recyclerView = vista.findViewById(R.id.FAG_recyclerViewReservaciones);
-        TextView txtSinReservaciones = vista.findViewById(R.id.FAG_txtVacio);
+        txtSinReservaciones = vista.findViewById(R.id.FAG_txtVacio);
         ImageButton imgAddReservacion = vista.findViewById(R.id.FAG_imgBtnNuevaReservacion);
         gb = (Global)vista.getContext().getApplicationContext();
-        /*try {
-            elements = gb.obtenerReservaciones(gb.abrirArchivo(Global.nameFileReservaciones));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
-
-        //elements.add(new Reservaciones("0","0", "Sagrantino","00-00-0000","00:00","3","CEsar"));
-
-        txtSinReservaciones.setVisibility((elements.size()==0)?View.VISIBLE:View.GONE);
-        listAdapter= new ListAdapterOldReservaciones(elements);
-        listAdapter.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                mostrarDialogoConInfoReservacion(view, elements.get(recyclerView.getChildAdapterPosition(view)),recyclerView.getChildAdapterPosition(view));
-            }
-        });
+        elements = gb.getListaUsuarios().get(Integer.parseInt(idUsuario())).getReservaciones();
 
         imgAddReservacion.setOnClickListener(new View.OnClickListener(){
 
@@ -123,9 +110,8 @@ public class Agenda extends Fragment {
             }
         });
 
-        recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(vista.getContext(),LinearLayoutManager.VERTICAL,false));
-        recyclerView.setAdapter(listAdapter);
+        updateAdapter();
         return vista;
     }
 
@@ -197,7 +183,7 @@ public class Agenda extends Fragment {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int i, int i1) {
                         calendario.set(Calendar.HOUR_OF_DAY,i);
-                        calendario.set(Calendar.MINUTE,i);
+                        calendario.set(Calendar.MINUTE,i1);
                         String Format="HH:mm";
                         @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf =new SimpleDateFormat(Format);
                         tiempo.setText(sdf.format(calendario.getTime()));
@@ -251,8 +237,10 @@ public class Agenda extends Fragment {
                             tiempo.getText().toString(),
                             asistentes.getText().toString(),
                             reservado.getText().toString()));
-                    //saveData();
+                    saveData();
                     listAdapter.notifyItemInserted(0);
+                    listAdapter.notifyDataSetChanged();
+                    updateAdapter();
                     alertDialog.dismiss();
                 }
             }
@@ -273,9 +261,13 @@ public class Agenda extends Fragment {
 
         EditText reservado, fecha, tiempo, asistentes;
         reservado = (EditText)vistaCuadroP.findViewById(R.id.DFR_edtReservadoPor);
+        reservado.setText(reservaciones.getReservadoPor());
         asistentes = (EditText)vistaCuadroP.findViewById(R.id.DFR_edtNumeroAsistentes);
+        asistentes.setText(reservaciones.getAsistentes());
         fecha = (EditText) vistaCuadroP.findViewById(R.id.DFR_edtFechaReservacion);
+        fecha.setText(reservaciones.getFecha());
         tiempo = (EditText) vistaCuadroP.findViewById(R.id.DFR_edtHoraReservacion);
+        tiempo.setText(reservaciones.getHora());
 
         String[] valores= {reservaciones.getRestaurante()};
         ((Spinner)vistaCuadroP.findViewById(R.id.DFR_spinRestaurantes)).setAdapter(new ArrayAdapter<String>(vistaCuadroP.getContext(), android.R.layout.simple_spinner_item, valores));
@@ -290,8 +282,10 @@ public class Agenda extends Fragment {
             @Override
             public void onClick(View view) {
                 elements.remove(index);
-                //saveData();
+                saveData();
                 listAdapter.notifyItemRemoved(index);
+                listAdapter.notifyDataSetChanged();
+                updateAdapter();
                 alertDialog.dismiss();
             }
         });
@@ -306,7 +300,6 @@ public class Agenda extends Fragment {
                         tiempo.getText().equals("")||
                         fecha.getText().equals("")){
                     Toast.makeText(view.getContext(),"No se ha completado el formulario", Toast.LENGTH_SHORT).show();
-
                 }else{
                     if(reservado.getText().equals(elements.get(index).getReservadoPor())||
                             asistentes.getText().toString().equals(elements.get(index).getAsistentes())||
@@ -318,8 +311,9 @@ public class Agenda extends Fragment {
                         elements.get(index).setHora(tiempo.getText().toString());
                         elements.get(index).setAsistentes(asistentes.getText().toString());
                         elements.get(index).setReservadoPor(reservado.getText().toString());
-                        //saveData();
+                        saveData();
                         listAdapter.notifyDataSetChanged();
+                        updateAdapter();
                         alertDialog.dismiss();
                     }
                 }
@@ -330,8 +324,26 @@ public class Agenda extends Fragment {
         alertDialog.show();
     }
 
-    /*public void saveData(){
-        gb.guardarArchivo(Global.nameFileReservaciones+Global.typeExtention,"");
-        gb.guardarArchivo(Global.nameFileReservaciones+Global.typeExtention,gb.crearJsonReservaciones(elements).toString());
-    }*/
+    public void updateAdapter(){
+        txtSinReservaciones.setVisibility((elements.size()==0)?View.VISIBLE:View.GONE);
+        listAdapter= new ListAdapterOldReservaciones(elements);
+        listAdapter.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                mostrarDialogoConInfoReservacion(view, elements.get(recyclerView.getChildAdapterPosition(view)),recyclerView.getChildAdapterPosition(view));
+            }
+        });
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setAdapter(listAdapter);
+    }
+
+    public void saveData(){
+        gb.getListaUsuarios().get(Integer.parseInt(idUsuario())).setReservaciones(elements);
+        gb.guardarArchivo(Global.nameFileUsuarios+Global.typeExtention,"");
+        gb.guardarArchivo(Global.nameFileUsuarios+Global.typeExtention,gb.crearJsonUsuarios(gb.getListaUsuarios()).toString());
+    }
+    private String idUsuario(){
+        SharedPreferences preferences = this.getActivity().getSharedPreferences("user.dat", this.getActivity().MODE_PRIVATE);
+        return preferences.getString("id","");
+    }
 }

@@ -1,5 +1,6 @@
 package com.example.comelicioso;
 
+import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -158,6 +159,7 @@ public class Restaurantes extends Fragment {
         return vista;
     }
 
+    @SuppressLint("SetTextI18n")
     public void mostrarDialogoPersonalizado(View view, InfoRestaurantes info){
         //Crear la instancia del AlertDialog
         AlertDialog.Builder cuadroP= new AlertDialog.Builder(view.getContext(), R.style.AlertDialog);
@@ -174,7 +176,6 @@ public class Restaurantes extends Fragment {
         ((TextView)vistaCuadroP.findViewById(R.id.DDR_txtUbicacion)).setText(info.getUbicacion());
         ((TextView)vistaCuadroP.findViewById(R.id.DDR_txtTelefono)).setText(info.getTelefono());
         ((TextView)vistaCuadroP.findViewById(R.id.DDR_txtHorario)).setText(gb.arryToString(info.getHorarios(),"/","Sin horarios presentes"));
-        ((TextView)vistaCuadroP.findViewById(R.id.DDR_txtGastoAproximado)).setText(info.getCostoAproximado());
         if(info.getIcon()!=0){
             ((ImageView)vistaCuadroP.findViewById(R.id.DDR_iconRestaurant)).setImageResource(info.getIcon());
         }

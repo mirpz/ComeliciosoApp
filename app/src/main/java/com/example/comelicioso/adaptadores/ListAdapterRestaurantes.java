@@ -46,6 +46,42 @@ public class ListAdapterRestaurantes extends RecyclerView.Adapter<ListAdapterRes
     @Override
     public void onBindViewHolder(@NonNull ViewHolderDatos holder, int position) {
         holder.asignarDatos(data.get(position));
+        holder.fav.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("NotifyDataSetChanged")
+            @Override
+            public void onClick(View view) {
+                if(holder.favBool){
+                    holder.fav.setImageResource(R.drawable.ic_baseline_star_border_24);
+                    holder.quitarDeFavoritos(holder.idRes);
+                    notifyDataSetChanged();
+                    holder.favBool=false;
+                }else{
+                    holder.fav.setImageResource(R.drawable.ic_baseline_star_24);
+                    holder.agregarDeFavoritos(holder.idRes);
+                    notifyDataSetChanged();
+                    holder.favBool=true;
+                }
+            }
+        });
+
+        holder.prox.setOnClickListener(new View.OnClickListener(){
+
+            @SuppressLint("NotifyDataSetChanged")
+            @Override
+            public void onClick(View view) {
+                if(holder.prxBool){
+                    holder.prox.setImageResource(R.drawable.ic_baseline_bookmark_border_24);
+                    holder.quitarDeProximos(holder.idRes);
+                    notifyDataSetChanged();
+                    holder.prxBool=false;
+                }else{
+                    holder.prox.setImageResource(R.drawable.ic_baseline_bookmark_24);
+                    holder.agregarDeProximos(holder.idRes);
+                    notifyDataSetChanged();
+                    holder.prxBool=true;
+                }
+            }
+        });
     }
 
     @Override
@@ -80,36 +116,6 @@ public class ListAdapterRestaurantes extends RecyclerView.Adapter<ListAdapterRes
             icon = itemView.findViewById(R.id.LERCB_imageViewLogo);
             fav = itemView.findViewById(R.id.LERCB_imageBtnFav);
             prox = itemView.findViewById(R.id.LERCB_imageBtnSave);
-
-            fav.setOnClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick(View view) {
-                    if(favBool){
-                        fav.setImageResource(R.drawable.ic_baseline_star_border_24);
-                        quitarDeFavoritos(idRes);
-                        favBool=false;
-                    }else{
-                        fav.setImageResource(R.drawable.ic_baseline_star_24);
-                        agregarDeFavoritos(idRes);
-                        favBool=true;
-                    }
-                }
-            });
-
-            prox.setOnClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick(View view) {
-                    if(prxBool){
-                        prox.setImageResource(R.drawable.ic_baseline_bookmark_border_24);
-                        quitarDeProximos(idRes);
-                        prxBool=false;
-                    }else{
-                        prox.setImageResource(R.drawable.ic_baseline_bookmark_24);
-                        agregarDeProximos(idRes);
-                        prxBool=true;
-                    }
-                }
-            });
         }
 
         @SuppressLint("SetTextI18n")
@@ -144,6 +150,7 @@ public class ListAdapterRestaurantes extends RecyclerView.Adapter<ListAdapterRes
             }
             if(flag){
                 gb.getListaUsuarios().get(Integer.parseInt(idUsuario)).getFavoritos().remove(index);
+                saveData();
             }
         }
 
@@ -156,6 +163,7 @@ public class ListAdapterRestaurantes extends RecyclerView.Adapter<ListAdapterRes
             }
             if(flag){
                 gb.getListaUsuarios().get(Integer.parseInt(idUsuario)).getFavoritos().add(id);
+                saveData();
             }
         }
 
@@ -170,6 +178,7 @@ public class ListAdapterRestaurantes extends RecyclerView.Adapter<ListAdapterRes
             }
             if(flag){
                 gb.getListaUsuarios().get(Integer.parseInt(idUsuario)).getProximos().remove(index);
+                saveData();
             }
         }
 
@@ -182,6 +191,7 @@ public class ListAdapterRestaurantes extends RecyclerView.Adapter<ListAdapterRes
             }
             if(flag){
                 gb.getListaUsuarios().get(Integer.parseInt(idUsuario)).getProximos().add(id);
+                saveData();
             }
         }
 
@@ -203,5 +213,9 @@ public class ListAdapterRestaurantes extends RecyclerView.Adapter<ListAdapterRes
             return false;
         }
 
+        public void saveData(){
+            gb.guardarArchivo(Global.nameFileUsuarios+Global.typeExtention,"");
+            gb.guardarArchivo(Global.nameFileUsuarios+Global.typeExtention,gb.crearJsonUsuarios(gb.getListaUsuarios()).toString());
+        }
     }
 }

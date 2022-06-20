@@ -81,7 +81,6 @@ public class ListaProximos extends Fragment {
         ListAdapterRestaurantes listAdapter= new ListAdapterRestaurantes(elem, idUsuario());
         recyclerViewPX.setLayoutManager(new LinearLayoutManager(vista.getContext(),LinearLayoutManager.VERTICAL,false));
         recyclerViewPX.setAdapter(listAdapter);
-        // Inflate the layout for this fragment
         return vista;
     }
 

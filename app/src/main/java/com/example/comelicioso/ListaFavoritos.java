@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.comelicioso.adaptadores.ListAdapterRestaurantes;
 import com.example.comelicioso.modelos.Global;
@@ -80,6 +81,7 @@ public class ListaFavoritos extends Fragment {
         ListAdapterRestaurantes listAdapter= new ListAdapterRestaurantes(elem, idUsuario());
         recyclerViewFV.setLayoutManager(new LinearLayoutManager(vista.getContext(),LinearLayoutManager.VERTICAL,false));
         recyclerViewFV.setAdapter(listAdapter);
+
         // Inflate the layout for this fragment
         return vista;
     }
