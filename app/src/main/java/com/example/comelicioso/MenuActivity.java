@@ -27,10 +27,10 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
 
         //Obtenemos la ActionBar instalada por AppCompatActivity
-        //ActionBar actionBar = getSupportActionBar();
+        ActionBar actionBar = getSupportActionBar();
         //Establecemos el icono en la ActionBar
-        //actionBar.setIcon(R.drawable.logo);
-        //actionBar.setDisplayShowHomeEnabled(true);
+        actionBar.setIcon(R.drawable.nombre);
+        actionBar.setDisplayShowHomeEnabled(true);
 
         //Asociar instancias con componentes
         menu = findViewById(R.id.AME_tablayMenu);

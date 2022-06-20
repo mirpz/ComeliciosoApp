@@ -39,9 +39,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="390dp"
+        android:layout_marginTop="400dp"
         android:layout_marginEnd="40dp"
-        android:layout_marginBottom="82dp"
+        android:layout_marginBottom="40dp"
         android:baselineAligned="false"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/ARC_btnRegistrar"
@@ -91,9 +91,11 @@
         android:layout_marginStart="146dp"
         android:layout_marginTop="81dp"
         android:layout_marginEnd="147dp"
+        android:layout_marginBottom="56dp"
         android:layout_weight="1"
         android:backgroundTint="#FF5722"
         android:text="@string/recupera_button_Enviar"
+        app:layout_constraintBottom_toTopOf="@+id/ARC_textIniciar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.448"
         app:layout_constraintStart_toStartOf="parent"
@@ -104,7 +106,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="144dp"
-        android:layout_marginTop="83dp"
         android:layout_marginEnd="144dp"
         android:layout_marginBottom="40dp"
         android:layout_weight="1"
@@ -115,7 +116,6 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ARC_btnRegistrar" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
