@@ -1,5 +1,6 @@
 package com.example.comelicioso;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -73,15 +74,32 @@ public class ListaProximos extends Fragment {
 
         View vista = inflater.inflate(R.layout.fragment_lista_proximos, container, false);
         gb = (Global)vista.getContext().getApplicationContext();
-        ArrayList<InfoRestaurantes> elem = new ArrayList<>();
         recyclerViewPX = vista.findViewById(R.id.FLP_recviewRestaurantes);
         TextView txtSinRestaurantes  = vista.findViewById(R.id.FLP_txtVacio);
-
+        ArrayList<InfoRestaurantes> elem = listaProximos();
         txtSinRestaurantes.setVisibility((elem.size()==0)?View.VISIBLE:View.GONE);
-        ListAdapterRestaurantes listAdapter= new ListAdapterRestaurantes(elem);
+        ListAdapterRestaurantes listAdapter= new ListAdapterRestaurantes(elem, idUsuario());
         recyclerViewPX.setLayoutManager(new LinearLayoutManager(vista.getContext(),LinearLayoutManager.VERTICAL,false));
         recyclerViewPX.setAdapter(listAdapter);
         // Inflate the layout for this fragment
         return vista;
+    }
+
+    public ArrayList<InfoRestaurantes> listaProximos(){
+        ArrayList<InfoRestaurantes> list=new ArrayList<>();
+        for(int h=0; h<gb.getDatosRestaurantes().size();h++){
+            for(int i=0; i<gb.getListaUsuarios().get(Integer.parseInt(idUsuario())).getProximos().size();i++){
+                if(gb.getListaUsuarios().get(Integer.parseInt(idUsuario())).getProximos().get(i)
+                        .equals(gb.getDatosRestaurantes().get(h).getId())){
+                    list.add(gb.getDatosRestaurantes().get(h));
+                }
+            }
+        }
+        return list;
+    }
+
+    private String idUsuario(){
+        SharedPreferences preferences = this.getActivity().getSharedPreferences("user.dat", this.getActivity().MODE_PRIVATE);
+        return preferences.getString("id","");
     }
 }

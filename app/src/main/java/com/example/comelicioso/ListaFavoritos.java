@@ -1,5 +1,6 @@
 package com.example.comelicioso;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -70,16 +71,34 @@ public class ListaFavoritos extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View vista = inflater.inflate(R.layout.fragment_lista_favoritos, container, false);
-        ArrayList<InfoRestaurantes> elem = new ArrayList<>();
         gb = (Global)vista.getContext().getApplicationContext();
         recyclerViewFV = vista.findViewById(R.id.FLF_recviewRestaurantes);
         TextView txtSinRestaurantes  = vista.findViewById(R.id.FLF_txtVacio);
+        ArrayList<InfoRestaurantes> elem = listaFavoritos();
 
         txtSinRestaurantes.setVisibility((elem.size()==0)?View.VISIBLE:View.GONE);
-        ListAdapterRestaurantes listAdapter= new ListAdapterRestaurantes(elem);
+        ListAdapterRestaurantes listAdapter= new ListAdapterRestaurantes(elem, idUsuario());
         recyclerViewFV.setLayoutManager(new LinearLayoutManager(vista.getContext(),LinearLayoutManager.VERTICAL,false));
         recyclerViewFV.setAdapter(listAdapter);
         // Inflate the layout for this fragment
         return vista;
+    }
+
+    public ArrayList<InfoRestaurantes> listaFavoritos(){
+        ArrayList<InfoRestaurantes> list=new ArrayList<>();
+        for(int h=0; h<gb.getDatosRestaurantes().size();h++){
+            for(int i=0; i<gb.getListaUsuarios().get(Integer.parseInt(idUsuario())).getFavoritos().size();i++){
+                if(gb.getListaUsuarios().get(Integer.parseInt(idUsuario())).getFavoritos().get(i)
+                        .equals(gb.getDatosRestaurantes().get(h).getId())){
+                    list.add(gb.getDatosRestaurantes().get(h));
+                }
+            }
+        }
+        return list;
+    }
+
+    private String idUsuario(){
+        SharedPreferences preferences = this.getActivity().getSharedPreferences("user.dat", this.getActivity().MODE_PRIVATE);
+        return preferences.getString("id","");
     }
 }
