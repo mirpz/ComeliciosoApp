@@ -14,15 +14,18 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.comelicioso.modelos.Global;
+import com.example.comelicioso.modelos.PublicacionesEvaluaciones;
 import com.example.comelicioso.modelos.Reservaciones;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class EvaluacionActivity extends AppCompatActivity {
 
     EditText opinion, gasto, tiempo, asistentes;
-    ImageView imagen;
     ArrayList<Reservaciones> reservaciones;
+    ArrayList<PublicacionesEvaluaciones> publicaciones;
     int index;
     Global gb;
 
@@ -31,6 +34,12 @@ public class EvaluacionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dialog_evaluacion_restaurante);
         gb = (Global) getApplicationContext();
+        try {
+            publicaciones=gb.obtenerPublicaciones(gb.abrirArchivo(Global.nameFilePublicaciones+Global.typeExtention));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         //Obtenemos la ActionBar instalada por AppCompatActivity
         ActionBar actionBar = getSupportActionBar();
         //Establecemos el icono en la ActionBar
@@ -46,8 +55,6 @@ public class EvaluacionActivity extends AppCompatActivity {
         gasto = findViewById(R.id.DER_edtGasto);
         tiempo = findViewById(R.id.DER_edtTiempo);
         asistentes = findViewById(R.id.DER_editPersonas);
-        imagen = findViewById(R.id.DER_imgVFoto);
-        Button btn = findViewById(R.id.DER_btnFoto);
         Button btnAceptar = findViewById(R.id.DER_btnAceptar);
         Button btnCancelar = findViewById(R.id.DER_btnCancelar);
 
@@ -60,9 +67,21 @@ public class EvaluacionActivity extends AppCompatActivity {
                         asistentes.getText().toString().equals("")){
                     Toast.makeText(view.getContext(),"No se ha completado el formulario. La imagen es opcional", Toast.LENGTH_SHORT).show();
                 }else{
-
+                    reservaciones.get(index).setEvaluado(true);
+                    publicaciones.add(new PublicacionesEvaluaciones(
+                            ""+publicaciones.size(),
+                            nombreUsuario(),
+                            opinion.getText().toString(),
+                            reservaciones.get(index).getRestaurante(),
+                            reservaciones.get(index).getFecha(),
+                            Integer.parseInt(asistentes.getText().toString()),
+                            Integer.parseInt(gasto.getText().toString()),
+                            Integer.parseInt(tiempo.getText().toString()),
+                            (Double.parseDouble(gasto.getText().toString())/Double.parseDouble(asistentes.getText().toString()))
+                            ));
+                    saveData();
+                    finish();
                 }
-
             }
         });
 
@@ -71,13 +90,6 @@ public class EvaluacionActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
-            }
-        });
-
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                cargarImagen();
             }
         });
     }
@@ -91,16 +103,12 @@ public class EvaluacionActivity extends AppCompatActivity {
         return -1;
     }
 
-    private void cargarImagen(){
-        Intent intent=new Intent (Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        intent.setType("image/" );
-        startActivityForResult(intent.createChooser(intent, "Seleccione"), 10);
-    }
-
     public void saveData(){
         gb.getListaUsuarios().get(Integer.parseInt(idUsuario())).setReservaciones(reservaciones);
         gb.guardarArchivo(Global.nameFileUsuarios+Global.typeExtention,"");
         gb.guardarArchivo(Global.nameFileUsuarios+Global.typeExtention,gb.crearJsonUsuarios(gb.getListaUsuarios()).toString());
+        gb.guardarArchivo(Global.nameFilePublicaciones+Global.typeExtention,"");
+        gb.guardarArchivo(Global.nameFilePublicaciones+Global.typeExtention,gb.crearJsonPublicaciones(publicaciones).toString());
     }
 
     private String nombreUsuario(){
@@ -111,15 +119,5 @@ public class EvaluacionActivity extends AppCompatActivity {
     private String idUsuario(){
         SharedPreferences preferences = getSharedPreferences("user.dat", MODE_PRIVATE);
         return preferences.getString("id","");
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data){
-        super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode==RESULT_OK){
-            Uri path = data.getData();
-            Toast.makeText(this,""+path, Toast.LENGTH_SHORT).show();
-            imagen.setImageURI(path);
-        }
     }
 }

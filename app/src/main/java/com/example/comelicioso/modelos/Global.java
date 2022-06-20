@@ -2,6 +2,7 @@ package com.example.comelicioso.modelos;
 
 import android.app.Activity;
 import android.app.Application;
+import android.net.Uri;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -230,6 +231,7 @@ public class Global extends Application {
                 obj.put("hora", elements.get(i).getHora());
                 obj.put("asistentes", elements.get(i).getAsistentes());
                 obj.put("reservadoPor", elements.get(i).getReservadoPor());
+                obj.put("evaluado", elements.get(i).isEvaluado());
             } catch (JSONException e) {
                 // TODO Auto-generated catch block e.printStackTrace();
             }
@@ -252,7 +254,7 @@ public class Global extends Application {
                         myJsonArray.getJSONObject(i).getString("asistentes"),
                         myJsonArray.getJSONObject(i).getString("reservadoPor")
                         ));
-
+                list.get(i).setEvaluado(myJsonArray.getJSONObject(i).getBoolean("evaluado"));
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -318,8 +320,14 @@ public class Global extends Application {
             try {
                 obj.put("id", elements.get(i).getId());
                 obj.put("usario", elements.get(i).getUsario());
-                obj.put("linkImagen", elements.get(i).getLinkImagen());
-                obj.put("texto", elements.get(i).getTexto());
+                obj.put("opinion", elements.get(i).getOpinion());
+                obj.put("restaurante", elements.get(i).getRestaurante());
+                obj.put("fecha", elements.get(i).getFecha());
+                obj.put("gasto", elements.get(i).getGasto());
+                obj.put("tiempo", elements.get(i).getTiempo());
+                obj.put("personas", elements.get(i).getPersonas());
+                obj.put("gastoPorPersona", elements.get(i).getGastoPorPersona());
+                obj.put("siImagen", elements.get(i).isSiImagen());
             } catch (JSONException e) {
                 // TODO Auto-generated catch block e.printStackTrace();
             }
@@ -336,8 +344,13 @@ public class Global extends Application {
                 list.add(new PublicacionesEvaluaciones(
                         myJsonArray.getJSONObject(i).getString("id"),
                         myJsonArray.getJSONObject(i).getString("usario"),
-                        myJsonArray.getJSONObject(i).getString("linkImagen"),
-                        myJsonArray.getJSONObject(i).getString("texto")
+                        myJsonArray.getJSONObject(i).getString("opinion"),
+                        myJsonArray.getJSONObject(i).getString("restaurante"),
+                        myJsonArray.getJSONObject(i).getString("fecha"),
+                        myJsonArray.getJSONObject(i).getInt("personas"),
+                        myJsonArray.getJSONObject(i).getInt("gasto"),
+                        myJsonArray.getJSONObject(i).getInt("tiempo"),
+                        myJsonArray.getJSONObject(i).getDouble("gastoPorPersona")
                 ));
             }
         } catch (JSONException e) {

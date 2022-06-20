@@ -1,6 +1,7 @@
 package com.example.comelicioso.adaptadores;
 
 import android.annotation.SuppressLint;
+import android.net.Uri;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.comelicioso.R;
 import com.example.comelicioso.modelos.PublicacionesEvaluaciones;
 
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.ArrayList;
 
 public class ListAdapterPublicaciones extends RecyclerView.Adapter<ListAdapterPublicaciones.ViewHolderDatos>{
@@ -35,6 +38,7 @@ public class ListAdapterPublicaciones extends RecyclerView.Adapter<ListAdapterPu
     @Override
     public void onBindViewHolder(@NonNull ViewHolderDatos holder, int position) {
         holder.asignarDatos(data.get(position));
+
     }
 
     @Override
@@ -45,19 +49,19 @@ public class ListAdapterPublicaciones extends RecyclerView.Adapter<ListAdapterPu
 
     public static class ViewHolderDatos extends RecyclerView.ViewHolder {
 
-        ImageView img;
         TextView txt;
 
         public ViewHolderDatos(@NonNull View itemView) {
             super(itemView);
-            img= itemView.findViewById(R.id.LEP_imgPublicacion);
             txt= itemView.findViewById(R.id.LEP_txtPieImagen);
 
         }
 
         @SuppressLint("SetTextI18n")
         public void asignarDatos(PublicacionesEvaluaciones datos){
-            txt.setText(Html.fromHtml("<b>"+datos.getUsario()+"</b><br>"+datos.getTexto()));
+            txt.setText(Html.fromHtml("<b>"+datos.getUsario()+"</b> - "+datos.getFecha()+
+                    "<br><br>En: "+datos.getRestaurante()+ " | Gasto por persona: $"+datos.getGastoPorPersona()+
+                    "<br><br><br>"+datos.getOpinion()));
         }
     }
 }

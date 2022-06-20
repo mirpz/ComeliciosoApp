@@ -12,8 +12,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.comelicioso.adaptadores.ListAdapterPublicaciones;
+import com.example.comelicioso.modelos.Global;
 import com.example.comelicioso.modelos.PublicacionesEvaluaciones;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -25,6 +27,7 @@ public class Feed extends Fragment {
 
     ArrayList<PublicacionesEvaluaciones> elements;
     RecyclerView recyclerView;
+    Global gb;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -64,15 +67,13 @@ public class Feed extends Fragment {
                              Bundle savedInstanceState) {
         View vista = inflater.inflate(R.layout.fragment_feed, container, false);
         recyclerView = vista.findViewById(R.id.FFE_recviewPublicaciones);
+        gb = (Global) vista.getContext().getApplicationContext();
         TextView txtSinReservaciones  = vista.findViewById(R.id.FFE_txtVacio);
-        elements = new ArrayList<>();
-
-    //en este apatado es donde se tiene que realizar la busqueda y absorción de la información
-        /*elements.add(new Publicaciones("1","@uno","", "Aqui estamos"));
-        elements.add(new Publicaciones("1","@dos","","Aqui estamos"));
-        elements.add(new Publicaciones("1","@tres","","Aqui estamos"));
-        elements.add(new Publicaciones("1","@cuatro","","Aqui estamos"));
-        elements.add(new Publicaciones("1","@cinco","","Aqui estamos"));*/
+        try {
+            elements = gb.obtenerPublicaciones(gb.abrirArchivo(Global.nameFilePublicaciones+Global.typeExtention));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         txtSinReservaciones.setVisibility((elements.size()==0)?View.VISIBLE:View.GONE);
         ListAdapterPublicaciones listAdapter= new ListAdapterPublicaciones(elements);

@@ -99,10 +99,10 @@ public class Agenda extends Fragment {
         recyclerView = vista.findViewById(R.id.FAG_recyclerViewReservaciones);
         txtSinReservaciones = vista.findViewById(R.id.FAG_txtVacio);
         ImageButton imgAddReservacion = vista.findViewById(R.id.FAG_imgBtnNuevaReservacion);
-        gb = (Global)vista.getContext().getApplicationContext();
+        gb = (Global) vista.getContext().getApplicationContext();
         elements = gb.getListaUsuarios().get(Integer.parseInt(idUsuario())).getReservaciones();
 
-        imgAddReservacion.setOnClickListener(new View.OnClickListener(){
+        imgAddReservacion.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -110,23 +110,23 @@ public class Agenda extends Fragment {
             }
         });
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(vista.getContext(),LinearLayoutManager.VERTICAL,false));
+        recyclerView.setLayoutManager(new LinearLayoutManager(vista.getContext(), LinearLayoutManager.VERTICAL, false));
         updateAdapter();
         return vista;
     }
 
-    private String [] listaDeRestaurantes(){
-        String restau [] = new String[gb.getDatosRestaurantes().size()];
-        for(int i=0; i<gb.getDatosRestaurantes().size(); i++){
-            restau[i]=gb.getDatosRestaurantes().get(i).getNombre();
+    private String[] listaDeRestaurantes() {
+        String restau[] = new String[gb.getDatosRestaurantes().size()];
+        for (int i = 0; i < gb.getDatosRestaurantes().size(); i++) {
+            restau[i] = gb.getDatosRestaurantes().get(i).getNombre();
         }
         return restau;
     }
 
-    private String [] listaDeIdsRestaurantes(){
-        String restau [] = new String[gb.getDatosRestaurantes().size()];
-        for(int i=0; i<gb.getDatosRestaurantes().size(); i++){
-            restau[i]=gb.getDatosRestaurantes().get(i).getId();
+    private String[] listaDeIdsRestaurantes() {
+        String restau[] = new String[gb.getDatosRestaurantes().size()];
+        for (int i = 0; i < gb.getDatosRestaurantes().size(); i++) {
+            restau[i] = gb.getDatosRestaurantes().get(i).getId();
         }
         return restau;
     }
@@ -143,25 +143,26 @@ public class Agenda extends Fragment {
         cuadroP.setView(vistaCuadroP);
 
         EditText reservado, fecha, tiempo, asistentes;
-        reservado = (EditText)vistaCuadroP.findViewById(R.id.DFR_edtReservadoPor);
+        reservado = (EditText) vistaCuadroP.findViewById(R.id.DFR_edtReservadoPor);
         reservado.setText(nombreUsuario());
         reservado.setEnabled(false);
-        asistentes = (EditText)vistaCuadroP.findViewById(R.id.DFR_edtNumeroAsistentes);
+        asistentes = (EditText) vistaCuadroP.findViewById(R.id.DFR_edtNumeroAsistentes);
         fecha = (EditText) vistaCuadroP.findViewById(R.id.DFR_edtFechaReservacion);
         tiempo = (EditText) vistaCuadroP.findViewById(R.id.DFR_edtHoraReservacion);
 
-        DatePickerDialog.OnDateSetListener date= new DatePickerDialog.OnDateSetListener(){
+        DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
 
             @Override
             public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-                calendario.set(Calendar. YEAR, i);
+                calendario.set(Calendar.YEAR, i);
                 calendario.set(Calendar.MONTH, i1);
                 calendario.set(Calendar.DAY_OF_MONTH, i2);
                 updateCalendar();
             }
-            private void updateCalendar (){
-                String Format="dd-MM-yyyy";
-                SimpleDateFormat sdf =new SimpleDateFormat(Format, Locale.US);
+
+            private void updateCalendar() {
+                String Format = "dd-MM-yyyy";
+                SimpleDateFormat sdf = new SimpleDateFormat(Format, Locale.US);
                 fecha.setText(sdf.format(calendario.getTime()));
             }
         };
@@ -176,21 +177,21 @@ public class Agenda extends Fragment {
             }
         });
 
-        tiempo.setOnClickListener(new View.OnClickListener(){
+        tiempo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 new TimePickerDialog(
                         view.getContext(),
                         new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(TimePicker timePicker, int i, int i1) {
-                        calendario.set(Calendar.HOUR_OF_DAY,i);
-                        calendario.set(Calendar.MINUTE,i1);
-                        String Format="HH:mm";
-                        @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf =new SimpleDateFormat(Format);
-                        tiempo.setText(sdf.format(calendario.getTime()));
-                    }
-                },calendario.get(Calendar.HOUR_OF_DAY),calendario.get(Calendar.MINUTE),true).show();
+                            @Override
+                            public void onTimeSet(TimePicker timePicker, int i, int i1) {
+                                calendario.set(Calendar.HOUR_OF_DAY, i);
+                                calendario.set(Calendar.MINUTE, i1);
+                                String Format = "HH:mm";
+                                @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat(Format);
+                                tiempo.setText(sdf.format(calendario.getTime()));
+                            }
+                        }, calendario.get(Calendar.HOUR_OF_DAY), calendario.get(Calendar.MINUTE), true).show();
             }
         });
 
@@ -202,7 +203,7 @@ public class Agenda extends Fragment {
 
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
-                restaurante[0]=position;
+                restaurante[0] = position;
             }
 
             @Override
@@ -225,14 +226,14 @@ public class Agenda extends Fragment {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onClick(View view) {
-                if(reservado.getText().equals("")||
-                        asistentes.getText().toString().isEmpty()||
-                        tiempo.getText().equals("")||
-                        fecha.getText().equals("")){
-                    Toast.makeText(view.getContext(),"No se ha completado el formulario", Toast.LENGTH_SHORT).show();
+                if (reservado.getText().equals("") ||
+                        asistentes.getText().toString().isEmpty() ||
+                        tiempo.getText().equals("") ||
+                        fecha.getText().equals("")) {
+                    Toast.makeText(view.getContext(), "No se ha completado el formulario", Toast.LENGTH_SHORT).show();
 
-                }else{
-                    elements.add(0,new Reservaciones(""+(elements.size()),
+                } else {
+                    elements.add(0, new Reservaciones("" + (elements.size()),
                             ids[restaurante[0]],
                             valores[restaurante[0]],
                             fecha.getText().toString(),
@@ -253,34 +254,34 @@ public class Agenda extends Fragment {
 
     private void mostrarDialogoConInfoReservacion(View view, Reservaciones reservaciones) {
         //Crear la instancia del AlertDialog
-        AlertDialog.Builder cuadroP= new AlertDialog.Builder(view.getContext(), R.style.AlertDialog);
+        AlertDialog.Builder cuadroP = new AlertDialog.Builder(view.getContext(), R.style.AlertDialog);
         //Nueva vista para asociar con el cuadro personalizado
-        View vistaCuadroP= LayoutInflater.from(view.getContext())
+        View vistaCuadroP = LayoutInflater.from(view.getContext())
                 .inflate(R.layout.dialog_formulario_reservacion, (ConstraintLayout) view.findViewById(R.id.DFR_contenedor));
         //Asociar el objeto AlertDialog con la vista
 
         cuadroP.setView(vistaCuadroP);
 
         EditText reservado, fecha, tiempo, asistentes;
-        reservado = (EditText)vistaCuadroP.findViewById(R.id.DFR_edtReservadoPor);
+        reservado = (EditText) vistaCuadroP.findViewById(R.id.DFR_edtReservadoPor);
         reservado.setText(reservaciones.getReservadoPor());
         reservado.setEnabled(false);
-        asistentes = (EditText)vistaCuadroP.findViewById(R.id.DFR_edtNumeroAsistentes);
+        asistentes = (EditText) vistaCuadroP.findViewById(R.id.DFR_edtNumeroAsistentes);
         asistentes.setText(reservaciones.getAsistentes());
         fecha = (EditText) vistaCuadroP.findViewById(R.id.DFR_edtFechaReservacion);
         fecha.setText(reservaciones.getFecha());
         tiempo = (EditText) vistaCuadroP.findViewById(R.id.DFR_edtHoraReservacion);
         tiempo.setText(reservaciones.getHora());
 
-        String[] valores= {reservaciones.getRestaurante()};
-        ((Spinner)vistaCuadroP.findViewById(R.id.DFR_spinRestaurantes)).setAdapter(new ArrayAdapter<String>(vistaCuadroP.getContext(), android.R.layout.simple_spinner_item, valores));
+        String[] valores = {reservaciones.getRestaurante()};
+        ((Spinner) vistaCuadroP.findViewById(R.id.DFR_spinRestaurantes)).setAdapter(new ArrayAdapter<String>(vistaCuadroP.getContext(), android.R.layout.simple_spinner_item, valores));
 
         //Construye el objeto AlertDialog
         final AlertDialog alertDialog = cuadroP.create();
 
         Button eliminar = vistaCuadroP.findViewById(R.id.DFR_btnCancelar);
         eliminar.setText("Eliminar");
-        eliminar.setOnClickListener(new View.OnClickListener(){
+        eliminar.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -297,18 +298,18 @@ public class Agenda extends Fragment {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onClick(View view) {
-                if(reservado.getText().equals("")||
-                        asistentes.getText().toString().isEmpty()||
-                        tiempo.getText().equals("")||
-                        fecha.getText().equals("")){
-                    Toast.makeText(view.getContext(),"No se ha completado el formulario", Toast.LENGTH_SHORT).show();
-                }else{
-                    if(reservado.getText().equals(elements.get(returnIndex(reservaciones.getId())).getReservadoPor())||
-                            asistentes.getText().toString().equals(elements.get(returnIndex(reservaciones.getId())).getAsistentes())||
-                            tiempo.getText().equals(elements.get(returnIndex(reservaciones.getId())).getHora())||
-                            fecha.getText().equals(elements.get(returnIndex(reservaciones.getId())).getFecha())){
+                if (reservado.getText().equals("") ||
+                        asistentes.getText().toString().isEmpty() ||
+                        tiempo.getText().equals("") ||
+                        fecha.getText().equals("")) {
+                    Toast.makeText(view.getContext(), "No se ha completado el formulario", Toast.LENGTH_SHORT).show();
+                } else {
+                    if (reservado.getText().equals(elements.get(returnIndex(reservaciones.getId())).getReservadoPor()) ||
+                            asistentes.getText().toString().equals(elements.get(returnIndex(reservaciones.getId())).getAsistentes()) ||
+                            tiempo.getText().equals(elements.get(returnIndex(reservaciones.getId())).getHora()) ||
+                            fecha.getText().equals(elements.get(returnIndex(reservaciones.getId())).getFecha())) {
                         alertDialog.dismiss();
-                    }else{
+                    } else {
                         elements.get(returnIndex(reservaciones.getId())).setFecha(fecha.getText().toString());
                         elements.get(returnIndex(reservaciones.getId())).setHora(tiempo.getText().toString());
                         elements.get(returnIndex(reservaciones.getId())).setAsistentes(asistentes.getText().toString());
@@ -326,19 +327,25 @@ public class Agenda extends Fragment {
         alertDialog.show();
     }
 
-    public int returnIndex(String id){
-        for(int i=0;i<elements.size();i++){
-            if(elements.get(i).getId().equals(id)){
+    public int returnIndex(String id) {
+        for (int i = 0; i < elements.size(); i++) {
+            if (elements.get(i).getId().equals(id)) {
                 return i;
             }
         }
         return -1;
     }
 
-    public void updateAdapter(){
-        txtSinReservaciones.setVisibility((elements.size()==0)?View.VISIBLE:View.GONE);
-        listAdapter= new ListAdapterOldReservaciones(elements);
-        listAdapter.setOnClickListener(new View.OnClickListener(){
+    public void updateAdapter() {
+        ArrayList<Reservaciones> list = new ArrayList<>();
+        for (int i = 0; i < elements.size(); i++) {
+            if (!elements.get(i).isEvaluado()) {
+                list.add(elements.get(i));
+            }
+        }
+        txtSinReservaciones.setVisibility((list.size() == 0) ? View.VISIBLE : View.GONE);
+        listAdapter = new ListAdapterOldReservaciones(list, elements);
+        listAdapter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mostrarDialogoConInfoReservacion(view, elements.get(recyclerView.getChildAdapterPosition(view)));
@@ -348,19 +355,20 @@ public class Agenda extends Fragment {
         recyclerView.setAdapter(listAdapter);
     }
 
-    public void saveData(){
+    public void saveData() {
         gb.getListaUsuarios().get(Integer.parseInt(idUsuario())).setReservaciones(elements);
-        gb.guardarArchivo(Global.nameFileUsuarios+Global.typeExtention,"");
-        gb.guardarArchivo(Global.nameFileUsuarios+Global.typeExtention,gb.crearJsonUsuarios(gb.getListaUsuarios()).toString());
+        gb.guardarArchivo(Global.nameFileUsuarios + Global.typeExtention, "");
+        gb.guardarArchivo(Global.nameFileUsuarios + Global.typeExtention, gb.crearJsonUsuarios(gb.getListaUsuarios()).toString());
     }
 
-    private String idUsuario(){
+    private String idUsuario() {
         SharedPreferences preferences = this.getActivity().getSharedPreferences("user.dat", this.getActivity().MODE_PRIVATE);
-        return preferences.getString("id","");
+        return preferences.getString("id", "");
     }
 
-    private String nombreUsuario(){
+    private String nombreUsuario() {
         SharedPreferences preferences = this.getActivity().getSharedPreferences("user.dat", this.getActivity().MODE_PRIVATE);
-        return preferences.getString("usuario","");
+        return preferences.getString("usuario", "");
     }
+
 }

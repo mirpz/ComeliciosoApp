@@ -23,13 +23,8 @@ public class ListAdapterOldReservaciones extends RecyclerView.Adapter<ListAdapte
     private final ArrayList<Reservaciones> data, dataComplete;
     private View.OnClickListener listener;
 
-    public ListAdapterOldReservaciones(ArrayList<Reservaciones> data) {
-        this.data=new ArrayList<>();
-        for(int i = 0; i<data.size();i++){
-            if(!data.get(i).isEvaluado()){
-                this.data.add(data.get(i));
-            }
-        }
+    public ListAdapterOldReservaciones(ArrayList<Reservaciones> data, ArrayList<Reservaciones> dataComplete) {
+        this.data=data;
         this.dataComplete=data;
     }
 

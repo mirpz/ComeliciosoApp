@@ -18,14 +18,6 @@
         android:textAlignment="center"
         tools:ignore="UseCompoundDrawables">
 
-        <ImageView
-            android:id="@+id/LEP_imgPublicacion"
-            android:layout_width="375dp"
-            android:layout_height="350dp"
-            android:layout_margin="10dp"
-            android:contentDescription="@string/cardview_descripcion_imagen_publicacion"
-            app:srcCompat="@drawable/ic_baseline_fireplace_24" />
-
         <TextView
             android:id="@+id/LEP_txtPieImagen"
             android:layout_width="match_parent"

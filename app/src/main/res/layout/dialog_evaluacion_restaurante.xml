@@ -68,27 +68,6 @@
                     android:textColorHint="#757575" />
 
                 <TextView
-                    android:id="@+id/DER_txtFoto"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/der_fotos" />
-
-                <ImageView
-                    android:id="@+id/DER_imgVFoto"
-                    android:layout_width="match_parent"
-                    android:layout_height="58dp"
-                    app:srcCompat="@drawable/ic_baseline_burst_mode_24"
-                    tools:ignore="ImageContrastCheck" />
-
-                <Button
-                    android:id="@+id/DER_btnFoto"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="#FF9800"
-                    android:text="@string/der_btn_fotos"
-                    tools:ignore="TextContrastCheck" />
-
-                <TextView
                     android:id="@+id/DER_txtGasto"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

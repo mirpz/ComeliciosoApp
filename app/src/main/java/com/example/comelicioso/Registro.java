@@ -46,7 +46,6 @@ public class Registro extends AppCompatActivity {
                     contasenia.getText().toString()));
             gb.setListaUsuarios(usuarios);
             gb.guardarArchivo(Global.nameFileUsuarios+Global.typeExtention,gb.crearJsonUsuarios(usuarios).toString());
-            Toast.makeText(view.getContext(),gb.abrirArchivo(Global.nameFileUsuarios+Global.typeExtention),Toast.LENGTH_SHORT).show();
             nombre.setText("");
             correo.setText("");
             contasenia.setText("");
