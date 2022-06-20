@@ -1,13 +1,16 @@
 package com.example.comelicioso.modelos;
 
+import android.net.Uri;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Publicaciones {
+public class PublicacionesEvaluaciones {
 
     private String id, usario, linkImagen, texto;
+    Uri foto;
 
-    public Publicaciones(String id, String usario, String linkImagen, String texto) {
+    public PublicacionesEvaluaciones(String id, String usario, String linkImagen, String texto) {
         this.id = id;
         this.usario = usario;
         this.linkImagen = linkImagen;

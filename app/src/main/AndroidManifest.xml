@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.comelicioso">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
     <application
         android:name=".modelos.Global"
         android:allowBackup="true"
@@ -25,6 +27,9 @@
             android:exported="false" />
         <activity
             android:name=".MenuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EvaluacionActivity"
             android:exported="false" />
         <activity
 

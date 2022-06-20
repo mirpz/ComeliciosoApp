@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.comelicioso.adaptadores.ListAdapterPublicaciones;
-import com.example.comelicioso.modelos.Publicaciones;
+import com.example.comelicioso.modelos.PublicacionesEvaluaciones;
 
 import java.util.ArrayList;
 
@@ -23,7 +23,7 @@ import java.util.ArrayList;
  */
 public class Feed extends Fragment {
 
-    ArrayList<Publicaciones> elements;
+    ArrayList<PublicacionesEvaluaciones> elements;
     RecyclerView recyclerView;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -68,11 +68,11 @@ public class Feed extends Fragment {
         elements = new ArrayList<>();
 
     //en este apatado es donde se tiene que realizar la busqueda y absorción de la información
-        elements.add(new Publicaciones("1","@uno","", "Aqui estamos"));
+        /*elements.add(new Publicaciones("1","@uno","", "Aqui estamos"));
         elements.add(new Publicaciones("1","@dos","","Aqui estamos"));
         elements.add(new Publicaciones("1","@tres","","Aqui estamos"));
         elements.add(new Publicaciones("1","@cuatro","","Aqui estamos"));
-        elements.add(new Publicaciones("1","@cinco","","Aqui estamos"));
+        elements.add(new Publicaciones("1","@cinco","","Aqui estamos"));*/
 
         txtSinReservaciones.setVisibility((elements.size()==0)?View.VISIBLE:View.GONE);
         ListAdapterPublicaciones listAdapter= new ListAdapterPublicaciones(elements);

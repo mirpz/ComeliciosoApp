@@ -1,16 +1,28 @@
 package com.example.comelicioso.modelos;
 
-public class Reservaciones {
+import java.io.Serializable;
+
+public class Reservaciones implements Serializable {
     private String id, IdRestaurante, restaurante, fecha, hora, asistentes, reservadoPor;
+    boolean evaluado;
 
     public Reservaciones(String id, String IdRestaurante, String restaurante, String fecha, String hora, String asistentes, String reservadoPor) {
         this.id = id;
-        this.IdRestaurante=IdRestaurante;
+        this.IdRestaurante = IdRestaurante;
         this.restaurante = restaurante;
         this.fecha = fecha;
         this.hora = hora;
         this.asistentes = asistentes;
-        this.reservadoPor=reservadoPor;
+        this.reservadoPor = reservadoPor;
+        this.evaluado=false;
+    }
+
+    public boolean isEvaluado() {
+        return evaluado;
+    }
+
+    public void setEvaluado(boolean evaluado) {
+        this.evaluado = evaluado;
     }
 
     public String getIdRestaurante() {

@@ -15,15 +15,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.example.comelicioso.adaptadores.ListAdapterPublicaciones;
 import com.example.comelicioso.adaptadores.ListAdapterRestaurantes;
 import com.example.comelicioso.modelos.Global;
 import com.example.comelicioso.modelos.InfoRestaurantes;
-import com.example.comelicioso.modelos.Publicaciones;
 
 import java.io.IOException;
 import java.util.ArrayList;

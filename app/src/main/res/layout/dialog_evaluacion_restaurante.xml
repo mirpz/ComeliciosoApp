@@ -77,14 +77,16 @@
                     android:id="@+id/DER_imgVFoto"
                     android:layout_width="match_parent"
                     android:layout_height="58dp"
-                    app:srcCompat="@drawable/ic_baseline_burst_mode_24" />
+                    app:srcCompat="@drawable/ic_baseline_burst_mode_24"
+                    tools:ignore="ImageContrastCheck" />
 
                 <Button
                     android:id="@+id/DER_btnFoto"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#FF9800"
-                    android:text="@string/der_btn_fotos" />
+                    android:text="@string/der_btn_fotos"
+                    tools:ignore="TextContrastCheck" />
 
                 <TextView
                     android:id="@+id/DER_txtGasto"
@@ -110,13 +112,16 @@
                     android:layout_height="wrap_content"
                     android:text="@string/der_personas" />
 
-                <Spinner
-                    android:id="@+id/DER_spinPersonas"
+                <EditText
+                    android:id="@+id/DER_editPersonas"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:contentDescription="@string/der_personas_"
                     android:minHeight="48dp"
-                    tools:ignore="DuplicateSpeakableTextCheck" />
+                    android:textColorHint="#757575"
+                    android:ems="10"
+                    android:hint="@string/der_edt_personas"
+                    android:inputType="number"
+                    android:autofillHints="" />
 
                 <TextView
                     android:id="@+id/DER_txtTiempo"
@@ -130,7 +135,7 @@
                     android:layout_height="wrap_content"
                     android:autofillHints=""
                     android:ems="10"
-                    android:hint="@string/der_edt_gasto"
+                    android:hint="@string/der_edt_tiempo"
                     android:inputType="number"
                     android:minHeight="48dp"
                     android:textColorHint="#757575"
@@ -142,18 +147,20 @@
                     android:layout_marginTop="20dp">
 
                     <Button
-                        android:id="@+id/DFR_btnCancelar"
+                        android:id="@+id/DER_btnCancelar"
                         android:layout_width="120dp"
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
-                        android:text="@string/btn_cancelar" />
+                        android:text="@string/btn_cancelar"
+                        tools:ignore="TextContrastCheck" />
 
                     <Button
-                        android:id="@+id/DFR_btnAceptar"
+                        android:id="@+id/DER_btnAceptar"
                         android:layout_width="120dp"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
-                        android:text="@string/btn_aceptar" />
+                        android:text="@string/btn_aceptar"
+                        tools:ignore="TextContrastCheck" />
                 </RelativeLayout>
 
             </LinearLayout>

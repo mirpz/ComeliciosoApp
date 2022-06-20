@@ -34,21 +34,8 @@
     <string name="der_edt_gasto">ej. 300</string>
     <string name="der_personas">¿Cuántas personas eran?</string>
     <string name="der_personas_">Personas</string>
-    <string name="der_edt_tiempo">ej. 30 </string>
-    <array name="der_spn_personas">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
-        <item>7</item>
-        <item>8</item>
-        <item>9</item>
-        <item>10</item>
-        <item>11</item>
-        <item>12</item>
-    </array>
+    <string name="der_edt_tiempo">ej. 30</string>
+    <string name="der_edt_personas">ej. 3</string>
     <string name="der_tiempo_espera">¿Cuál fue tu tiempo de espera aproximado (minutos)?</string>
 
     <!--Textos para Feed-->

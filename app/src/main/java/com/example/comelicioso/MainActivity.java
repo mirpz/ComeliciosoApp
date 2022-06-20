@@ -7,15 +7,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.example.comelicioso.modelos.Global;
-import com.example.comelicioso.modelos.InfoRestaurantes;
-import com.example.comelicioso.modelos.Publicaciones;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-import org.json.JSONStringer;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 

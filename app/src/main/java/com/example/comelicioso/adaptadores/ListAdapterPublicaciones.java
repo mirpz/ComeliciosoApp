@@ -12,15 +12,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.comelicioso.R;
-import com.example.comelicioso.modelos.Publicaciones;
+import com.example.comelicioso.modelos.PublicacionesEvaluaciones;
 
 import java.util.ArrayList;
 
 public class ListAdapterPublicaciones extends RecyclerView.Adapter<ListAdapterPublicaciones.ViewHolderDatos>{
 
-    private final ArrayList<Publicaciones> data;
+    private final ArrayList<PublicacionesEvaluaciones> data;
 
-    public ListAdapterPublicaciones(ArrayList<Publicaciones> data) {
+    public ListAdapterPublicaciones(ArrayList<PublicacionesEvaluaciones> data) {
         this.data = data;
     }
 
@@ -56,7 +56,7 @@ public class ListAdapterPublicaciones extends RecyclerView.Adapter<ListAdapterPu
         }
 
         @SuppressLint("SetTextI18n")
-        public void asignarDatos(Publicaciones datos){
+        public void asignarDatos(PublicacionesEvaluaciones datos){
             txt.setText(Html.fromHtml("<b>"+datos.getUsario()+"</b><br>"+datos.getTexto()));
         }
     }

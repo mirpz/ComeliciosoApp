@@ -20,7 +20,6 @@ public class Global extends Application {
 
     public static final String nameFileRestaurantes = "restaurantes";
     public static final String nameFilePublicaciones= "publicaciones";
-    public static final String nameFileEvaluaciones = "evaluaciones";
     public static final String nameFileUsuarios = "usuarios";
     public static final String typeExtention = ".txt";
 
@@ -312,7 +311,7 @@ public class Global extends Application {
 
     //PUBLICACIONES
 
-    public JSONArray crearJsonPublicaciones(ArrayList<Publicaciones> elements){
+    public JSONArray crearJsonPublicaciones(ArrayList<PublicacionesEvaluaciones> elements){
         JSONArray json = new JSONArray();
         for(int i = 0; i<elements.size();i++){
             JSONObject obj = new JSONObject();
@@ -329,12 +328,12 @@ public class Global extends Application {
         return json;
     }
 
-    public ArrayList<Publicaciones> obtenerPublicaciones(String in) throws IOException {
-        ArrayList<Publicaciones>list = new ArrayList<>();
+    public ArrayList<PublicacionesEvaluaciones> obtenerPublicaciones(String in) throws IOException {
+        ArrayList<PublicacionesEvaluaciones>list = new ArrayList<>();
         try {
             JSONArray myJsonArray = new JSONArray(in);
             for(int i = 0; i<myJsonArray.length();i++){
-                list.add(new Publicaciones(
+                list.add(new PublicacionesEvaluaciones(
                         myJsonArray.getJSONObject(i).getString("id"),
                         myJsonArray.getJSONObject(i).getString("usario"),
                         myJsonArray.getJSONObject(i).getString("linkImagen"),
