@@ -122,7 +122,7 @@ public class Restaurantes extends Fragment {
                 elements.get(3).setIcon(R.mipmap.brick);
                 elements.add(new InfoRestaurantes("5",
                         "Suehiro",
-                        "Japonecesa",
+                        "Japonesa",
                         "Av. de la Paz 1701, Col Americana, Americana, 44160 Guadalajara, Jal.",
                         "33 3826 0094",
                         "300 - 700",
@@ -169,7 +169,7 @@ public class Restaurantes extends Fragment {
         cuadroP.setView(vistaCuadroP);
 
         ((TextView)vistaCuadroP.findViewById(R.id.DDR_txtNombre)).setText(info.getNombre());
-        ((TextView)vistaCuadroP.findViewById(R.id.DDR_txtTipoComida)).setText(info.getTipoComida());
+        ((TextView)vistaCuadroP.findViewById(R.id.DDR_txtTipoComida)).setText("Comida"+ info.getTipoComida());
         ((TextView)vistaCuadroP.findViewById(R.id.DDR_txtCalificacionNumero)).setText(String.valueOf(info.getCalificacion()));
         ((TextView)vistaCuadroP.findViewById(R.id.DDR_txtUbicacion)).setText(info.getUbicacion());
         ((TextView)vistaCuadroP.findViewById(R.id.DDR_txtTelefono)).setText(info.getTelefono());
@@ -178,6 +178,7 @@ public class Restaurantes extends Fragment {
         if(info.getIcon()!=0){
             ((ImageView)vistaCuadroP.findViewById(R.id.DDR_iconRestaurant)).setImageResource(info.getIcon());
         }
+        ((TextView)vistaCuadroP.findViewById(R.id.DDR_txtGastoAproximado)).setText("$"+info.getCostoAproximado()+" por persona.");
 
         //Construye el objeto AlertDialog
         final AlertDialog alertDialog = cuadroP.create();
