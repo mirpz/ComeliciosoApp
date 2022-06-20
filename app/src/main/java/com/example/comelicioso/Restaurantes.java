@@ -1,5 +1,6 @@
 package com.example.comelicioso;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
@@ -12,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -140,7 +142,7 @@ public class Restaurantes extends Fragment {
 
 
         txtSinRestaurantes.setVisibility((gb.getDatosRestaurantes().size()==0)?View.VISIBLE:View.GONE);
-        ListAdapterRestaurantes listAdapter= new ListAdapterRestaurantes(gb.getDatosRestaurantes());
+        ListAdapterRestaurantes listAdapter= new ListAdapterRestaurantes(gb.getDatosRestaurantes(), idUsuario());
 
         listAdapter.setOnClickListener(new View.OnClickListener(){
 
@@ -172,6 +174,10 @@ public class Restaurantes extends Fragment {
         ((TextView)vistaCuadroP.findViewById(R.id.DDR_txtUbicacion)).setText(info.getUbicacion());
         ((TextView)vistaCuadroP.findViewById(R.id.DDR_txtTelefono)).setText(info.getTelefono());
         ((TextView)vistaCuadroP.findViewById(R.id.DDR_txtHorario)).setText(gb.arryToString(info.getHorarios(),"/","Sin horarios presentes"));
+        ((TextView)vistaCuadroP.findViewById(R.id.DDR_txtGastoAproximado)).setText(info.getCostoAproximado());
+        if(info.getIcon()!=0){
+            ((ImageView)vistaCuadroP.findViewById(R.id.DDR_iconRestaurant)).setImageResource(info.getIcon());
+        }
         ((TextView)vistaCuadroP.findViewById(R.id.DDR_txtGastoAproximado)).setText("$"+info.getCostoAproximado()+" por persona.");
 
         //Construye el objeto AlertDialog
@@ -187,4 +193,9 @@ public class Restaurantes extends Fragment {
         //Mostrar el cuadro de dialogo personalizado
         alertDialog.show();
     }//mostrarDialogoPersonalizado
+
+    private String idUsuario(){
+        SharedPreferences preferences = this.getActivity().getSharedPreferences("user.dat", this.getActivity().MODE_PRIVATE);
+        return preferences.getString("id","");
+    }
 }

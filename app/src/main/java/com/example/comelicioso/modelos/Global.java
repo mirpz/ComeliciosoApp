@@ -164,7 +164,11 @@ public class Global extends Application {
     }
 
     public ArrayList<String> stringToArrayList(String cadena,String caracter){
-        return new ArrayList<String>(Arrays.asList(cadena.split(caracter)));
+        ArrayList<String>list=new ArrayList<String>(Arrays.asList(cadena.split(caracter)));
+        if(list.size()==1&&list.get(0).equals("")){
+            list = new ArrayList<>();
+        }
+        return list;
     }
 
     public String[] stringToArray(String cadena,String caracter){

@@ -32,6 +32,7 @@ public class InfoRestaurantes {
         this.costoAproximado = costoAproximado;
         this.calificacion = calificacion;
         this.horarios = horarios;
+        this.icon = 0;
     }
 
     public String getNombre() {
